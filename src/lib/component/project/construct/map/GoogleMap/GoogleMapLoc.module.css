@@ -1,0 +1,116 @@
+.map_container {
+  position: relative;
+  height: 100%;
+  min-width: min(100%, 1000px);
+}
+.locate_me_btn {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  bottom: 70px;
+  right: 20px;
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+.locate_me_btn img {
+  width: 25px;
+}
+.search_input {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  left: 20px;
+  padding: 10px 15px;
+  box-shadow: 2px 2px 8px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+.confirm_current_locaton_btn {
+  position: fixed;
+  bottom: 10px;
+  right: 15px;
+  left: 15px;
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  font-size: 18px;
+  padding: 5px 0px;
+  border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+  font-weight: bold;
+}
+.close_map_btn {
+  position: fixed;
+  top: 15px;
+  left: 20px;
+  color: var(--color-white);
+  width: 30px;
+  height: 30px;
+  background-color: var(--color-white);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.close_map_btn svg {
+  width: 30px;
+  stroke: var(--color-accent);
+  fill: var(--color-accent);
+}
+
+/* ----------------------------------------------------------------  */
+
+/* media queries */
+@media only screen and (min-width: 768px) {
+}
+@media only screen and (min-width: 1024px) {
+  .map_container {
+    position: relative;
+    height: 80%;
+    width: min(80%, 1024px);
+    max-width: 1000px;
+    overflow: hidden;
+    border: 2px solid var(--color-medium-gray);
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    -ms-border-radius: 16px;
+    -o-border-radius: 16px;
+  }
+  .locate_me_btn {
+    position: absolute;
+    bottom: 70px;
+    right: 20px;
+  }
+  .confirm_current_locaton_btn {
+    position: absolute;
+    bottom: 10px;
+    right: 300px;
+    left: 300px;
+  }
+  .close_map_btn {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+  }
+  .user_information_inputs {
+    width: 500px;
+  }
+}
+@media only screen and (min-width: 1440px) {
+}
