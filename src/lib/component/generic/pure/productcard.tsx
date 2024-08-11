@@ -5,7 +5,7 @@ import Anchor from "./anchor";
 import { LinkPropsInterface } from "./anchor";
 
 const productCardVariants = cva(
-  "relative aspect-[55/100] overflow-hidden bg-transparent",
+  "relative aspect-[55/100] overflow-hidden bg-transparent border border-slate-200 ",
   {
     variants: {
       variant: {
@@ -25,7 +25,7 @@ const productCardVariants = cva(
       variant: "default",
       size: "default",
     },
-  }
+  },
 );
 
 interface ProductCardProps
@@ -45,7 +45,7 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
         {children}
       </div>
     );
-  }
+  },
 );
 ProductCard.displayName = "ProductCard";
 
@@ -75,7 +75,7 @@ ProductCardSection.displayName = "ProductCardSection";
 // ====================================================================================
 
 const productCardImageVariants = cva(
-  " aspect-[66/100] overflow-hidden bg-transparent",
+  " aspect-[1/1.2] overflow-hidden bg-transparent",
   {
     variants: {
       variant: {
@@ -90,7 +90,7 @@ const productCardImageVariants = cva(
       variant: "default",
       size: "default",
     },
-  }
+  },
 );
 
 interface ProductCardImageProps

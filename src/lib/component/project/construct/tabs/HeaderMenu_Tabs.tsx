@@ -48,28 +48,26 @@ export default function HeaderMenu_Tabs({ storeCode, menuItem }: Props) {
           />
 
           {/* Side bar tabs */}
-          <TabsList className=" flex h-fit basis-[30%] flex-col gap-4 py-0 pt-2">
+          <TabsList className=" grid h-fit basis-[25%] grid-cols-1 gap-2 py-0 pt-2">
             {menuItem?.children?.map((item, index) => {
               return (
                 <TabsTrigger
                   key={index}
                   value={`${index}`}
-                  className={` relative flex min-h-[64px] w-full origin-right overflow-clip rounded-e-md bg-menu_tab_background duration-300 data-[state=active]:z-10 data-[state=active]:max-h-20 data-[state=active]:min-h-20 data-[state=active]:items-center  data-[state=active]:justify-center data-[state=active]:rounded-e-md data-[state=active]:bg-faint_accent data-[state=active]:shadow-md `}
-                  style={{
-                    backgroundColor: `${
-                      index === currentIndex ? " bg-faint_accent" : ""
-                    }`,
-                  }}
+                  className={` relative flex w-full origin-right overflow-clip rounded-e-md bg-slate-100 py-4 duration-300 data-[state=active]:z-10 data-[state=active]:items-center  data-[state=active]:justify-center data-[state=active]:rounded-e-md data-[state=active]:bg-accent data-[state=active]:text-background data-[state=active]:shadow-md `}
+                  // style={{
+                  //   backgroundColor: `${
+                  //     index === currentIndex ? " bg-faint_accent" : ""
+                  //   }`,
+                  // }}
                 >
                   <p
-                    className={` z-10 transition-all  ${
-                      index === currentIndex ? " text-lg" : ""
-                    }`}
-                    style={{
-                      color: `${
-                        index === currentIndex ? item?.labelTextColor : ""
-                      }`,
-                    }}
+                    className={` z-10 text-base `}
+                    // style={{
+                    //   color: `${
+                    //     index === currentIndex ? item?.labelTextColor : ""
+                    //   }`,
+                    // }}
                   >
                     {item.name}
                   </p>

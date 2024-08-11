@@ -33,7 +33,7 @@ export default function HeaderCutomer_Bar({ storeCode }: Props) {
   }, [cart]);
 
   return (
-    <section className=" flex h-20 items-center justify-center bg-background">
+    <section className=" flex h-16 items-center justify-center bg-background">
       <Row className=" w-full max-w-project gap-12">
         <RowSection className=" ps-1">
           <Anchor href={`/${storeCode}/`}>
@@ -49,13 +49,13 @@ export default function HeaderCutomer_Bar({ storeCode }: Props) {
             className=" flex items-center justify-center gap-3"
           >
             <div>
-              <ProfileIcon className=" h-12 w-12 text-accent" />
+              <ProfileIcon className=" h-10 w-auto text-accent" />
             </div>
             <div>
-              <p className=" text-accent">
+              <p className=" text-sm text-accent">
                 {getText({ storeCode: storeCode, text: Texts.welcome })}
               </p>
-              <p>
+              <p className=" text-sm">
                 {customerState?.firstName
                   ? `${customerState?.firstName} ${customerState?.lastName}`
                   : getText({ storeCode: storeCode, text: Texts.login })}
@@ -67,7 +67,7 @@ export default function HeaderCutomer_Bar({ storeCode }: Props) {
             className=" flex items-center justify-center gap-3"
           >
             <div className=" relative">
-              <CartIcon className=" h-10 w-10 text-accent" />
+              <CartIcon className=" h-8 w-auto text-accent" />
               {(cartState?.quantity ?? 0) > 0 && (
                 <Itemcount_Label
                   value={cartState?.quantity?.toString() ?? ""}
@@ -76,10 +76,10 @@ export default function HeaderCutomer_Bar({ storeCode }: Props) {
               )}
             </div>
             <div>
-              <p className=" text-accent">
+              <p className=" text-sm text-accent">
                 {getText({ storeCode: storeCode, text: Texts.cart })}
               </p>
-              <p>
+              <p className=" text-sm">
                 {cartState?.grandTotal
                   ? `${cartState?.grandTotal} ${cartState?.currency?.label}`
                   : ``}

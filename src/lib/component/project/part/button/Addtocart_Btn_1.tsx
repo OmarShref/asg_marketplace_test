@@ -21,7 +21,7 @@ export default function Addtocart_Btn_1({
       className={cn(
         ` h-auto w-10 p-0  ring-1 ring-accent hover:bg-accent hover:text-white ${
           addedToCartCount <= 0
-            ? "bg-rounded_btn_background text-accent"
+            ? "bg-slate-100 text-accent"
             : " bg-accent text-white"
         }`,
         className,

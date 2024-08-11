@@ -22,17 +22,17 @@ export default function HeaderMenu_Bar({ storeCode, menu }: Props) {
   const router = useRouter();
 
   return (
-    <section className=" flex items-center justify-center bg-header_menubar_background">
+    <section className=" flex items-center justify-center border-b border-t border-accent bg-background py-2">
       <NavigationMenu dir={direction}>
-        <NavigationMenuList className="max-w-project overflow-x-auto">
+        <NavigationMenuList className="min-w-[1024px] max-w-project gap-3 overflow-x-auto">
           {menu?.items?.map((item, index) => {
             return (
               <NavigationMenuItem key={index}>
                 <NavigationMenuTrigger
-                  className=" gap-1 text-background"
+                  className=" gap-1 rounded-full bg-slate-100 ps-5 text-slate-800"
                   onClick={() => router.push(item?.url)}
                 >
-                  {item?.name}
+                  <p className="pt-1">{item?.name}</p>
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className=" h-[600px] max-h-[600px] overflow-y-auto">
                   <HeaderMenu_Tabs storeCode={storeCode} menuItem={item} />

@@ -44,18 +44,18 @@ export function ProductImages_Carousel_2({
   return (
     <section className=" flex h-full w-full">
       <Carousel
-        className=" flex mx-auto h-full w-full gap-5 "
+        className=" mx-auto flex h-full w-full gap-5 "
         setApi={setApi}
         opts={{ direction: direction.current, align: "start" }}
       >
-        <CarouselContent className=" relative h-full shrink-0 flex-1 ">
+        <CarouselContent className=" relative aspect-square h-full flex-1 shrink-0 ">
           {images?.map((image, index) => (
             <CarouselItem key={index} className=" basis-full ">
               <Image
                 src={image + "?width=700"}
                 highPeriority={index <= 0}
                 alt={`${productName} product image ${index + 1}`}
-                className=" object-contain rounded-xl"
+                className=" rounded-xl object-cover"
               />
             </CarouselItem>
           ))}
@@ -65,7 +65,7 @@ export function ProductImages_Carousel_2({
       </Carousel>
 
       {/* bullets or thumbs */}
-      <div className=" basis-3/12 shrink-0 overflow-y-scroll h-full aspect-[1/4.5]">
+      <div className=" aspect-[1/3] h-full shrink-0 basis-3/12 overflow-y-scroll">
         <CarouselBullets className=" w-full flex-col justify-start gap-2 bg-background px-2 pt-0">
           {images?.map((image, index) => {
             return (

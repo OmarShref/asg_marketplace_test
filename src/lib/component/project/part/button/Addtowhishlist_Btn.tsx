@@ -36,17 +36,15 @@ export default function Addtowishlist_Btn({
     <Button
       variant={"circle"}
       className={cn(
-        ` h-auto w-10 p-0 lg:hover:bg-accent lg:hover:text-white ${
-          addedToWishList
-            ? " bg-accent text-white"
-            : "bg-rounded_btn_background text-accent"
+        ` h-auto w-10 border border-accent p-0 lg:hover:bg-accent lg:hover:text-white ${
+          addedToWishList ? " bg-accent text-white" : "bg-slate-100 text-accent"
         }`,
         className,
       )}
       onClick={handleAddOrRemoveWishlistItem}
       {...restProps}
     >
-      <WishlistIcon />
+      <WishlistIcon className=" h-auto w-5" />
     </Button>
   );
 }

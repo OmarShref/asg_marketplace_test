@@ -49,7 +49,7 @@ export function ProductImages_Carousel_1({
     >
       <CarouselContent className=" relative h-full">
         {images?.map((image, index) => (
-          <CarouselItem key={index} className=" basis-[70%]">
+          <CarouselItem key={index} className=" basis-[100%]">
             <Image
               src={image + "?width=400"}
               highPeriority={index <= 1}

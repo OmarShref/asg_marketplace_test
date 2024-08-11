@@ -1,5 +1,5 @@
 import { getDirection } from "@/lib/helper/direction";
-import { Readex_Pro } from "next/font/google";
+import { Tajawal } from "next/font/google";
 import NavBar from "@/lib/component/project/construct/bar/NavBar";
 import Header_1 from "@/lib/component/project/construct/header/Header_1";
 import "../globals.css";
@@ -31,7 +31,10 @@ export const viewport: Viewport = {
   userScalable: false,
 };
 
-const readex_pro = Readex_Pro({ subsets: ["latin", "arabic"] });
+const tajawal = Tajawal({
+  subsets: ["latin", "arabic"],
+  weight: ["200", "300", "400", "500", "700", "800", "900"],
+});
 
 type Props = {
   children: React.ReactNode;
@@ -48,7 +51,7 @@ export default async function layout({ children, params }: Props) {
 
   return (
     <html lang="en">
-      <body className={`!bg-background ${readex_pro.className} `}>
+      <body className={`!bg-background ${tajawal.className} `}>
         <main
           className={`min-h-screen overflow-x-clip `}
           style={{ direction: direction }}

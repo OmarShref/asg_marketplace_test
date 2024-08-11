@@ -15,22 +15,26 @@ type Props = {
 
 export default function HeaderUtility_Bar({ storeCode, configuration }: Props) {
   return (
-    <section className=" flex h-9 items-center justify-center bg-header_utility_background ">
+    <section className=" flex h-6 items-center justify-center bg-slate-100 ">
       <Row className=" h-full w-full max-w-project">
         <RowSection className=" flex items-center justify-start gap-3 ps-1">
-          <RowSection className="flex items-center">
-            <PhoneIcon className="h-5 w-5 text-accent" />
-            <p className="font-montserrat-remove text-sm">
-              {configuration?.phone}
-            </p>
-          </RowSection>
+          <Anchor href={`tel:${configuration?.phone}`}>
+            <RowSection className="flex items-center">
+              <PhoneIcon className="h-5 w-5 text-accent" />
+              <p className="font-montserrat-remove text-sm">
+                {configuration?.phone}
+              </p>
+            </RowSection>
+          </Anchor>
           <Separator orientation="vertical" className="h-5" />
-          <RowSection className="flex items-center">
-            <MailIcon className="h-5 w-5 text-accent" />
-            <p className="font-montserrat-remove text-sm">
-              {configuration?.email}
-            </p>
-          </RowSection>
+          <Anchor href={`mailto:${configuration?.email}`}>
+            <RowSection className="flex items-center">
+              <MailIcon className="h-5 w-5 text-accent" />
+              <p className="font-montserrat-remove text-sm">
+                {configuration?.email}
+              </p>
+            </RowSection>
+          </Anchor>
         </RowSection>
         {/* ============================================================================  */}
         <RowSection className=" flex items-center justify-start gap-3 pe-1">

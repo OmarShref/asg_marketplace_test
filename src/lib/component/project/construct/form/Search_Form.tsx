@@ -11,8 +11,8 @@ import {
 import { Input } from "@/lib/component/generic/ui/input";
 import { Texts, getText } from "@/lib/assets/text";
 import { SearchIcon } from "@/lib/assets/svg";
-import { CameraIcon, MicIcon } from "lucide-react";
-import { Button } from "@/lib/component/generic/ui/button";
+// import { CameraIcon, MicIcon } from "lucide-react";
+// import { Button } from "@/lib/component/generic/ui/button";
 import { useEffect } from "react";
 import useSearchStore from "@/lib/data/stores/SearchStore";
 import { usePathname, useRouter } from "next/navigation";
@@ -88,7 +88,7 @@ export function Search_Form({ storeCode }: Props) {
             render={({ field }) => (
               <FormItem className=" flex-1">
                 <FormControl>
-                  <div className="flex flex-1 items-center justify-center gap-2 overflow-clip rounded bg-stone-50 px-2 py-0.5">
+                  <div className="flex flex-1 items-center justify-center gap-2 overflow-clip rounded bg-slate-100 px-2 py-0.5 lg:py-1.5">
                     <SearchIcon className=" w-5 text-accent" />
                     <Input
                       type="search"
@@ -111,7 +111,7 @@ export function Search_Form({ storeCode }: Props) {
             )}
           />
         </form>
-        <Button
+        {/* <Button
           className=" flex w-fit flex-shrink-0 self-stretch  ps-2.5"
           onClick={() => {
             toast({
@@ -123,7 +123,7 @@ export function Search_Form({ storeCode }: Props) {
           }}
         >
           <CameraIcon className=" w-6 stroke-[1.5] " />
-        </Button>
+        </Button> */}
       </div>
     </Form>
   );

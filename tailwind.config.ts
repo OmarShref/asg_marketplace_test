@@ -81,7 +81,7 @@ const config = {
         faint_accent: "#F5A09B2B",
         ultra_faint_accent: "#F5A09B1A",
         navbar: "#979C9E",
-        primary_text: "#3F3E3E",
+        primary_text: "#000000",
         secondry_text: "#555555",
         sub_secondry_text: "#878787",
         faint_text: "#BBBBBB",

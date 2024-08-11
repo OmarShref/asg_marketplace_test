@@ -10,7 +10,7 @@ export default function DiscountLabel({ value, className }: Props) {
   return Number(value) > 0 ? (
     <Label
       className={cn(
-        " font-montserrat-remove w-fit rounded-e-full bg-accent py-1 pl-2 pr-1 text-sm text-white",
+        " font-montserrat-remove w-fit rounded-e bg-accent px-2 pt-1 text-sm text-white",
         className,
       )}
     >

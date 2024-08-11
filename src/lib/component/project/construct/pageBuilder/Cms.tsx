@@ -46,9 +46,10 @@ export default function Cms({ storeCode, cms, classNameArray }: Props) {
               {item?.children
                 ?.at(0)
                 ?.children?.at(0)
+                ?.children?.at(0)
                 ?.children?.map((child: PageBuilderType, index: number) => {
-                  const marginRight = child?.properties?.css["margin-right"];
-                  const marginleft = child?.properties?.css["margin-left"];
+                  const marginRight = child?.properties?.css?.["margin-right"];
+                  const marginleft = child?.properties?.css?.["margin-left"];
 
                   return (
                     <Fragment key={index}>

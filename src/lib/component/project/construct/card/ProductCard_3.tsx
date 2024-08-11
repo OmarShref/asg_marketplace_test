@@ -27,6 +27,7 @@ import { Button } from "@/lib/component/generic/ui/button";
 import { GtmEvents } from "@/lib/core/analytics/Gtm";
 import DynamicProduct_Label from "../../part/label/DynamicProduct_Label";
 import { algoliaEventsSingleton } from "@/lib/core/analytics/Algolia";
+import Addtocart_Btn_3 from "../../part/button/Addtocart_Btn_3";
 
 type Props = {
   storeCode: string;
@@ -58,14 +59,14 @@ export default function ProductCard_3({
     configurableProductCurrentVariant,
     setConfigurableProductCurrentVariant,
   ] = useState<ProductModel>(
-    configurableProduct?.currentVariant ?? configurableProduct
+    configurableProduct?.currentVariant ?? configurableProduct,
   );
   const [currentIndex, setCurrentIndex] = useState<number | null>(null);
   const [sizeVariant, setSizeVariant] = useState(
-    product?.variants?.find((variant) => variant?.code === "size")
+    product?.variants?.find((variant) => variant?.code === "size"),
   );
   const [colorVariant, setColorVariant] = useState(
-    product?.variants?.find((variant) => variant.code === "color")
+    product?.variants?.find((variant) => variant.code === "color"),
   );
   const [curretColorVariantOption, setCurretColorVariantOption] = useState<
     VariantOptionType | undefined
@@ -74,16 +75,16 @@ export default function ProductCard_3({
   useEffect(() => {
     setConfigurableProduct(product);
     setColorVariant(
-      product?.variants?.find((variant) => variant.code === "color")
+      product?.variants?.find((variant) => variant.code === "color"),
     );
     setSizeVariant(
-      product?.variants?.find((variant) => variant?.code === "size")
+      product?.variants?.find((variant) => variant?.code === "size"),
     );
   }, [product]);
 
   useEffect(() => {
     setConfigurableProductCurrentVariant(
-      configurableProduct?.currentVariant ?? configurableProduct
+      configurableProduct?.currentVariant ?? configurableProduct,
     );
   }, [configurableProduct]);
 
@@ -139,15 +140,15 @@ export default function ProductCard_3({
 
   const productLabel = useRef(
     product?.labels?.find(
-      (label) => label?.type === productLabelTypes?.category
-    )
+      (label) => label?.type === productLabelTypes?.category,
+    ),
   );
 
   return (
     <ProductCard
       variant={"rounded"}
       size={"default"}
-      className={` aspect-auto bg-product_card_background`}
+      className={` aspect-auto bg-background`}
     >
       <ProductCardSection className=" relative">
         <ProductCardLink href={product.url} onClick={handleSelectItem}>
@@ -156,6 +157,7 @@ export default function ProductCard_3({
               src={`${configurableProductCurrentVariant.smallImage}?width=300`}
               alt={`${configurableProductCurrentVariant.name} product image`}
               highPeriority={index <= 4 ? true : false}
+              className=" h-full w-full object-contain"
             />
           </ProductCardImage>
         </ProductCardLink>
@@ -164,13 +166,13 @@ export default function ProductCard_3({
 
       {/* name and price and color variants container */}
       <ProductCardSection
-        className={` flex w-full flex-col items-center justify-evenly ${
-          isMultiColumn ? "aspect-[220/100]" : "aspect-[360/100]"
+        className={` flex w-full flex-col items-stretch justify-evenly ${
+          isMultiColumn ? "aspect-[170/100]" : "aspect-[360/100]"
         }`}
       >
         <ProductCardLink href={product.url} onClick={handleSelectItem}>
           <ProductCardName
-            className={` line-clamp-2 text-ellipsis text-center font-medium md:text-base ${
+            className={` line-clamp-2 text-ellipsis font-medium md:text-base ${
               isMultiColumn ? " text-sm" : " text-base"
             } `}
           >
@@ -211,7 +213,7 @@ export default function ProductCard_3({
           </ProductCardPrices>
         </ProductCardLink>
 
-        {(colorVariant?.options?.length ?? 0) > 1 && (
+        {/* {(colorVariant?.options?.length ?? 0) > 1 && (
           <ProductCardSection
             className=" w-full px-2"
             onClick={(e) => e.preventDefault()}
@@ -243,7 +245,9 @@ export default function ProductCard_3({
               })}
             </div>
           </ProductCardSection>
-        )}
+        )} */}
+
+        <Addtocart_Btn_3 storeCode={storeCode} className=" mx-2 w-auto" />
       </ProductCardSection>
 
       {/* <Image
@@ -254,15 +258,15 @@ export default function ProductCard_3({
       <DiscountLabel
         value={product.discountPercentage}
         className={` absolute start-0  -translate-y-1/2  ${
-          isMultiColumn ? "top-2/3 text-sm" : " top-3/4 text-base"
+          isMultiColumn ? "top-[58%] text-base" : " top-[70%] text-base"
         }`}
       />
-      <Addtocart_Btn_1
-        className={` pointer-events-none absolute  top-2/3 -translate-y-1/2 select-none ${
-          isMultiColumn ? "end-2 top-2/3" : "end-4 top-3/4"
+      {/* <Addtocart_Btn_1
+        className={` absolute -translate-y-1/2 select-none ${
+          isMultiColumn ? "end-2 top-[58%]" : "end-4 top-[70%]"
         }`}
         addedToCartCount={0}
-      />
+      /> */}
       <Addtowishlist_Btn
         productId={product.id}
         className={` absolute w-8 ${

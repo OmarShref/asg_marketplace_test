@@ -72,17 +72,17 @@ import LeftInStock_Label from "../part/label/LeftInStock_Label";
 import dynamic from "next/dynamic";
 const Sizes_Drawer = dynamic(() => import("../construct/drawer/Sizes_Drawer"));
 const SizeGuide_Drawer = dynamic(
-  () => import("../construct/drawer/SizeGuide_Drawer")
+  () => import("../construct/drawer/SizeGuide_Drawer"),
 );
 const AddedToCart_Drawer = dynamic(
-  () => import("../construct/drawer/AddedToCart_Drawer")
+  () => import("../construct/drawer/AddedToCart_Drawer"),
 );
 const Sizes_Select = dynamic(() => import("../construct/select/Sizes_Select"));
 const SizeGiude_Sheet = dynamic(
-  () => import("../construct/sheet/SizeGiude_Sheet")
+  () => import("../construct/sheet/SizeGiude_Sheet"),
 );
 const AddedToCart_Sheet = dynamic(
-  () => import("../construct/sheet/AddedToCart_Sheet")
+  () => import("../construct/sheet/AddedToCart_Sheet"),
 );
 
 interface Props extends PageProps {
@@ -135,31 +135,31 @@ export default function ProductPage({
     configurableProductCurrentVariant,
     setConfigurableProductCurrentVariant,
   ] = useState<ProductModel>(
-    configurableProduct?.currentVariant ?? configurableProduct
+    configurableProduct?.currentVariant ?? configurableProduct,
   );
   useEffect(() => {
     setConfigurableProductCurrentVariant(
-      configurableProduct?.currentVariant ?? configurableProduct
+      configurableProduct?.currentVariant ?? configurableProduct,
     );
   }, [configurableProduct]);
 
   // ===========================================================
 
   const [sizeVariant, setSizeVariant] = useState<VariantType | undefined>(
-    product?.variants?.find((variant) => variant?.code === "size")
+    product?.variants?.find((variant) => variant?.code === "size"),
   );
   const [curretSizeVariantOption, setCurretSizeVariantOption] = useState<
     VariantOptionType | undefined
   >();
   const [colorVariant, setColorVariant] = useState<VariantType | undefined>(
-    product?.variants?.find((variant) => variant?.code === "color")
+    product?.variants?.find((variant) => variant?.code === "color"),
   );
   const [curretColorVariantOption, setCurretColorVariantOption] = useState<
     VariantOptionType | undefined
   >(
     colorVariant?.options?.length === 1
       ? colorVariant?.options?.at(0)
-      : undefined
+      : undefined,
   );
 
   function handleVariantChange() {
@@ -178,13 +178,13 @@ export default function ProductPage({
           setConfigurableProduct(configurableProduct);
           setSizeVariant(
             configurableProduct?.variants?.find(
-              (variant) => variant?.code === "size"
-            )
+              (variant) => variant?.code === "size",
+            ),
           );
           setColorVariant(
             configurableProduct?.variants?.find(
-              (variant) => variant?.code === "color"
-            )
+              (variant) => variant?.code === "color",
+            ),
           );
         }
 
@@ -290,7 +290,9 @@ export default function ProductPage({
   // ============================================================
 
   const productLabel = useRef(
-    product?.labels?.find((label) => label?.type === productLabelTypes?.product)
+    product?.labels?.find(
+      (label) => label?.type === productLabelTypes?.product,
+    ),
   );
 
   return (
@@ -303,7 +305,7 @@ export default function ProductPage({
           />
           <section
             id="mobile-product-images"
-            className=" duration-400 relative aspect-[97/100] transition-all ease-in-out"
+            className=" duration-400 relative aspect-square transition-all ease-in-out"
           >
             <ProductImages className=" h-full">
               <ProductImages_Carousel_1
@@ -319,7 +321,7 @@ export default function ProductPage({
                       product?.parentUrl?.length > 1
                         ? product?.parentUrl
                         : product?.url
-                    }`
+                    }`,
                   );
                 }}
               />
@@ -448,13 +450,13 @@ export default function ProductPage({
                         rating={configurableProductCurrentVariant?.rating}
                       />
                       <ReviewRatingNumber className=" text-xs text-sub_secondry_text">{`${Number(
-                        configurableProductCurrentVariant?.rating
+                        configurableProductCurrentVariant?.rating,
                       ).toFixed(1)}`}</ReviewRatingNumber>
                       <ReviewCount className=" text-xs text-positive_text">{`(${configurableProductCurrentVariant?.reviewCount} ${getText(
                         {
                           storeCode: params.storeCode,
                           text: Texts.reviewes,
-                        }
+                        },
                       )})`}</ReviewCount>
                     </ProductRatingSummary>
                     <Spacing value={3} />
@@ -566,7 +568,7 @@ export default function ProductPage({
             quantity={configurableProductCurrentVariant?.quantity}
           />
           <ProductSection className=" relative flex items-start justify-start gap-5">
-            <section className=" aspect-auto basis-6/12">
+            <section className=" sticky top-[140px] aspect-auto basis-7/12">
               <Spacing value={8} />
               <ProductImages className=" relative h-full">
                 <ProductImages_Carousel_2
@@ -580,18 +582,18 @@ export default function ProductPage({
                 />
                 <DiscountLabel
                   value={configurableProductCurrentVariant?.discountPercentage}
-                  className=" absolute bottom-[24%] md:bottom-[10%] start-0 pl-3 text-2xl"
+                  className=" absolute bottom-[24%] start-0 pl-3 text-2xl md:bottom-[10%]"
                 />
                 <Timer_1
                   specialToDate={
                     configurableProductCurrentVariant?.specialToDate
                   }
-                  className=" absolute bottom-[19%] md:bottom-[5%] start-0 rounded-s-none"
+                  className=" absolute bottom-[19%] start-0 rounded-s-none md:bottom-[5%]"
                 />
                 <DynamicProduct_Label label={productLabel?.current} />
               </ProductImages>
             </section>
-            <section className=" relative z-10 basis-6/12 px-5">
+            <section className=" relative z-10 basis-5/12 px-5">
               <Spacing value={6} />
               <ProductName>
                 {configurableProductCurrentVariant?.name}
@@ -620,13 +622,13 @@ export default function ProductPage({
                         rating={configurableProductCurrentVariant?.rating}
                       />
                       <ReviewRatingNumber className=" text-xs text-sub_secondry_text">{`${Number(
-                        configurableProductCurrentVariant?.rating
+                        configurableProductCurrentVariant?.rating,
                       ).toFixed(1)}`}</ReviewRatingNumber>
                       <ReviewCount className=" text-xs text-positive_text">{`(${configurableProductCurrentVariant?.reviewCount} ${getText(
                         {
                           storeCode: params.storeCode,
                           text: Texts.reviewes,
-                        }
+                        },
                       )})`}</ReviewCount>
                     </ProductRatingSummary>
                   )}

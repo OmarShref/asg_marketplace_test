@@ -148,7 +148,7 @@ export default async function page({ params, searchParams }: PageProps) {
                 product: product,
                 productChildren: productChildren,
                 currentRegionId: 1108,
-              })
+              }),
             ),
           }}
         ></script>

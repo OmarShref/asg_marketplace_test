@@ -33,7 +33,7 @@ export default function Addtocart_Btn_2({
       />
       <Button
         variant={"rounded"}
-        className={` bg-basic_confirm_btn_background w-full gap-2 py-2 font-medium text-background`}
+        className={` w-full gap-2 bg-basic_confirm_btn_background py-2 font-medium text-background`}
         {...restProps}
       >
         {inStock ? (
