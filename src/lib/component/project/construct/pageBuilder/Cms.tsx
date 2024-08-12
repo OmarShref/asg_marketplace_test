@@ -43,71 +43,68 @@ export default function Cms({ storeCode, cms, classNameArray }: Props) {
                 classNameArray?.at(index),
               )}
             >
-              {item?.children
-                ?.at(0)
-                ?.children?.at(0)
-                ?.children?.at(0)
-                ?.children?.map((child: PageBuilderType, index: number) => {
-                  const marginRight = child?.properties?.css?.["margin-right"];
-                  const marginleft = child?.properties?.css?.["margin-left"];
+              {item?.children?.map((child: PageBuilderType, index: number) => {
+                const marginRight = child?.properties?.css?.["margin-right"];
+                const marginleft = child?.properties?.css?.["margin-left"];
 
-                  return (
-                    <Fragment key={index}>
-                      <Column
-                        style={{
-                          width: child?.properties?.css?.width ?? "100%",
-                          marginRight: marginleft,
-                          marginLeft: marginRight,
-                        }}
-                      >
-                        {child.children?.map(
-                          (child: PageBuilderType, index: number) => {
-                            switch (child.componentType) {
-                              case pageBuilderComponentTypes.text:
-                                return <Text key={index} text={child} />;
+                return (
+                  <Fragment key={index}>
+                    <Column
+                      style={{
+                        width: child?.properties?.css?.width ?? "100%",
+                        marginRight: marginleft,
+                        marginLeft: marginRight,
+                      }}
+                    >
+                      {child.children?.map(
+                        (child: PageBuilderType, index: number) => {
+                          switch (child.componentType) {
+                            case pageBuilderComponentTypes.text:
+                              return <Text key={index} text={child} />;
 
-                              case pageBuilderComponentTypes.banner:
-                                return <Banner key={index} banner={child} />;
+                            case pageBuilderComponentTypes.banner:
+                            case pageBuilderComponentTypes.image:
+                              return <Banner key={index} banner={child} />;
 
-                              case pageBuilderComponentTypes.slider:
-                                return (
-                                  <Slider
-                                    key={index}
-                                    storeCode={storeCode}
-                                    slider={child}
-                                  />
-                                );
+                            case pageBuilderComponentTypes.slider:
+                              return (
+                                <Slider
+                                  key={index}
+                                  storeCode={storeCode}
+                                  slider={child}
+                                />
+                              );
 
-                              case pageBuilderComponentTypes.iconCarousel:
-                                return (
-                                  <IconCarousel
-                                    key={index}
-                                    storeCode={storeCode}
-                                    iconCarousel={child}
-                                  />
-                                );
+                            case pageBuilderComponentTypes.iconCarousel:
+                              return (
+                                <IconCarousel
+                                  key={index}
+                                  storeCode={storeCode}
+                                  iconCarousel={child}
+                                />
+                              );
 
-                              case pageBuilderComponentTypes.products:
-                                return (
-                                  <Products
-                                    key={index}
-                                    storeCode={storeCode}
-                                    products={child}
-                                  />
-                                );
+                            case pageBuilderComponentTypes.products:
+                              return (
+                                <Products
+                                  key={index}
+                                  storeCode={storeCode}
+                                  products={child}
+                                />
+                              );
 
-                              case pageBuilderComponentTypes.video:
-                                return <Video key={index} video={child} />;
+                            case pageBuilderComponentTypes.video:
+                              return <Video key={index} video={child} />;
 
-                              default:
-                                return null;
-                            }
-                          },
-                        )}
-                      </Column>
-                    </Fragment>
-                  );
-                })}
+                            default:
+                              return null;
+                          }
+                        },
+                      )}
+                    </Column>
+                  </Fragment>
+                );
+              })}
             </Row>
           );
         })}

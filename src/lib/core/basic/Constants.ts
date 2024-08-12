@@ -83,6 +83,7 @@ export const pageBuilderComponentTypes = {
   icon: "icon",
   products: "products",
   video: "video",
+  image: "image",
 };
 
 export const pageBuilderAppearanceTypes = {

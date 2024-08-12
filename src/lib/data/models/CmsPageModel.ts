@@ -60,7 +60,9 @@ export class CmsPageModel implements CmsPageInterface {
         target: item?.link?.target ?? "",
         properties: {
           appearance: item?.properties?.appearance,
-          image: item?.properties?.background_images?.desktop_image,
+          image:
+            item?.properties?.background_images?.desktop_image ??
+            item?.desktop_image,
           autoPlay: item?.properties?.autoplay,
           autoPlaySpeed: item?.properties?.autoplay_speed,
           infinite_loop: item?.properties?.infinite_loop,
