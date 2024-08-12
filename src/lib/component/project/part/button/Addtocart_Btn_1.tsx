@@ -33,7 +33,7 @@ export default function Addtocart_Btn_1({
       {addedToCartCount > 0 && (
         <Itemcount_Label
           value={`${addedToCartCount}`}
-          className="  font-montserrat-remove bottom-0 left-0"
+          className="  font-fontEnglish bottom-0 left-0"
         />
       )}
     </Button>

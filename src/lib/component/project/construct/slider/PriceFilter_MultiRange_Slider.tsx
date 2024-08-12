@@ -47,8 +47,8 @@ export function PriceFilter_MultiRange_Slider({
         {...props}
       />
       <div className="flex justify-between pt-3">
-        <p className="font-montserrat-remove">{min}</p>
-        <p className="font-montserrat-remove">{max}</p>
+        <p className="font-fontEnglish">{min}</p>
+        <p className="font-fontEnglish">{max}</p>
       </div>
     </section>
   );

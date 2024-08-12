@@ -128,11 +128,11 @@ export function Otp_Form({ storeCode, loginType, loginData }: Props) {
                     maxLength={4}
                     placeholder={"XXXX"}
                     dir="ltr"
-                    className=" font-montserrat-remove mx-auto w-full rounded-lg border-none py-4 text-center tracking-[12px] opacity-0 focus-visible:ring-1 focus-visible:ring-accent"
+                    className=" font-fontEnglish mx-auto w-full rounded-lg border-none py-4 text-center tracking-[12px] opacity-0 focus-visible:ring-1 focus-visible:ring-accent"
                     {...field}
                   />
                   <div
-                    className=" font-montserrat-remove absolute left-0 top-0 z-10 flex w-full items-center justify-center gap-4 bg-background"
+                    className=" font-fontEnglish absolute left-0 top-0 z-10 flex w-full items-center justify-center gap-4 bg-background"
                     onClick={() => {
                       setFocusOnOtpInput();
                     }}

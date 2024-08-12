@@ -1,9 +1,9 @@
 "use client";
-import { WishlistIcon } from "@/lib/assets/svg";
 import { Button } from "@/lib/component/generic/ui/button";
 import { addOrRemoveWishlistItemController } from "@/lib/controller/productController";
 import useUserStore from "@/lib/data/stores/UserStore";
 import { cn } from "@/lib/utils/utils";
+import { HeartIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -36,15 +36,15 @@ export default function Addtowishlist_Btn({
     <Button
       variant={"circle"}
       className={cn(
-        ` h-auto w-10 border border-accent p-0 lg:hover:bg-accent lg:hover:text-white ${
-          addedToWishList ? " bg-accent text-white" : "bg-slate-100 text-accent"
-        }`,
+        `group h-auto w-10 border border-accent bg-background p-0`,
         className,
       )}
       onClick={handleAddOrRemoveWishlistItem}
       {...restProps}
     >
-      <WishlistIcon className=" h-auto w-5" />
+      <HeartIcon
+        className={` h-auto w-5 fill-transparent text-accent transition-all duration-300 group-hover:fill-red-500 group-hover:text-red-500 ${addedToWishList ? "fill-red-500 text-red-500" : ""}`}
+      />
     </Button>
   );
 }

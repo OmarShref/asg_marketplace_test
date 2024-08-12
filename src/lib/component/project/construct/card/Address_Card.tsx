@@ -74,7 +74,7 @@ export default function Address_Card({
           <Spacing value={1} />
         </CardSection>
         <CardSection className=" flex-1">
-          <p className=" font-montserrat-remove h-auto max-h-[72px] overflow-clip text-base ">
+          <p className=" font-fontEnglish h-auto max-h-[72px] overflow-clip text-base ">
             {address?.street}
           </p>
           <Spacing value={1} />

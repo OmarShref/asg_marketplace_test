@@ -150,15 +150,21 @@ export default function AccountPage({ storeCode, configuration, cms }: Props) {
               const accountIcon = () => {
                 switch (account?.code) {
                   case "instagram":
-                    return <InstagramIcon />;
+                    return <InstagramIcon className=" h-auto w-6" />;
                   case "snap":
-                    return <SnapChatIcon className=" h-5 w-5" />;
+                    return <SnapChatIcon className=" h-auto w-6" />;
                   case "twitter":
-                    return <TwitterIcon />;
+                    return (
+                      <TwitterIcon className=" h-auto w-6 fill-sky-300 stroke-sky-300" />
+                    );
                   case "facebook":
-                    return <FacebookIcon />;
+                    return (
+                      <FacebookIcon className=" h-auto w-6 fill-blue-600 stroke-blue-600" />
+                    );
                   case "linkedin":
-                    return <LinkedinIcon className=" h-5 w-5 text-blue-500" />;
+                    return (
+                      <LinkedinIcon className=" h-auto w-6 fill-blue-400 stroke-blue-400" />
+                    );
                   default:
                     return null;
                 }

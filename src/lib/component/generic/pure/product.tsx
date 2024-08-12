@@ -186,7 +186,7 @@ const ProductVariantOptionVariants = cva(" rounded-full aspect-square", {
   variants: {
     variant: {
       text_swatch:
-        " w-7 ring-circular_change_btn_border font-montserrat-remove text-xs ring-1",
+        " w-7 ring-circular_change_btn_border font-fontEnglish text-xs ring-1",
       color_swatch:
         " w-7 bg-cover bg-center bg-no-repeat border border-product_colorswatch_border ring-2 ring-background",
     },

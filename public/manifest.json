@@ -1,15 +1,15 @@
 {
-  "name": "Blooming Wear",
-  "short_name": "Blooming Wear",
+  "name": "Alsaif Gallery",
+  "short_name": "Alsaif Galleryr",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#fff",
-  "description": "Explore fashion and comfort at Blooming. From loungewear to bridal essentials, a range of stylish options where every piece is designed for you along the way",
+  "description": "Alsaif Gallery",
   "icons": [
     {
-      "src": "./image/blooming-app-logo-460x460px.webp",
+      "src": "./image/asg-logo.webp",
       "sizes": "460x460",
-      "type": "image/png"
+      "type": "image/webp"
     }
   ]
 }

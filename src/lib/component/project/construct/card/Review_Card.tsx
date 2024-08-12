@@ -27,7 +27,7 @@ export default function Review_Card({ review }: Props) {
           </CardSection>
         </CardSection>
         <CardSection>
-          <p className=" font-montserrat-remove text-xs text-faint_text">
+          <p className=" font-fontEnglish text-xs text-faint_text">
             {review?.date?.split(" ")?.at(0)}
           </p>
         </CardSection>

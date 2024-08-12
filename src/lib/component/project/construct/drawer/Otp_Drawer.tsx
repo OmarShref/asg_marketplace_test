@@ -72,7 +72,7 @@ export function Otp_Drawer({
           </p>
           <Spacing value={3} />
           <p
-            className=" font-montserrat-remove text-center text-sm font-bold"
+            className=" font-fontEnglish text-center text-sm font-bold"
             dir="ltr"
           >
             {loginData}

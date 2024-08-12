@@ -16,7 +16,7 @@ type Props = {
 };
 
 export default function HeaderCutomer_Bar({ storeCode }: Props) {
-  const isArabicLanguage = isArabic(storeCode);
+  // const isArabicLanguage = isArabic(storeCode);
 
   const { customer, cart } = useUserStore((state) => state);
 
@@ -33,11 +33,11 @@ export default function HeaderCutomer_Bar({ storeCode }: Props) {
   }, [cart]);
 
   return (
-    <section className=" flex h-16 items-center justify-center bg-background">
+    <section className=" flex items-center justify-center bg-background py-2">
       <Row className=" w-full max-w-project gap-12">
         <RowSection className=" ps-1">
           <Anchor href={`/${storeCode}/`}>
-            <DesktopLogo className=" h-14 w-auto text-accent" />
+            <DesktopLogo className=" h-12 w-auto text-accent" />
           </Anchor>
         </RowSection>
         <RowSection className=" flex-1">

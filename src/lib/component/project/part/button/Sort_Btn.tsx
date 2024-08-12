@@ -2,6 +2,7 @@
 import { TriangleDownIcon } from "@/lib/assets/svg";
 import { Button } from "@/lib/component/generic/ui/button";
 import { ButtonProps } from "@/lib/component/generic/ui/button";
+import { cn } from "@/lib/utils/utils";
 import { forwardRef } from "react";
 
 interface Props extends ButtonProps {
@@ -9,21 +10,23 @@ interface Props extends ButtonProps {
 }
 
 const Sort_Btn = forwardRef<HTMLButtonElement, Props>(
-  ({ sortText, ...props }, ref) => {
+  ({ sortText, className, ...props }, ref) => {
     return (
       <Button
         ref={ref}
-        variant={"rounded"}
-        className=" flex w-auto items-center justify-between gap-1 bg-rounded_btn_background_light px-2 py-2 "
+        className={cn(
+          " flex w-auto items-center justify-between gap-1 bg-slate-100 px-2 py-1 ",
+          className,
+        )}
         {...props}
       >
-        <p className=" text-xs font-light text-secondry_text md:text-base">
+        <p className="  text-sm font-light text-secondry_text md:text-base">
           {sortText}
         </p>
-        <TriangleDownIcon className=" w-4 h-auto text-accent md:w-6" />
+        <TriangleDownIcon className=" h-auto w-4 text-accent md:w-6" />
       </Button>
     );
-  }
+  },
 );
 
 Sort_Btn.displayName = "Sort_Btn";

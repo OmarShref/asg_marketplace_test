@@ -80,7 +80,7 @@ export default function Order_Card({
               storeCode,
               text: Texts.orderNumber,
             })} :`}</p>
-            <p className=" font-montserrat-remove text-sm">{order?.number}</p>
+            <p className=" font-fontEnglish text-sm">{order?.number}</p>
           </div>
         </CardSection>
         <Spacing value={4} />

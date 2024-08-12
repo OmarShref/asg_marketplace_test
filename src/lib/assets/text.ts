@@ -51,7 +51,7 @@ export const Texts = {
   youMayAlsoLike: ["قد يعجبك ايضاً", "You may also like"],
   similarProducts: ["منتجات مشابهه", "Similar products"],
   recommended: ["موصى بها", "Recommended"],
-  addToCart: ["اضف للحقيبة", "Add to cart"],
+  addToCart: ["اضف لسلة التسوق", "Add to cart"],
   pleaseNotifyMeWhenItIsAvailable: [
     "الرجاء اخطاري حال توفره",
     "Please notify me when it is available",
@@ -283,6 +283,11 @@ export const Texts = {
   products: ["منتجات", "Products"],
   downloadTheApp: ["حمل التطبيق", "Download the app"],
   leftInStock: ["متبقي في المخزون", "Left in stock"],
+  forQuestionsAndComplaints: [
+    "للاستفسارات والشكاوي",
+    "For questions and complaints",
+  ],
+  followUsOn: ["تابعنا على", "Follow us on"],
 };
 export function getText({
   storeCode,

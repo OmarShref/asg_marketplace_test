@@ -66,12 +66,12 @@ export function OrderDetails_Drawer({
               <p>
                 {getText({ storeCode: storeCode, text: Texts.orderNumber })}
               </p>
-              <p className=" font-montserrat-remove">{order?.number}</p>
+              <p className=" font-fontEnglish">{order?.number}</p>
             </Row>
             <Spacing value={2} />
             <Row withSeparator={true} className=" text-sm">
               <p>{getText({ storeCode: storeCode, text: Texts.date })}</p>
-              <p className=" font-montserrat-remove">{order?.date}</p>
+              <p className=" font-fontEnglish">{order?.date}</p>
             </Row>
             <Spacing value={2} />
             <Row className=" text-sm">
@@ -93,9 +93,7 @@ export function OrderDetails_Drawer({
                 <LocationPinIcon className=" h-6 w-6" />
               </RowSection>
               <RowSection className=" block text-xs">
-                <p className=" font-montserrat-remove">
-                  {order?.address?.street}
-                </p>
+                <p className=" font-fontEnglish">{order?.address?.street}</p>
                 <Spacing value={1} />
                 <p className=" text-faint_text">{`${order?.address?.firstName} ${order?.address?.lastName}`}</p>
               </RowSection>
@@ -115,9 +113,7 @@ export function OrderDetails_Drawer({
                 <CreditCardIcon className=" h-6 w-6" />
               </RowSection>
               <RowSection>
-                <p className=" font-montserrat-remove">
-                  {order?.paymentMethod}
-                </p>
+                <p className=" font-fontEnglish">{order?.paymentMethod}</p>
               </RowSection>
             </Row>
           </OrderDetails_Card>

@@ -23,7 +23,7 @@ export default function Addtocart_Btn_2({
   return (
     <div
       className={cn(
-        " fixed bottom-0 left-0 z-10 flex w-full items-center justify-between gap-5 bg-fixed_btn_container_background px-5 py-2",
+        " fixed bottom-0 left-0 z-10 flex w-full items-center justify-between gap-5 bg-slate-100 px-5 py-2",
         className,
       )}
     >
@@ -32,14 +32,16 @@ export default function Addtocart_Btn_2({
         setProductCount={setProductCount}
       />
       <Button
-        variant={"rounded"}
-        className={` w-full gap-2 bg-basic_confirm_btn_background py-2 font-medium text-background`}
+        variant={"brand"}
+        className={` w-full gap-2 py-2 font-medium text-background`}
         {...restProps}
       >
         {inStock ? (
           <>
             <CartIcon />
-            <p>{getText({ storeCode: storeCode, text: Texts.addToCart })}</p>
+            <p className="">
+              {getText({ storeCode: storeCode, text: Texts.addToCart })}
+            </p>
           </>
         ) : (
           <p>

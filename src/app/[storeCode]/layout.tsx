@@ -1,5 +1,5 @@
 import { getDirection } from "@/lib/helper/direction";
-import { Tajawal } from "next/font/google";
+import { Montserrat, Noto_Kufi_Arabic } from "next/font/google";
 import NavBar from "@/lib/component/project/construct/bar/NavBar";
 import Header_1 from "@/lib/component/project/construct/header/Header_1";
 import "../globals.css";
@@ -31,9 +31,16 @@ export const viewport: Viewport = {
   userScalable: false,
 };
 
-const tajawal = Tajawal({
-  subsets: ["latin", "arabic"],
+const fontArabic = Noto_Kufi_Arabic({
+  subsets: ["arabic"],
   weight: ["200", "300", "400", "500", "700", "800", "900"],
+  variable: "--font-arabic",
+});
+
+const fontEnglish = Montserrat({
+  subsets: ["latin"],
+  weight: ["200", "300", "400", "500", "700", "800", "900"],
+  variable: "--font-english",
 });
 
 type Props = {
@@ -51,7 +58,11 @@ export default async function layout({ children, params }: Props) {
 
   return (
     <html lang="en">
-      <body className={`!bg-background ${tajawal.className} `}>
+      <body
+        className={`!bg-background ${
+          direction === "rtl" ? fontArabic.className : fontEnglish.className
+        } ${fontArabic.variable} ${fontEnglish.variable}`}
+      >
         <main
           className={`min-h-screen overflow-x-clip `}
           style={{ direction: direction }}

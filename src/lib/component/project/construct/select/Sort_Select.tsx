@@ -31,7 +31,7 @@ export function Sort_Select({
       dir={direction}
       onValueChange={(value) => {
         const sortItem = sorts.current?.options?.find(
-          (sortItem) => sortItem?.value === value
+          (sortItem) => sortItem?.value === value,
         );
         if (sortItem) {
           setSort(sortItem);
@@ -40,8 +40,8 @@ export function Sort_Select({
     >
       <SelectTrigger
         className={cn(
-          " gap-3 ring-1 ring-gray-200 py-1.5 px-2 rounded-md",
-          className
+          " gap-3 rounded-md px-2 py-1.5 ring-1 ring-gray-200",
+          className,
         )}
       >
         {sort?.Label}
@@ -50,13 +50,13 @@ export function Sort_Select({
         style={{ direction: direction }}
         className=" mx-auto max-w-md"
       >
-        <SelectGroup className=" gap-1 p-2 flex flex-col">
+        <SelectGroup className=" flex flex-col gap-1 p-2">
           {sorts.current?.options?.map((sortItem) => {
             return (
               <SelectItem
                 value={sortItem?.value}
                 key={sortItem?.value}
-                className="pt-1"
+                className=""
               >
                 <p className=" text-sm">{sortItem?.Label}</p>
               </SelectItem>

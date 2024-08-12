@@ -20,7 +20,7 @@ export default function Image({
         src?.includes(".webp") ||
         src?.includes(".svg")
           ? src
-          : "/image/default_blooming.png"
+          : "/image/default_image.webp"
       }
       fetchPriority={highPeriority ? "high" : "low"}
       loading={highPeriority ? "eager" : "lazy"}

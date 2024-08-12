@@ -37,27 +37,7 @@ type InstallmentsType = {
   interestRate: number;
 };
 
-interface ConfigurationInterface {
-  homePage: string;
-  mobile: string;
-  phone: string;
-  whatsapp: string;
-  email: string;
-  defaultTitle: string;
-  defaultDescription: string;
-  defaultKeywords: string;
-  storeGroupCode: string;
-  mobileLandingPages: PageIdetifierType[];
-  desktopLandingPages: PageIdetifierType[];
-  staticPages: PageIdetifierType[];
-  socialAccounts: SocialAccountType[];
-  countries: CountryInfoType[];
-  shippingInfo: ShippingInfoType;
-  countryRegions: CountryRegionsType;
-  installments: InstallmentsType;
-}
-
-export class ConfigurationModel implements ConfigurationInterface {
+export class ConfigurationModel {
   homePage: string;
   mobile: string;
   phone: string;

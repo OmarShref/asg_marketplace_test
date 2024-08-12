@@ -267,10 +267,10 @@ export function UpdateAccountInfo_Form({ storeCode }: Props) {
                       onValueChange={(value) => setPrefix(value)}
                       disabled={!!customer?.phone}
                     >
-                      <SelectTrigger className="font-montserrat-remove px-2">
+                      <SelectTrigger className="font-fontEnglish px-2">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent className=" font-montserrat-remove">
+                      <SelectContent className=" font-fontEnglish">
                         <SelectGroup>
                           <SelectItem value="966">
                             <div className="flex flex-row items-center justify-center gap-1">
@@ -284,7 +284,7 @@ export function UpdateAccountInfo_Form({ storeCode }: Props) {
                     <Input
                       type="tel"
                       placeholder={"5x xxx xxxx"}
-                      className=" font-montserrat-remove h-auto border-none bg-transparent p-0"
+                      className=" font-fontEnglish h-auto border-none bg-transparent p-0"
                       disabled={!!Number(customer?.phone)}
                       {...field}
                     />
@@ -352,7 +352,7 @@ export function UpdateAccountInfo_Form({ storeCode }: Props) {
                     >
                       <SelectTrigger
                         className={`pe-2 ${
-                          isArabicLanguage ? "" : "font-montserrat-remove"
+                          isArabicLanguage ? "" : "font-fontEnglish"
                         } `}
                         dir={direction}
                       >
@@ -360,7 +360,7 @@ export function UpdateAccountInfo_Form({ storeCode }: Props) {
                       </SelectTrigger>
                       <SelectContent
                         className={`${
-                          isArabicLanguage ? "" : "font-montserrat-remove"
+                          isArabicLanguage ? "" : "font-fontEnglish"
                         } `}
                         dir={direction}
                       >

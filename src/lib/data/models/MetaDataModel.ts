@@ -90,7 +90,7 @@ export class MetaDataModel {
 
     this.#locale = params.storeCode?.split("_")?.reverse()?.join("-");
 
-    this.#defaultImage = `${baseUrl}/image/default_blooming.png`;
+    this.#defaultImage = `${baseUrl}/image/default_image.webp`;
   }
 
   fromCmsPage() {

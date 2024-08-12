@@ -36,7 +36,7 @@ export function CustomerRewardPoints_Drawer({ storeCode }: Props) {
             <p>{getText({ storeCode: storeCode, text: Texts.myPoints })}</p>
           </RowSection>
           <RowSection className=" gap-4">
-            <p className=" font-montserrat-remove text-sm text-secondry_text">
+            <p className=" font-fontEnglish text-sm text-secondry_text">
               {customerRewardPoints?.currentBalance?.toFixed(2)}
             </p>
             <div className="  flex items-center justify-center gap-1 text-sub_secondry_text">

@@ -49,7 +49,7 @@ export function FilterDrawer({
   const direction = getDirection(params.storeCode);
 
   const [stagedFilters, setStagedFilters] = useState<FilterItemType[]>(
-    new FilterModel(searchParams?.customFilter).filters
+    new FilterModel(searchParams?.customFilter).filters,
   );
 
   function isStaged({
@@ -61,7 +61,7 @@ export function FilterDrawer({
   }): boolean {
     if (filter.code === "price") {
       const priceStagedFilter = stagedFilters?.find(
-        (stagedFilter) => stagedFilter?.code === "price"
+        (stagedFilter) => stagedFilter?.code === "price",
       );
       return (
         (priceStagedFilter?.min ?? 999999) === (filter?.min ?? 0) &&
@@ -72,7 +72,7 @@ export function FilterDrawer({
         (stagedFilters
           ?.find((stagedFilter) => stagedFilter?.code === filter.code)
           ?.options?.findIndex(
-            (stagedOption) => stagedOption?.value === optionValue
+            (stagedOption) => stagedOption?.value === optionValue,
           ) ?? -1) >= 0
       );
     }
@@ -106,7 +106,7 @@ export function FilterDrawer({
     optionValue: string;
   }): void {
     let targetFilterIndex = stagedFilters?.findIndex(
-      (stagedFilter) => stagedFilter?.code === filter?.code
+      (stagedFilter) => stagedFilter?.code === filter?.code,
     );
     let targetFilter =
       targetFilterIndex >= 0 ? stagedFilters?.at(targetFilterIndex) : null;
@@ -124,7 +124,7 @@ export function FilterDrawer({
         }
       } else {
         let targetOptionIndex = targetFilter?.options?.findIndex(
-          (option) => option?.value === optionValue
+          (option) => option?.value === optionValue,
         );
         targetOptionIndex >= 0
           ? targetFilter?.options?.splice(targetOptionIndex, 1)
@@ -142,14 +142,14 @@ export function FilterDrawer({
     if (targetFilter) {
       setStagedFilters([
         ...stagedFilters?.filter(
-          (stagedFilter) => stagedFilter?.code !== filter?.code
+          (stagedFilter) => stagedFilter?.code !== filter?.code,
         ),
         targetFilter,
       ]);
     } else {
       setStagedFilters([
         ...stagedFilters?.filter(
-          (stagedFilter) => stagedFilter?.code !== filter?.code
+          (stagedFilter) => stagedFilter?.code !== filter?.code,
         ),
       ]);
     }
@@ -157,7 +157,7 @@ export function FilterDrawer({
 
   function confirmFilters(): void {
     router.push(
-      pathname + turnFiltersToSearchParams({ filters: stagedFilters })
+      pathname + turnFiltersToSearchParams({ filters: stagedFilters }),
     );
   }
 
@@ -170,11 +170,7 @@ export function FilterDrawer({
     <section className={cn("", className)}>
       <Drawer>
         <DrawerTrigger asChild>
-          <Filter_Btn
-            params={params}
-            searchParams={searchParams}
-            className=" text-background"
-          />
+          <Filter_Btn params={params} searchParams={searchParams} />
         </DrawerTrigger>
         <DrawerContent
           style={{ direction: direction }}

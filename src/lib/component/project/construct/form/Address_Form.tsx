@@ -556,10 +556,10 @@ export function Address_Form({
                       defaultValue="966"
                       onValueChange={(value) => form.setValue("prefix", value)}
                     >
-                      <SelectTrigger className="font-montserrat-remove px-2">
+                      <SelectTrigger className="font-fontEnglish px-2">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent className=" font-montserrat-remove">
+                      <SelectContent className=" font-fontEnglish">
                         <SelectGroup>
                           {countries?.map?.((country, index) => {
                             return (
@@ -581,7 +581,7 @@ export function Address_Form({
                   <Input
                     type="tel"
                     placeholder={"xxx xxxx ..."}
-                    className=" font-montserrat-remove h-auto border-none bg-transparent p-0 text-base"
+                    className=" font-fontEnglish h-auto border-none bg-transparent p-0 text-base"
                     {...field}
                   />
                 </div>

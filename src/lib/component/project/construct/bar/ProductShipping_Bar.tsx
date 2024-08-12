@@ -75,13 +75,13 @@ export default function ProductShipping_Bar({
             }}
           >
             <SelectTrigger
-              className={`${isArabicLanguage ? "" : "font-montserrat-remove"} `}
+              className={`${isArabicLanguage ? "" : "font-fontEnglish"} `}
               dir={direction?.current}
             >
               <SelectValue />
             </SelectTrigger>
             <SelectContent
-              className={` ${isArabicLanguage ? "" : "font-montserrat-remove"} `}
+              className={` ${isArabicLanguage ? "" : "font-fontEnglish"} `}
               dir={direction?.current}
             >
               <SelectGroup>

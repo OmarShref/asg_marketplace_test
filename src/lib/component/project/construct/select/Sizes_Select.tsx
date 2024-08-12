@@ -42,7 +42,7 @@ export default function Sizes_Select({
     >
       <SelectTrigger
         className={cn(
-          " font-montserrat-remove gap-3 rounded-md px-7 py-1.5 font-semibold ring-1 ring-gray-200",
+          " font-fontEnglish gap-3 rounded-md px-7 py-1.5 font-semibold ring-1 ring-gray-200",
           className,
         )}
       >
@@ -62,7 +62,7 @@ export default function Sizes_Select({
               <SelectItem
                 value={option?.value}
                 key={option?.value}
-                className="font-montserrat-remove pt-1"
+                className="font-fontEnglish "
               >
                 <p className=" text-sm">{option?.value}</p>
               </SelectItem>

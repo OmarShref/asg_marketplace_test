@@ -27,7 +27,7 @@ export default function ProductListUtility_Bar({
   return (
     <div className=" mx-5 flex max-w-project items-center justify-between lg:mx-auto">
       <CategoryQuantity className=" text-xs font-light text-secondry_text md:text-base">{`${totalCount} ${getText(
-        { storeCode: params.storeCode, text: Texts.products }
+        { storeCode: params.storeCode, text: Texts.products },
       )}`}</CategoryQuantity>
 
       {/* ================================================================================================ */}
@@ -65,7 +65,7 @@ export default function ProductListUtility_Bar({
         {/* ================================================================================================ */}
 
         {/* mobile only */}
-        <ChangeGridDisplay_Btn className=" md:hidden" />
+        {/* <ChangeGridDisplay_Btn className=" md:hidden" /> */}
 
         {/* ================================================================================================ */}
 

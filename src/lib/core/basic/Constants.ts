@@ -189,12 +189,17 @@ export const supportedPhoneLoginCountries = ["SA"];
 export const appLinks = [
   {
     id: "ios",
-    link: "https://apps.apple.com/sa/app/blooming-%D8%A8%D9%84%D9%88%D9%85%D9%86%D8%AC/id6477989734",
+    link: "https://apps.apple.com/sa/app/alsaif-gallery-%D8%A7%D9%84%D8%B3%D9%8A%D9%81-%D8%BA%D8%A7%D9%84%D9%8A%D8%B1%D9%8A/id1459530502",
     image: "/image/apple-store-download.png",
   },
   {
     id: "android",
-    link: "https://play.google.com/store/apps/details?id=com.bloomingwears&hl=en",
+    link: "https://play.google.com/store/apps/details?id=com.alsaifgallery&pcampaignid=web_share",
     image: "/image/google-play-download.png",
+  },
+  {
+    id: "huawei",
+    link: "https://appgallery.huawei.com/app/C103540015",
+    image: "/image/app-gallery-icon.png",
   },
 ];

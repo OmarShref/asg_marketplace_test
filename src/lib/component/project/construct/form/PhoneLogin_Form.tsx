@@ -147,10 +147,10 @@ export function PhoneLogin_Form({ storeCode }: Props) {
                       defaultValue="966"
                       onValueChange={(value) => form.setValue("prefix", value)}
                     >
-                      <SelectTrigger className="font-montserrat-remove px-2">
+                      <SelectTrigger className="font-fontEnglish px-2">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent className=" font-montserrat-remove">
+                      <SelectContent className=" font-fontEnglish">
                         <SelectGroup>
                           {countries?.map?.((country, index) => {
                             return (
@@ -172,7 +172,7 @@ export function PhoneLogin_Form({ storeCode }: Props) {
                   <Input
                     type="tel"
                     placeholder={"xxx xxxx ..."}
-                    className=" font-montserrat-remove border-none bg-transparent py-1"
+                    className=" font-fontEnglish border-none bg-transparent py-1"
                     {...field}
                   />
                 </div>

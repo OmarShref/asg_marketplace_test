@@ -22,7 +22,7 @@ export default function CartCard_Counter({
         }}
         disabled={cartItemCount === quantity || !isInStock}
       />
-      <p className="font-montserrat-remove text-base font-normal text-sub_secondry_text">
+      <p className="font-fontEnglish text-base font-normal text-sub_secondry_text">
         {cartItemCount}
       </p>
       <CartCardDecreaseCount_Btn

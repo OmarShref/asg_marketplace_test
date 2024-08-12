@@ -986,7 +986,7 @@ export const TriangleDownIcon = ({ className }: Props) => {
       xmlns="http://www.w3.org/2000/svg"
       className={cn(className)}
     >
-      <g opacity="0.5">
+      <g opacity="1">
         <path
           d="M8.57903 11.2747L12.0583 6.57455L5.09977 6.57455L8.57903 11.2747Z"
           fill="currentColor"

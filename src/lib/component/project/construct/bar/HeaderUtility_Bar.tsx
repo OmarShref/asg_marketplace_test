@@ -21,18 +21,14 @@ export default function HeaderUtility_Bar({ storeCode, configuration }: Props) {
           <Anchor href={`tel:${configuration?.phone}`}>
             <RowSection className="flex items-center">
               <PhoneIcon className="h-5 w-5 text-accent" />
-              <p className="font-montserrat-remove text-sm">
-                {configuration?.phone}
-              </p>
+              <p className="font-fontEnglish text-sm">{configuration?.phone}</p>
             </RowSection>
           </Anchor>
           <Separator orientation="vertical" className="h-5" />
           <Anchor href={`mailto:${configuration?.email}`}>
             <RowSection className="flex items-center">
               <MailIcon className="h-5 w-5 text-accent" />
-              <p className="font-montserrat-remove text-sm">
-                {configuration?.email}
-              </p>
+              <p className="font-fontEnglish text-sm">{configuration?.email}</p>
             </RowSection>
           </Anchor>
         </RowSection>

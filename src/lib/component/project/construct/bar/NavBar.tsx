@@ -75,7 +75,7 @@ export default function NavBar({ storeCode }: Props) {
             } ${
               i === activeMenuItemPosition
                 ? "text-accent after:bg-accent"
-                : "text-navbar after:bg-transparent "
+                : "text-slate-400 after:bg-transparent "
             }`}
             onClick={() => setActiveMenuItemPosition(i)}
           >

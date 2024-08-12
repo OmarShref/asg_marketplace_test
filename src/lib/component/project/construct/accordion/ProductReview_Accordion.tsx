@@ -41,7 +41,7 @@ export function ProductReviewAccordion({
           <AccordionContent className=" py-5">
             <Review>
               <ReviewSection className=" flex items-center justify-between">
-                <ReviewRatingNumber className=" font-montserrat-remove">
+                <ReviewRatingNumber className=" font-fontEnglish">
                   {rating}
                 </ReviewRatingNumber>
                 <ReviewSection>

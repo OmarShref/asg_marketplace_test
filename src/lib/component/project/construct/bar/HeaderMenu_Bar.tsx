@@ -32,7 +32,7 @@ export default function HeaderMenu_Bar({ storeCode, menu }: Props) {
                   className=" gap-1 rounded-full bg-slate-100 ps-5 text-slate-800"
                   onClick={() => router.push(item?.url)}
                 >
-                  <p className="pt-1">{item?.name}</p>
+                  <p className="">{item?.name}</p>
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className=" h-[600px] max-h-[600px] overflow-y-auto">
                   <HeaderMenu_Tabs storeCode={storeCode} menuItem={item} />

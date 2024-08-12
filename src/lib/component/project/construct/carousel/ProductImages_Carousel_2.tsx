@@ -42,9 +42,9 @@ export function ProductImages_Carousel_2({
   }, [api]);
 
   return (
-    <section className=" flex h-full w-full">
+    <section className=" flex aspect-[120/100] w-full">
       <Carousel
-        className=" mx-auto flex h-full w-full gap-5 "
+        className=" mx-auto flex aspect-square h-full basis-10/12 gap-5 "
         setApi={setApi}
         opts={{ direction: direction.current, align: "start" }}
       >
@@ -65,7 +65,7 @@ export function ProductImages_Carousel_2({
       </Carousel>
 
       {/* bullets or thumbs */}
-      <div className=" aspect-[1/3] h-full shrink-0 basis-3/12 overflow-y-scroll">
+      <div className=" h-full shrink-0 basis-2/12 overflow-y-scroll">
         <CarouselBullets className=" w-full flex-col justify-start gap-2 bg-background px-2 pt-0">
           {images?.map((image, index) => {
             return (

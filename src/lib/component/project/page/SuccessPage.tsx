@@ -80,7 +80,7 @@ export default function SuccessPage({ storeCode }: Props) {
               })}`}
             </p>
             <p>{":"}</p>
-            <p className=" font-montserrat-remove text-center font-light">
+            <p className=" font-fontEnglish text-center font-light">
               {`${lastOrderState?.order?.items?.at(0)?.number}`}
             </p>
           </div>

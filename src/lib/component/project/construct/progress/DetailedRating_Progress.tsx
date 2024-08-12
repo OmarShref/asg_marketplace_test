@@ -15,7 +15,7 @@ export default function DetailedRating_Progress({ progress, label }: Props) {
       <Progress className=" h-1">
         <ProgressIndicator value={progress} className=" bg-active_star" />
       </Progress>
-      <p className=" font-montserrat-remove  text-end text-xs text-sub_secondry_text">{`${progress}%`}</p>
+      <p className=" font-fontEnglish  text-end text-xs text-sub_secondry_text">{`${progress}%`}</p>
     </div>
   );
 }

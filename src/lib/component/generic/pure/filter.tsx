@@ -152,7 +152,7 @@ const FilterOption = React.forwardRef<HTMLButtonElement, FilterOptionProps>(
 
         {filterOption?.label && (
           <p
-            className={` font-montserrat-remove md-max:min-w-10 md-max:rounded-lg md-max:py-1 md-max:ring-2 ${
+            className={` font-fontEnglish md-max:min-w-10 md-max:rounded-lg md-max:py-1 md-max:ring-2 ${
               isStaged
                 ? "md-max:text-accent md-max:ring-accent"
                 : "md-max:ring-filter_option_border"
@@ -166,7 +166,7 @@ const FilterOption = React.forwardRef<HTMLButtonElement, FilterOptionProps>(
 
         {filterOption?.count && (
           <p
-            className={` font-montserrat-remove text-xs text-sub_secondry_text md-max:hidden`}
+            className={` font-fontEnglish text-xs text-sub_secondry_text md-max:hidden`}
           >
             {!!filterOption?.count ? `(${filterOption?.count})` : ""}
           </p>

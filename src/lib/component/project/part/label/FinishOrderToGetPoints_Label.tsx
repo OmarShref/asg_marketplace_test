@@ -36,7 +36,7 @@ export function FinishOrderToGetPoints_Label({}: Props) {
           storeCode: useUtilityStore?.getState()?.storeCode,
           text: Texts.completeThisOrderToGet,
         })} `}
-        <span className="font-montserrat-remove animate-pulse text-lg font-medium">{`${checkoutRewardPointsState?.points}`}</span>
+        <span className="font-fontEnglish animate-pulse text-lg font-medium">{`${checkoutRewardPointsState?.points}`}</span>
         {` ${getText({
           storeCode: useUtilityStore?.getState()?.storeCode,
           text: Texts.point,

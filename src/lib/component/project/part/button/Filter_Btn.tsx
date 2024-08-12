@@ -1,9 +1,9 @@
 "use client";
-import { FilterIcon } from "@/lib/assets/svg";
 import { Button } from "@/lib/component/generic/ui/button";
 import { PageProps } from "@/lib/data/types/PageProps";
 import Itemcount_Label from "../label/Itemcount_Label";
 import { forwardRef } from "react";
+import { FilterIcon } from "lucide-react";
 
 interface FilterBtnInterface
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
@@ -22,14 +22,14 @@ const Filter_Btn = forwardRef<HTMLButtonElement, FilterBtnInterface>(
       <Button
         ref={ref}
         variant={"circle"}
-        className=" w-9 bg-rounded_btn_background_light"
+        className=" w-9 bg-slate-100"
         {...props}
       >
-        <FilterIcon />
+        <FilterIcon className=" h-auto w-5 text-accent" />
         {appliedFilters > 0 && (
           <Itemcount_Label
             value={`${appliedFilters}`}
-            className="  font-montserrat-remove bottom-0 left-0"
+            className="  font-fontEnglish bottom-0 left-0"
           />
         )}
       </Button>

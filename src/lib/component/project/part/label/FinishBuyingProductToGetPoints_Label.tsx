@@ -29,7 +29,7 @@ export function FinishBuyingProductToGetPoints_Label({
           storeCode: useUtilityStore?.getState()?.storeCode,
           text: Texts.finishBuyingThisProductToGet,
         })} `}
-        <span className="font-montserrat-remove animate-pulse text-lg font-medium">{`${productRewardPoints?.points}`}</span>
+        <span className="font-fontEnglish animate-pulse text-lg font-medium">{`${productRewardPoints?.points}`}</span>
         {` ${getText({
           storeCode: useUtilityStore?.getState()?.storeCode,
           text: Texts.point,

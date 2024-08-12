@@ -23,8 +23,8 @@ const config = {
         "md-max": { max: "767px" },
       },
       fontFamily: {
-        montserrat: "var(--font-montserrat-remove)",
-        noto_sans_arabic: "var(--font-noto-sans-arabic)",
+        fontArabic: "var(--font-arabic)",
+        fontEnglish: "var(--font-english)",
       },
       keyframes: {
         "accordion-down": {

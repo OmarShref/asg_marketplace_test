@@ -15,9 +15,7 @@ export default function Product_Counter({
       <ProductIncreaseCount_Btn
         onClick={() => setProductCount(productCount + 1)}
       />
-      <p className="font-montserrat-remove text-xl font-semibold">
-        {productCount}
-      </p>
+      <p className="font-fontEnglish text-xl font-semibold">{productCount}</p>
       <ProductDecreaseCount_Btn
         disabled={productCount === 1}
         onClick={() => setProductCount(productCount - 1)}

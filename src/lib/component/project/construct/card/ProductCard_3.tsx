@@ -269,7 +269,7 @@ export default function ProductCard_3({
       /> */}
       <Addtowishlist_Btn
         productId={product.id}
-        className={` absolute w-8 ${
+        className={` absolute w-8 fill-accent ${
           isMultiColumn ? "end-2 top-2" : "end-4 top-3"
         }`}
       />

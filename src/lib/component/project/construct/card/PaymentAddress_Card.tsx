@@ -15,7 +15,7 @@ export default function PaymentAddress_Card({ storeCode, address }: Props) {
       <CardSection className=" flex items-center justify-start gap-2 ">
         <DirectionIcon className=" h-5 w-5 flex-shrink-0 text-accent" />
         <Separator orientation="vertical" className=" h-4 bg-secondry_text" />
-        <p className=" font-montserrat-remove h-auto max-h-[72px] overflow-hidden ">
+        <p className=" font-fontEnglish h-auto max-h-[72px] overflow-hidden ">
           {address?.street}
         </p>
       </CardSection>
@@ -23,7 +23,7 @@ export default function PaymentAddress_Card({ storeCode, address }: Props) {
       <CardSection className=" flex items-center justify-start gap-2 ">
         <PhoneIcon className=" h-5 w-5 flex-shrink-0 text-accent" />
         <Separator orientation="vertical" className=" h-4 bg-secondry_text" />
-        <p className=" font-montserrat-remove max-h-6 overflow-hidden ">
+        <p className=" font-fontEnglish max-h-6 overflow-hidden ">
           {address?.phone}
         </p>
       </CardSection>

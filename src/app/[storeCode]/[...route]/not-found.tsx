@@ -14,9 +14,7 @@ export default function NotFound({}: Props) {
   return (
     <div className=" mx-5 max-w-md md:mx-auto">
       <Spacing value={10} />
-      <p className=" font-montserrat-remove text-center text-9xl text-accent">
-        404
-      </p>
+      <p className=" font-fontEnglish text-center text-9xl text-accent">404</p>
       <Spacing value={10} />
       <p className=" text-center text-3xl">
         {`${getText({
