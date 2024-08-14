@@ -41,7 +41,7 @@ const Column = React.forwardRef<HTMLElement, React.HTMLAttributes<HTMLElement>>(
     return (
       <section
         ref={ref}
-        className={cn(" text-xs text-faint_text", className)}
+        className={cn(" text-xs text-primary_text", className)}
         {...props}
       >
         {children}

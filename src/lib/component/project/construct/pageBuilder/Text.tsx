@@ -1,16 +1,19 @@
 import { PageBuilderType } from "@/lib/data/models/CmsPageModel";
 
 interface Props {
-  text: PageBuilderType;
+  html: PageBuilderType;
 }
 
-export default function Text({ text }: Props) {
+export default function Text({ html }: Props) {
+  const correctedHtml = html?.html
+    ?.replaceAll("&lt;", "<")
+    ?.replaceAll("&gt;", ">");
   return (
     <div
       dangerouslySetInnerHTML={{
-        __html: text.html ?? "",
+        __html: correctedHtml ?? "",
       }}
-      className=" mx-5"
+      className=" mx-5 lg:mx-0"
     ></div>
   );
 }

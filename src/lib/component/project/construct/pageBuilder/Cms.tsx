@@ -13,6 +13,7 @@ import IconCarousel from "./IconCarousel";
 import Products from "./Products";
 import { cn } from "@/lib/utils/utils";
 import Video from "./Video";
+import Heading from "./Heading";
 
 type Props = {
   storeCode: string;
@@ -59,8 +60,12 @@ export default function Cms({ storeCode, cms, classNameArray }: Props) {
                       {child.children?.map(
                         (child: PageBuilderType, index: number) => {
                           switch (child.componentType) {
+                            case pageBuilderComponentTypes.heading:
+                              return <Heading key={index} heading={child} />;
+
+                            case pageBuilderComponentTypes.html:
                             case pageBuilderComponentTypes.text:
-                              return <Text key={index} text={child} />;
+                              return <Text key={index} html={child} />;
 
                             case pageBuilderComponentTypes.banner:
                             case pageBuilderComponentTypes.image:

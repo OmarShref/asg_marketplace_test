@@ -31,7 +31,7 @@ export function Carousel_2({ storeCode, carouselItems }: Props) {
       onMouseLeave={plugin.current.reset}
       opts={{ direction: direction.current, loop: true }}
     >
-      <CarouselContent className=" mx-5">
+      <CarouselContent className=" mx-5 lg:mx-0">
         {carouselItems?.children?.map((item, index) => (
           <CarouselItem key={index} className=" basis-3/4 pl-2">
             <Anchor href={item?.url}>

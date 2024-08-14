@@ -76,6 +76,8 @@ export const pageBuilderComponentTypes = {
   columnLine: "column-line",
   column: "column",
   text: "text",
+  heading: "heading",
+  html: "html",
   banner: "banner",
   slider: "slider",
   slide: "slide",

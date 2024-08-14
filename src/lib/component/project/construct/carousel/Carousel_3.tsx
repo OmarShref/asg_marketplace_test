@@ -26,7 +26,7 @@ export function Carousel_3({ storeCode, carouselItems }: Props) {
       className=" mx-auto w-full"
       opts={{ direction: direction.current, skipSnaps: true }}
     >
-      <CarouselContent className=" mx-5">
+      <CarouselContent className=" mx-5 lg:mx-0">
         {carouselItems?.children?.map((item, index) => (
           <CarouselItem
             key={index}

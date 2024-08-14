@@ -50,7 +50,7 @@ export function Carousel_1({ storeCode, carouselItems }: Props) {
       onMouseLeave={plugin.current.reset}
       setApi={setApi}
       opts={{ direction: direction.current, loop: true }}
-      className=" mx-auto w-full px-5"
+      className=" mx-auto w-full px-5 lg:px-0"
     >
       <CarouselContent>
         {carouselItems?.children?.map((item, index) => (

@@ -4,10 +4,11 @@ import { ProductModel } from "./ProductModel";
 export type PageBuilderType = {
   componentType: string;
   url: string;
-  target?: string;
-  title?: string;
-  name?: string;
-  html?: string;
+  target: string;
+  title: string;
+  name: string;
+  html: string;
+  value: string;
   properties?: {
     appearance: string;
     image: string;
@@ -17,9 +18,10 @@ export type PageBuilderType = {
     show_arrows: boolean;
     show_dots: boolean;
     css: any;
-    src?: string;
+    src: string;
+    headingType: string;
   };
-  products?: ProductModel[];
+  products: ProductModel[];
   children?: PageBuilderType[];
 };
 interface CmsPageInterface {
@@ -58,6 +60,7 @@ export class CmsPageModel implements CmsPageInterface {
           item?.properties?.header?.link?.url
         )?.replace("SA_en", this.#storeCode),
         target: item?.link?.target ?? "",
+        value: item?.value,
         properties: {
           appearance: item?.properties?.appearance,
           image:
@@ -69,6 +72,8 @@ export class CmsPageModel implements CmsPageInterface {
           show_arrows: item?.properties?.show_arrows,
           show_dots: item?.properties?.show_dots,
           css: item?.properties?.css,
+          src: item?.properties?.src,
+          headingType: item?.properties?.heading_type,
         },
         products: item?.value?.items?.map((item: any): ProductModel => {
           return new ProductModel({

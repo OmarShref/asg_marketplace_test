@@ -55,14 +55,14 @@ const Carousel = React.forwardRef<
       children,
       ...props
     },
-    ref
+    ref,
   ) => {
     const [carouselRef, api] = useEmblaCarousel(
       {
         ...opts,
         axis: orientation === "horizontal" ? "x" : "y",
       },
-      plugins
+      plugins,
     );
     const [canScrollPrev, setCanScrollPrev] = React.useState(false);
     const [canScrollNext, setCanScrollNext] = React.useState(false);
@@ -94,7 +94,7 @@ const Carousel = React.forwardRef<
           scrollNext();
         }
       },
-      [scrollPrev, scrollNext]
+      [scrollPrev, scrollNext],
     );
 
     React.useEffect(() => {
@@ -145,7 +145,7 @@ const Carousel = React.forwardRef<
         </div>
       </CarouselContext.Provider>
     );
-  }
+  },
 );
 Carousel.displayName = "Carousel";
 // ===========================================================================
@@ -162,7 +162,7 @@ const CarouselContent = React.forwardRef<
         className={cn(
           "flex",
           orientation === "horizontal" ? "" : " flex-col",
-          className
+          className,
         )}
         {...props}
       />
@@ -201,11 +201,11 @@ const CarouselPrevious = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        "absolute  z-10 h-12 w-12 rounded-full bg-accent opacity-70 transition hover:opacity-100 ring-2 ring-background ",
+        "absolute  z-10 h-10 w-10 rounded-full bg-accent opacity-60 ring-2 ring-background transition hover:opacity-100 ",
         orientation === "horizontal"
-          ? "-start-0 top-1/2 -translate-y-1/2"
+          ? "start-3 top-1/2 -translate-y-1/2"
           : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
-        className
+        className,
       )}
       // disabled={!canScrollPrev}
       onClick={scrollPrev}
@@ -233,11 +233,11 @@ const CarouselNext = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        "absolute h-12 w-12 rounded-full bg-accent opacity-70 transition hover:opacity-100 ring-2 ring-background ",
+        "absolute h-10 w-10 rounded-full bg-accent opacity-60 ring-2 ring-background transition hover:opacity-100 ",
         orientation === "horizontal"
-          ? "-end-0 top-1/2 -translate-y-1/2"
+          ? "end-3 top-1/2 -translate-y-1/2"
           : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
-        className
+        className,
       )}
       // disabled={!canScrollNext}
       onClick={scrollNext}
@@ -263,7 +263,7 @@ const CarouselBullets = React.forwardRef<
       ref={ref}
       className={cn(
         " flex w-full items-center justify-center gap-1 py-2",
-        className
+        className,
       )}
       {...props}
     />
@@ -280,7 +280,7 @@ const CarouselBullet = React.forwardRef<
       ref={ref}
       className={cn(
         " h-2 w-2 rounded-full border border-accent bg-faint_accent ",
-        className
+        className,
       )}
       {...props}
     />

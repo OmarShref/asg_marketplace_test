@@ -15,7 +15,7 @@ export default function Title_1({
   watchAllUrl,
 }: Props) {
   return (
-    <div className=" mx-5 flex items-center justify-between text-primary_text">
+    <div className=" mx-5 flex items-center justify-between text-primary_text lg:mx-0">
       <div className="  flex items-center justify-start gap-3 text-primary_text">
         <p className=" text-base">{title}</p>
         {specialToDate?.length > 1 && <Timer_1 specialToDate={specialToDate} />}

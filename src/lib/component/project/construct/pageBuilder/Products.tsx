@@ -33,7 +33,7 @@ export default function Products({ storeCode, products }: Props) {
         <Spacing value={4} />
         <ProductCards_Carousel_1
           storeCode={storeCode}
-          className=" mx-5"
+          className=" mx-5 lg:mx-0"
           carouselItems={products?.products}
         />
       </>
@@ -48,7 +48,7 @@ export default function Products({ storeCode, products }: Props) {
         <Spacing value={5} />
         <ProductCards_Carousel_2
           storeCode={storeCode}
-          className=" mx-5"
+          className=" mx-5 lg:mx-0"
           carouselItems={products?.products}
         />
       </>
