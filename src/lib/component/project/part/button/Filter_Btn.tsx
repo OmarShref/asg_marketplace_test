@@ -22,14 +22,14 @@ const Filter_Btn = forwardRef<HTMLButtonElement, FilterBtnInterface>(
       <Button
         ref={ref}
         variant={"circle"}
-        className=" w-9 bg-slate-100"
+        className=" bg-secondary w-9"
         {...props}
       >
         <FilterIcon className=" h-auto w-5 text-accent" />
         {appliedFilters > 0 && (
           <Itemcount_Label
             value={`${appliedFilters}`}
-            className="  font-fontEnglish bottom-0 left-0"
+            className="  bottom-0 left-0 font-fontEnglish"
           />
         )}
       </Button>

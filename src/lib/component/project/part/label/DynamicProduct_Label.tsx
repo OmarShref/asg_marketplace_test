@@ -2,7 +2,7 @@ import Anchor from "@/lib/component/generic/pure/anchor";
 import Image from "@/lib/component/generic/pure/image";
 import { LabelType } from "@/lib/data/models/ProductModel";
 import { isNowBetweenDates } from "@/lib/helper/dateTime";
-import { getStyleObjectFromString } from "@/lib/helper/style";
+import { getStyleJSXObjectFromString } from "@/lib/helper/style";
 import { cn } from "@/lib/utils/utils";
 import { useRef } from "react";
 
@@ -59,7 +59,12 @@ export default function DynamicProduct_Label({ label, className }: Props) {
     isNowBetweenDates({ from: label?.activeFrom, to: label?.activeTo }),
   );
 
-  const textStyle = useRef(getStyleObjectFromString(label?.textStyle ?? ""));
+  const textStyle = useRef(
+    getStyleJSXObjectFromString({
+      styleString: label?.textStyle ?? "",
+      separator: ";",
+    }),
+  );
 
   return (
     !!label &&

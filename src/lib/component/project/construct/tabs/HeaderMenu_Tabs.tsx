@@ -54,7 +54,7 @@ export default function HeaderMenu_Tabs({ storeCode, menuItem }: Props) {
                 <TabsTrigger
                   key={index}
                   value={`${index}`}
-                  className={` relative flex w-full origin-right overflow-clip rounded-e-md bg-slate-100 py-4 duration-300 data-[state=active]:z-10 data-[state=active]:items-center  data-[state=active]:justify-center data-[state=active]:rounded-e-md data-[state=active]:bg-accent data-[state=active]:text-background data-[state=active]:shadow-md `}
+                  className={` bg-secondary relative flex w-full origin-right overflow-clip rounded-e-md py-4 duration-300 data-[state=active]:z-10 data-[state=active]:items-center  data-[state=active]:justify-center data-[state=active]:rounded-e-md data-[state=active]:bg-accent data-[state=active]:text-background data-[state=active]:shadow-md `}
                   // style={{
                   //   backgroundColor: `${
                   //     index === currentIndex ? " bg-faint_accent" : ""

@@ -15,7 +15,7 @@ const Sort_Btn = forwardRef<HTMLButtonElement, Props>(
       <Button
         ref={ref}
         className={cn(
-          " flex w-auto items-center justify-between gap-1 bg-slate-100 px-2 py-1 ",
+          " bg-secondary flex w-auto items-center justify-between gap-1 px-2 py-1 ",
           className,
         )}
         {...props}

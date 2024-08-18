@@ -15,7 +15,7 @@ type Props = {
 
 export default function HeaderUtility_Bar({ storeCode, configuration }: Props) {
   return (
-    <section className=" flex h-6 items-center justify-center bg-slate-100 ">
+    <section className=" bg-secondary flex h-6 items-center justify-center ">
       <Row className=" h-full w-full max-w-project">
         <RowSection className=" flex items-center justify-start gap-3 ps-1">
           <Anchor href={`tel:${configuration?.phone}`}>

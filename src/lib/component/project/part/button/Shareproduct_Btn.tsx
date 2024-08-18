@@ -9,7 +9,7 @@ export default function Shareproduct_Btn({ className, ...restProps }: Props) {
     <Button
       variant={"circle"}
       className={cn(
-        ` h-auto w-10 border border-accent bg-slate-100 p-0 text-accent hover:bg-accent hover:text-white`,
+        ` bg-secondary h-auto w-10 border border-accent p-0 text-accent hover:bg-accent hover:text-white`,
         className,
       )}
       {...restProps}

@@ -23,7 +23,7 @@ export default function Addtocart_Btn_2({
   return (
     <div
       className={cn(
-        " fixed bottom-0 left-0 z-10 flex w-full items-center justify-between gap-5 bg-slate-100 px-5 py-2",
+        " bg-secondary fixed bottom-0 left-0 z-10 flex w-full items-center justify-between gap-5 px-5 py-2",
         className,
       )}
     >

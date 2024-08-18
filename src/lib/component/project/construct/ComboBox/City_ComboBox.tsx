@@ -107,7 +107,7 @@ export function City_ComboBox({ setValue, regionId }: Props) {
                       setOpen(false);
                     }}
                     className={`${
-                      selectedCity === stringifyCity(city) ? "bg-slate-100" : ""
+                      selectedCity === stringifyCity(city) ? "bg-secondary" : ""
                     }`}
                     dir={getDirection(useUtilityStore?.getState()?.storeCode)}
                   >

@@ -75,6 +75,7 @@ const config = {
         address_card: "0px 4px 13px -8px rgba(15, 15, 15, 0.2)",
       },
       colors: {
+        secondary: "#F1F5F9",
         background: "#FFFFFF",
         background_inverted: "#000000",
         accent: "#be1e2d",

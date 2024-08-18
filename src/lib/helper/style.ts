@@ -10,16 +10,29 @@ function formatStyleStringKeyToCamelCase(str: string): string {
   );
 }
 
-export const getStyleObjectFromString = (styleString: string) => {
+export const getStyleJSXObjectFromString = ({
+  styleString,
+  separator,
+}: {
+  styleString: string;
+  separator: string;
+}) => {
   const style: { [key: string]: string } = {};
 
-  styleString?.split(";")?.forEach((el: string) => {
-    const [property, value] = el.split(":");
-    if (!property) return;
+  styleString
+    ?.replaceAll("{", "")
+    ?.replaceAll("}", "")
+    ?.replaceAll(`"`, "")
+    ?.split(separator)
+    ?.forEach((el: string) => {
+      const [property, value] = el.split(":");
+      if (!property) return;
 
-    const formattedProperty = formatStyleStringKeyToCamelCase(property?.trim());
-    style[formattedProperty] = value?.trim();
-  });
+      const formattedProperty = formatStyleStringKeyToCamelCase(
+        property?.trim(),
+      );
+      style[formattedProperty] = value?.trim();
+    });
 
   return style;
 };

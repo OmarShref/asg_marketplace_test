@@ -29,7 +29,7 @@ export default function HeaderMenu_Bar({ storeCode, menu }: Props) {
             return (
               <NavigationMenuItem key={index}>
                 <NavigationMenuTrigger
-                  className=" gap-1 rounded-full bg-slate-100 ps-5 text-slate-800"
+                  className=" bg-secondary gap-1 rounded-full ps-5 text-slate-800"
                   onClick={() => router.push(item?.url)}
                 >
                   <p className="">{item?.name}</p>

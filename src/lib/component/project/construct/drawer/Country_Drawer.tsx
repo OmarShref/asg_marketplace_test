@@ -26,7 +26,6 @@ type Props = {
 // TODO: replace code with the commented one when data is fixed from back end
 export function Country_Drawer({ storeCode, countries }: Props) {
   const currentCountry = useMemo<CountryInfoType | undefined>(() => {
-    console.log(storeCode);
     return countries?.find((country) => {
       return country?.code === storeCode?.slice(0, 2);
     });

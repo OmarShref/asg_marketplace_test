@@ -110,7 +110,7 @@ export function Region_ComboBox({ setValue, countryCode }: Props) {
                     }}
                     className={`${
                       selectedRegion === stringifyRegion(region)
-                        ? "bg-slate-100"
+                        ? "bg-secondary"
                         : ""
                     }`}
                     dir={getDirection(useUtilityStore?.getState()?.storeCode)}

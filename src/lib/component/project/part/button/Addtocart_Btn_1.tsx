@@ -21,7 +21,7 @@ export default function Addtocart_Btn_1({
       className={cn(
         ` h-auto w-10 p-0  ring-1 ring-accent hover:bg-accent hover:text-white ${
           addedToCartCount <= 0
-            ? "bg-slate-100 text-accent"
+            ? "bg-secondary text-accent"
             : " bg-accent text-white"
         }`,
         className,
@@ -33,7 +33,7 @@ export default function Addtocart_Btn_1({
       {addedToCartCount > 0 && (
         <Itemcount_Label
           value={`${addedToCartCount}`}
-          className="  font-fontEnglish bottom-0 left-0"
+          className="  bottom-0 left-0 font-fontEnglish"
         />
       )}
     </Button>

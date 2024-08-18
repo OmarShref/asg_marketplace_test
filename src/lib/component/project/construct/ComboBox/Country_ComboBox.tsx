@@ -62,7 +62,7 @@ export function Country_ComboBox({ setValue, countries }: Props) {
               <HomeIcon className="h-5 w-5 text-accent" />
               <p>
                 {selectedCountry
-                  ? selectedCountry?.split("|")[1]?.trim() ?? ""
+                  ? (selectedCountry?.split("|")[1]?.trim() ?? "")
                   : getText({
                       storeCode: useUtilityStore?.getState()?.storeCode,
                       text: Texts.selectCountry,
@@ -71,7 +71,7 @@ export function Country_ComboBox({ setValue, countries }: Props) {
             </div>
             <p className=" text-2xl leading-5">
               {selectedCountry
-                ? selectedCountry?.split("|")[2]?.trim() ?? ""
+                ? (selectedCountry?.split("|")[2]?.trim() ?? "")
                 : null}
             </p>
           </Button>
@@ -113,7 +113,7 @@ export function Country_ComboBox({ setValue, countries }: Props) {
                     }}
                     className={`${
                       selectedCountry === stringifyCountry(country)
-                        ? "bg-slate-100"
+                        ? "bg-secondary"
                         : ""
                     }`}
                     dir={getDirection(useUtilityStore?.getState()?.storeCode)}
