@@ -52,7 +52,7 @@ export default function Header_1({ params, configuration, menu }: Props) {
       {headerOptions?.showHeader && (
         <header
           id="mobile-header"
-          className=" sticky top-0 z-20  bg-background  shadow-header transition-all duration-500 ease-in-out md:hidden"
+          className=" sticky top-0 z-20  border-b bg-background  shadow-header transition-all duration-500 ease-in-out md:hidden"
         >
           {/* headers content */}
           <section className="relative flex items-center justify-between py-2">

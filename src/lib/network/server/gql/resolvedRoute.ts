@@ -6,7 +6,7 @@ import { RouteModel } from "@/lib/data/models/RouteModel";
 export async function getResolvedRoute({
   params,
 }: ServerReqProps): Promise<RouteModel> {
-  const resolvedRouteQuery = `{
+  const resolvedRouteQuery = `query vestedRoute {
     vestedRoute(filter: { Request_path: { eq: "/${
       params.storeCode
     }/${params.route?.join("/")}" } }) {

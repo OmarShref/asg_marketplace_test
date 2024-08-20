@@ -15,10 +15,10 @@ export function getRowWidthClassNameFromAppearance({
 }) {
   switch (appearance) {
     case "contained":
-      return "w-full max-w-project mx-auto";
+      return " max-w-project mx-auto";
     case "full-width":
-      return "w-full";
+      return "";
     default:
-      return "w-full";
+      return "";
   }
 }

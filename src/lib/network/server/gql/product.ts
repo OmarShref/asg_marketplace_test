@@ -16,7 +16,7 @@ export async function getProduct({
         options_uuids: [${configurableProductUIds?.map((uId) => `"${uId}"`)}]
     }`
       : "";
-  const productQuery = `{
+  const productQuery = `query vestedProducts {
     vestedProducts( 
         filter: { Entity_id: { eq: ${id} } }
         ${configurableProductUIdsQuery}

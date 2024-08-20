@@ -21,7 +21,7 @@ export async function getCategory({
   const filterQuery = getFilterQuery(searchParams);
 
   // TODO: add product type to filter -ex : "configurable"-
-  const categoryQuery = `{
+  const categoryQuery = `query vestedCategory {
     vestedCategory(filter: { Entity_id: { eq: ${id} } }) {
         name
         entity_id

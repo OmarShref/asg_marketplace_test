@@ -71,7 +71,7 @@ export default async function layout({ children, params }: Props) {
           <ClientUtility storeCode={params.storeCode} />
 
           {/* Analytics */}
-          <Analytics />
+          {/* <Analytics /> */}
 
           {/* above header */}
           {/* <Above_Header storeCode={params.storeCode} /> */}

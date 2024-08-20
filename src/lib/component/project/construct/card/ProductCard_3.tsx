@@ -148,11 +148,14 @@ export default function ProductCard_3({
     <ProductCard
       variant={"rounded"}
       size={"default"}
-      className={` aspect-auto bg-background`}
+      className={` group aspect-auto bg-background transition-all duration-300 hover:-translate-y-1 hover:shadow-lg`}
     >
       <ProductCardSection className=" relative">
         <ProductCardLink href={product.url} onClick={handleSelectItem}>
-          <ProductCardImage variant={"rounded"} className=" overflow-clip">
+          <ProductCardImage
+            variant={"rounded"}
+            className=" overflow-clip transition-all duration-300 group-hover:scale-105"
+          >
             <Image
               src={`${configurableProductCurrentVariant.smallImage}?width=300`}
               alt={`${configurableProductCurrentVariant.name} product image`}
@@ -166,7 +169,7 @@ export default function ProductCard_3({
 
       {/* name and price and color variants container */}
       <ProductCardSection
-        className={` flex w-full flex-col items-stretch justify-evenly ${
+        className={` flex w-full flex-col items-stretch justify-between pb-2 ${
           isMultiColumn ? "aspect-[170/100]" : "aspect-[360/100]"
         }`}
       >
@@ -261,12 +264,6 @@ export default function ProductCard_3({
           isMultiColumn ? "top-[58%] text-base" : " top-[70%] text-base"
         }`}
       />
-      {/* <Addtocart_Btn_1
-        className={` absolute -translate-y-1/2 select-none ${
-          isMultiColumn ? "end-2 top-[58%]" : "end-4 top-[70%]"
-        }`}
-        addedToCartCount={0}
-      /> */}
       <Addtowishlist_Btn
         productId={product.id}
         className={` absolute w-8 fill-accent ${

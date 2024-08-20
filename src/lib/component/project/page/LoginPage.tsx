@@ -7,7 +7,7 @@ import useUserStore from "@/lib/data/stores/UserStore";
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Back_Btn from "../part/button/Back_Btn";
-import { isArabic } from "@/lib/helper/language";
+// import { isArabic } from "@/lib/helper/language";
 import { Texts, getText } from "@/lib/assets/text";
 import {
   AppleIcon,
@@ -31,7 +31,7 @@ type Props = {
 export default function LoginPage({ storeCode, withBackBtn = true }: Props) {
   const pathname = usePathname();
   const router = useRouter();
-  const isArabicLanguage = isArabic(storeCode);
+  // const isArabicLanguage = isArabic(storeCode);
 
   const { customer } = useUserStore((state) => state);
   useEffect(() => {

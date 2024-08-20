@@ -34,16 +34,12 @@ export default function Addtowishlist_Btn({
   }
   return (
     <Button
-      variant={"circle"}
-      className={cn(
-        `group h-auto w-10 border border-accent bg-background p-0`,
-        className,
-      )}
+      className={cn(`p-0`, className)}
       onClick={handleAddOrRemoveWishlistItem}
       {...restProps}
     >
       <HeartIcon
-        className={` h-auto w-5 fill-transparent text-accent transition-all duration-300 group-hover:fill-red-500 group-hover:text-red-500 ${addedToWishList ? "fill-red-500 text-red-500" : ""}`}
+        className={` h-auto w-5 fill-background text-accent transition-all duration-300 hover:fill-red-500 hover:text-red-500 ${addedToWishList ? "fill-red-500 text-red-500" : ""}`}
       />
     </Button>
   );

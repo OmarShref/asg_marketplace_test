@@ -1,20 +1,15 @@
 import { ServerReqProps } from "@/lib/data/types/ServerReqProps";
 import { ServerGqlGetRequest } from "./base-request/ServerGqlGetRequest";
 import { CmsPageModel } from "@/lib/data/models/CmsPageModel";
-import { cleanData } from "@/lib/helper/data";
 
 export async function getCmsPage({
   params,
-  urlIdentifier,
+  id,
   search,
 }: ServerReqProps): Promise<CmsPageModel[]> {
-  const cmsPageQuery = `{
+  const cmsPageQuery = `query VestedCmsPage {
     vestedCmsPage(
-      ${
-        urlIdentifier
-          ? `filter: { Identifier: { eq: "${urlIdentifier}" } }`
-          : ""
-      }
+      ${id ? `filter: { Page_id: { eq: ${id} } }` : ""}
       ${search ? `search: "${search}"` : ""}
       ) {
         items {
@@ -33,6 +28,8 @@ export async function getCmsPage({
     storeCode: params.storeCode,
     query: cmsPageQuery,
   }).getData();
+
+  console.log("data", data);
 
   const cmsPage: CmsPageModel[] = data?.data?.vestedCmsPage?.items?.map(
     (item: any): CmsPageModel => {

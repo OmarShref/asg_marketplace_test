@@ -8,7 +8,7 @@ export async function getPaymentMethodInfo({
   params,
 }: ServerReqProps): Promise<PaymentMethodInfoModel> {
   const paymentMethodInfoQuery = `
-    {
+    query checkoutComInfo {
       checkoutComInfo {
           public_key
           environment

@@ -70,6 +70,8 @@ import { RewardPointsModel } from "@/lib/data/models/RewardPointsModel";
 import Page_Transition from "../part/transition/Page_Transition";
 import LeftInStock_Label from "../part/label/LeftInStock_Label";
 import dynamic from "next/dynamic";
+import ProductOverview_Section from "../construct/section/ProductOverview_Section";
+import Description_Table from "../construct/table/Description_Table";
 const Sizes_Drawer = dynamic(() => import("../construct/drawer/Sizes_Drawer"));
 const SizeGuide_Drawer = dynamic(
   () => import("../construct/drawer/SizeGuide_Drawer"),
@@ -313,29 +315,21 @@ export default function ProductPage({
                 images={configurableProductCurrentVariant?.images}
                 productName={configurableProductCurrentVariant?.name}
               />
-              <Shareproduct_Btn
-                className=" absolute end-4 top-4"
-                onClick={() => {
-                  share(
-                    `${baseUrl}${
-                      product?.parentUrl?.length > 1
-                        ? product?.parentUrl
-                        : product?.url
-                    }`,
-                  );
-                }}
-              />
-              <Addtowishlist_Btn
-                productId={product?.id}
-                className=" absolute end-4 top-16"
-              />
-              <Addtocart_Btn_1
-                addedToCartCount={cartState?.quantity}
-                className=" absolute end-4 top-28"
-                onClick={() => {
-                  router.push(`/${params.storeCode}/cart`);
-                }}
-              />
+              <div className=" absolute end-6 top-6 flex flex-col gap-3">
+                <Addtowishlist_Btn productId={product?.id} className="" />
+                <Shareproduct_Btn
+                  className=""
+                  onClick={() => {
+                    share(
+                      `${baseUrl}${
+                        product?.parentUrl?.length > 1
+                          ? product?.parentUrl
+                          : product?.url
+                      }`,
+                    );
+                  }}
+                />
+              </div>
               <DiscountLabel
                 value={configurableProductCurrentVariant?.discountPercentage}
                 className=" absolute bottom-[11%] start-0 pl-3 text-2xl"
@@ -364,17 +358,12 @@ export default function ProductPage({
                 <p className="text-2xl font-semibold">{`${configurableProductCurrentVariant?.salePrice} ${configurableProductCurrentVariant?.currency?.label}`}</p>
               )}
             </ProductPrice>
-            <Spacing value={2} />
-            {/* <ProductSection className=" flex items-center justify-start gap-4">
-        <AvailableInStore_Label
-          storeCode={params.storeCode}
-          productQuantity={configurableProductCurrentVariant?.quantity}
-        />
-        <FreeReturn_Label storeCode={params.storeCode} />
-        </ProductSection> */}
-            {/* <Spacing value={3} /> */}
-            <ProductVariants className=" block">
-              {/* color variant */}
+            <Spacing value={4} />
+
+            {/* =================================== */}
+
+            {/* product variants */}
+            {/* <div className=" block">
               <ScrollDetector id="color-scroll-detector" />
               {(colorVariant?.options?.length ?? 0) > 1 && (
                 <>
@@ -417,7 +406,6 @@ export default function ProductPage({
                   <Spacing value={3} />
                 </>
               )}
-              {/* size variant */}
               <ScrollDetector id="size-scroll-detector" />
               <ProductVariant className="">
                 <ProductVariantHeader className=" flex items-center justify-start gap-1">
@@ -439,8 +427,11 @@ export default function ProductPage({
                   <SizeGuide_Drawer storeCode={params.storeCode} />
                 </section>
               </ProductVariant>
-            </ProductVariants>
-            <Spacing value={3} />
+            </div> */}
+
+            {/* =================================== */}
+
+            {/* <Spacing value={3} /> */}
             <ProductSection className=" flex items-center justify-between">
               <ProductSection className=" flex-1">
                 {product?.reviewCount >= 5 && (
@@ -464,6 +455,15 @@ export default function ProductPage({
                 )}
               </ProductSection>
             </ProductSection>
+
+            {/* =================================== */}
+
+            <Description_Table
+              description={configurableProductCurrentVariant?.shortDescription}
+            />
+            <Spacing value={4} />
+            {/* =================================== */}
+
             <Separator />
             {configuration?.installments?.tamaraAllow && (
               <>
@@ -502,13 +502,9 @@ export default function ProductPage({
             <Spacing value={5} />
             <Separator />
             <Spacing value={3} />
-            <ProductDescriptionAccordion
+            <ProductOverview_Section
               storeCode={params.storeCode}
-              description={configurableProductCurrentVariant?.description}
-            />
-            <Spacing value={3} />
-            <ProductAdditionalInfo_Accordion
-              storeCode={params.storeCode}
+              longDescription={configurableProductCurrentVariant?.description}
               attributes={configurableProductCurrentVariant?.attributes}
             />
             <Spacing value={3} />
@@ -574,21 +570,7 @@ export default function ProductPage({
                 <ProductImages_Carousel_2
                   storeCode={params.storeCode}
                   images={configurableProductCurrentVariant?.images}
-                  productName={configurableProductCurrentVariant?.name}
-                />
-                <Addtowishlist_Btn
-                  productId={product?.id}
-                  className=" absolute start-4 top-4"
-                />
-                <DiscountLabel
-                  value={configurableProductCurrentVariant?.discountPercentage}
-                  className=" absolute bottom-[24%] start-0 pl-3 text-2xl md:bottom-[10%]"
-                />
-                <Timer_1
-                  specialToDate={
-                    configurableProductCurrentVariant?.specialToDate
-                  }
-                  className=" absolute bottom-[19%] start-0 rounded-s-none md:bottom-[5%]"
+                  product={configurableProductCurrentVariant}
                 />
                 <DynamicProduct_Label label={productLabel?.current} />
               </ProductImages>
@@ -617,28 +599,34 @@ export default function ProductPage({
               <ProductSection className=" flex items-center justify-between">
                 <ProductSection className=" flex-1">
                   {product?.reviewCount >= 5 && (
-                    <ProductRatingSummary className=" flex items-center justify-start gap-2">
-                      <Stars_Bar
-                        rating={configurableProductCurrentVariant?.rating}
-                      />
-                      <ReviewRatingNumber className=" text-xs text-sub_secondry_text">{`${Number(
-                        configurableProductCurrentVariant?.rating,
-                      ).toFixed(1)}`}</ReviewRatingNumber>
-                      <ReviewCount className=" text-xs text-positive_text">{`(${configurableProductCurrentVariant?.reviewCount} ${getText(
-                        {
-                          storeCode: params.storeCode,
-                          text: Texts.reviewes,
-                        },
-                      )})`}</ReviewCount>
-                    </ProductRatingSummary>
+                    <>
+                      <ProductRatingSummary className=" flex items-center justify-start gap-2">
+                        <Stars_Bar
+                          rating={configurableProductCurrentVariant?.rating}
+                        />
+                        <ReviewRatingNumber className=" text-xs text-sub_secondry_text">{`${Number(
+                          configurableProductCurrentVariant?.rating,
+                        ).toFixed(1)}`}</ReviewRatingNumber>
+                        <ReviewCount className=" text-xs text-positive_text">{`(${configurableProductCurrentVariant?.reviewCount} ${getText(
+                          {
+                            storeCode: params.storeCode,
+                            text: Texts.reviewes,
+                          },
+                        )})`}</ReviewCount>
+                      </ProductRatingSummary>
+                      <Spacing value={3} />
+                    </>
                   )}
-                  {/* <Spacing value={3} />
-              <RecentlyBoughtLabel value={12} storeCode={params.storeCode} /> */}
                 </ProductSection>
               </ProductSection>
+              <Description_Table
+                description={
+                  configurableProductCurrentVariant?.shortDescription
+                }
+              />
               <Spacing value={3} />
-              <ProductVariants className=" block">
-                {/* color variant */}
+              {/* product variants */}
+              {/* <section className=" block">
                 <ScrollDetector id="color-scroll-detector" />
                 {(colorVariant?.options?.length ?? 0) > 1 && (
                   <>
@@ -681,7 +669,6 @@ export default function ProductPage({
                     <Spacing value={3} />
                   </>
                 )}
-                {/* size variant */}
                 <ScrollDetector id="size-scroll-detector" />
                 <ProductVariant className="">
                   <ProductVariantHeader className=" flex items-center justify-start gap-1">
@@ -701,11 +688,11 @@ export default function ProductPage({
                       setCurretSizeVariantOption={setCurretSizeVariantOption}
                       className=" w-full"
                     />
-                    {/* <SizeGuide_Drawer storeCode={params.storeCode} /> */}
+
                     <SizeGiude_Sheet storeCode={params.storeCode} />
                   </section>
                 </ProductVariant>
-              </ProductVariants>
+              </section> */}
               {configuration?.installments?.tamaraAllow && (
                 <>
                   <Spacing value={4} />
@@ -754,14 +741,10 @@ export default function ProductPage({
           {/* ================================================================================================================== */}
 
           <ProductSection className=" w-full">
-            <Spacing value={3} />
-            <ProductDescriptionAccordion
+            <Spacing value={8} />
+            <ProductOverview_Section
               storeCode={params.storeCode}
-              description={configurableProductCurrentVariant?.description}
-            />
-            <Spacing value={3} />
-            <ProductAdditionalInfo_Accordion
-              storeCode={params.storeCode}
+              longDescription={configurableProductCurrentVariant?.description}
               attributes={configurableProductCurrentVariant?.attributes}
             />
             <Spacing value={3} />

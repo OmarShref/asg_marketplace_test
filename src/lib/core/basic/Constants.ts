@@ -156,7 +156,7 @@ export const algoliaOptions = {
 };
 
 export const gtmOptions = {
-  containerId: "GTM-NNSM8KBS",
+  containerId: "GTM-K8QZ84LH",
 };
 
 export const moengageOptions = {
@@ -206,3 +206,16 @@ export const appLinks = [
     image: "/image/app-gallery-icon.png",
   },
 ];
+
+export const targetTypes = {
+  cms: "cms",
+  category: "category",
+  product: "product",
+  notfound: "notfound",
+};
+
+export const targetTypesShortHands = {
+  [targetTypes.cms]: "m",
+  [targetTypes.category]: "c",
+  [targetTypes.product]: "p",
+};

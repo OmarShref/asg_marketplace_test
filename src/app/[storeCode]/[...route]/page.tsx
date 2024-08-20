@@ -21,8 +21,8 @@ export async function generateMetadata({ params, searchParams }: PageProps) {
     const [configuration, cms] = await Promise.all([
       getConfiguration({ params }),
       getCmsPage({
+        id: resolvedRoute?.id,
         params,
-        urlIdentifier: params?.route?.at(0),
       }),
     ]);
 
@@ -80,8 +80,8 @@ export default async function page({ params, searchParams }: PageProps) {
   if (resolvedRoute.type === pageTypes.cms) {
     const [cms] = await Promise.all([
       getCmsPage({
+        id: resolvedRoute?.id,
         params,
-        urlIdentifier: params?.route?.at(0),
       }),
     ]);
 

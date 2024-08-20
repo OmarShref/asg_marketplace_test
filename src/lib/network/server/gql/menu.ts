@@ -5,7 +5,7 @@ import { MenuModel } from "@/lib/data/models/MenuModel";
 
 export async function getMenu({ params }: ServerReqProps): Promise<MenuModel> {
   const menuQuery = `
-  {
+  query vestedMegaMenu {
     vestedMegaMenu {
         main_menu {
             name

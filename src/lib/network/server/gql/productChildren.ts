@@ -8,7 +8,7 @@ export async function getProductChildren({
   params,
   id,
 }: ServerReqProps): Promise<ProductModel[]> {
-  const productChildrenQuery = `{
+  const productChildrenQuery = `query productChildren {
     productChildren( id: ${id} ) {
         items {
             ${gqlProductInnerItem}

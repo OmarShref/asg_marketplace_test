@@ -288,6 +288,9 @@ export const Texts = {
     "For questions and complaints",
   ],
   followUsOn: ["تابعنا على", "Follow us on"],
+  overView: ["نظرة عامة", "Over view"],
+  specifications: ["المواصفات", "Specifications"],
+  highlights: ["المزيد من التفاصيل", "Highlights"],
 };
 export function getText({
   storeCode,

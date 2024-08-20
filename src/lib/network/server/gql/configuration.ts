@@ -5,7 +5,7 @@ import { ConfigurationModel } from "@/lib/data/models/ConfigurationModel";
 export async function getConfiguration({
   params,
 }: ServerReqProps): Promise<ConfigurationModel> {
-  const configurationQuery = `{
+  const configurationQuery = `query vestedConfig {
     vestedConfig {
         config {
             home_page

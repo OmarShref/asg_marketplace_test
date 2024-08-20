@@ -14,7 +14,7 @@ export default function Addtocart_Btn_3({
   ...restProps
 }: Props) {
   return (
-    <Button variant={"brand"} className={cn(``, className)} {...restProps}>
+    <Button variant={"brand"} className={cn(`py-1`, className)} {...restProps}>
       <p className="">{getText({ storeCode, text: Texts.addToCart })}</p>
     </Button>
   );
