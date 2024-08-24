@@ -38,7 +38,6 @@ export default function Menu_Tabs({ storeCode, menu }: Props) {
 
     let pullLength = screenY - startPoint;
     setPullChange(pullLength);
-    // console.log({ screenY, startPoint, pullLength, pullChange });
   };
 
   const endPull = (e: any) => {

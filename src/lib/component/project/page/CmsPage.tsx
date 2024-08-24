@@ -11,13 +11,19 @@ import Page_Transition from "../part/transition/Page_Transition";
 
 interface Props extends PageProps {
   cms: CmsPageModel | undefined;
+  isSmallDevice: boolean;
 }
 
-export default function CmsPage({ params, cms }: Props) {
+export default function CmsPage({ params, cms, isSmallDevice }: Props) {
   return (
     <Page_Transition>
       <Spacing value={2} />
-      <Cms cms={cms} storeCode={params?.storeCode} classNameArray={[]} />
+      <Cms
+        cms={cms}
+        storeCode={params?.storeCode}
+        classNameArray={[]}
+        isSmallDevice={isSmallDevice}
+      />
 
       {/* <Social_Payment_Bar /> */}
 

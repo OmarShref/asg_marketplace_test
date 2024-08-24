@@ -123,7 +123,7 @@ export default function Header_1({ params, configuration, menu }: Props) {
       )}
 
       {/* desktop header */}
-      <header className=" sticky top-0 z-20 hidden shadow-header md:block">
+      <header className=" sticky top-0 z-20 hidden md:block">
         <HeaderUtility_Bar
           storeCode={params?.storeCode}
           configuration={configuration}

@@ -13,8 +13,8 @@ export const defaultCurrency: { [key: string]: CurrencyType } = {
 };
 
 export const siteName = {
-  ar: "بلومنج",
-  en: "Blooming",
+  ar: "السيف غاليري",
+  en: "Alsaif Gallery",
 };
 
 export const productsListDisplayModes = {
@@ -44,9 +44,8 @@ export const pageTypes = {
   order: "order",
 };
 
-// export const baseUrl = "http://localhost:3000";
-// export const baseUrl = "https://beta.bloomingwear.com";
-export const baseUrl = "https://bloomingwear.com";
+export const baseUrl = "http://localhost:3000";
+// export const baseUrl = "https://alsaifgallery.com";
 
 export const apiUrl = {
   // beta
@@ -168,7 +167,7 @@ export const adjustOptions = {
 };
 
 export const appleOptions = {
-  appUid: "6477989734",
+  appUid: "1459530502",
 };
 
 export const productLabelTypes = {

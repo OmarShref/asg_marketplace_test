@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import Addtocart_Btn_1 from "../part/button/Addtocart_Btn_1";
 import Addtowishlist_Btn from "../part/button/Addtowhishlist_Btn";
 import Shareproduct_Btn from "../part/button/Shareproduct_Btn";
 import PageType from "../../generic/utility/PageType";
@@ -25,12 +24,12 @@ import {
   ProductPrice,
   ProductRatingSummary,
   ProductSection,
-  ProductVariant,
-  ProductVariantHeader,
-  ProductVariantOption,
-  ProductVariantOptions,
-  ProductVariantTitle,
-  ProductVariants,
+  // ProductVariant,
+  // ProductVariantHeader,
+  // ProductVariantOption,
+  // ProductVariantOptions,
+  // ProductVariantTitle,
+  // ProductVariants,
 } from "../../generic/pure/product";
 import Stars_Bar from "../construct/bar/Stars_Bar";
 import Spacing from "../../generic/pure/spacing";
@@ -42,12 +41,12 @@ import TamaraWidget from "../construct/widget/Tamara_Widget";
 // import AvailableInStore_Label from "../part/label/AvailableInStore_Label";
 import TabbyWidget from "../construct/widget/Tabby_Widget";
 // import FreeReturn_Label from "../part/label/FreeReturn_Label";
-import { ProductDescriptionAccordion } from "../construct/accordion/ProductDescription_Accordion";
+// import { ProductDescriptionAccordion } from "../construct/accordion/ProductDescription_Accordion";
 import { ProductReviewAccordion } from "../construct/accordion/ProductReview_Accordion";
 import { ReviewCount, ReviewRatingNumber } from "../../generic/pure/review";
 import { RelatedProductsAccordion } from "../construct/accordion/RelatedProducts_Accordion";
 import Addtocart_Btn_2 from "../part/button/AddToCart_Btn_2";
-import { ScrollDetector } from "../../generic/pure/scroll";
+// import { ScrollDetector } from "../../generic/pure/scroll";
 import { getProduct } from "@/lib/network/server/gql/product";
 import HeaderOptions from "../../generic/utility/HeaderOptions";
 import NavbarOptions from "../../generic/utility/NavbarOptions";
@@ -55,7 +54,7 @@ import { addItemToCart } from "@/lib/network/client/gql/cart";
 import useUserStore from "@/lib/data/stores/UserStore";
 import { CartModel } from "@/lib/data/models/CartModel";
 import { useRouter } from "next/navigation";
-import { ProductAdditionalInfo_Accordion } from "../construct/accordion/ProductAdditionalInfo_Accordion";
+// import { ProductAdditionalInfo_Accordion } from "../construct/accordion/ProductAdditionalInfo_Accordion";
 import { share } from "@/lib/helper/share";
 import ProductShipping_Bar from "../construct/bar/ProductShipping_Bar";
 import { GtmEvents } from "@/lib/core/analytics/Gtm";
@@ -72,17 +71,17 @@ import LeftInStock_Label from "../part/label/LeftInStock_Label";
 import dynamic from "next/dynamic";
 import ProductOverview_Section from "../construct/section/ProductOverview_Section";
 import Description_Table from "../construct/table/Description_Table";
-const Sizes_Drawer = dynamic(() => import("../construct/drawer/Sizes_Drawer"));
-const SizeGuide_Drawer = dynamic(
-  () => import("../construct/drawer/SizeGuide_Drawer"),
-);
+// const Sizes_Drawer = dynamic(() => import("../construct/drawer/Sizes_Drawer"));
+// const SizeGuide_Drawer = dynamic(
+//   () => import("../construct/drawer/SizeGuide_Drawer"),
+// );
 const AddedToCart_Drawer = dynamic(
   () => import("../construct/drawer/AddedToCart_Drawer"),
 );
-const Sizes_Select = dynamic(() => import("../construct/select/Sizes_Select"));
-const SizeGiude_Sheet = dynamic(
-  () => import("../construct/sheet/SizeGiude_Sheet"),
-);
+// const Sizes_Select = dynamic(() => import("../construct/select/Sizes_Select"));
+// const SizeGiude_Sheet = dynamic(
+//   () => import("../construct/sheet/SizeGiude_Sheet"),
+// );
 const AddedToCart_Sheet = dynamic(
   () => import("../construct/sheet/AddedToCart_Sheet"),
 );
@@ -212,26 +211,7 @@ export default function ProductPage({
   // ===========================================================
 
   async function handleAddToCart() {
-    if (!curretColorVariantOption) {
-      toast({
-        description: getText({
-          storeCode: params?.storeCode,
-          text: Texts?.pleaseChooseColor,
-        }),
-        variant: "destructive",
-      });
-      scrollToId({ id: "color-scroll-detector" });
-    } else if (!curretSizeVariantOption) {
-      toast({
-        description: getText({
-          storeCode: params?.storeCode,
-          text: Texts?.pleaseChooseSize,
-        }),
-        className: " text-center",
-        variant: "destructive",
-      });
-      scrollToId({ id: "size-scroll-detector" });
-    } else {
+    if (configurableProductCurrentVariant?.type === productTypes?.simple) {
       setAddedToCartOpen(true);
       const addTocartData = await addItemToCart({
         sku: configurableProduct?.sku,
@@ -277,6 +257,76 @@ export default function ProductPage({
           description: addTocartData?.errorMessage,
           variant: "destructive",
         });
+      }
+    } else if (
+      configurableProductCurrentVariant?.type === productTypes?.configurable
+    ) {
+      if (!curretColorVariantOption) {
+        toast({
+          description: getText({
+            storeCode: params?.storeCode,
+            text: Texts?.pleaseChooseColor,
+          }),
+          variant: "destructive",
+        });
+        scrollToId({ id: "color-scroll-detector" });
+      } else if (!curretSizeVariantOption) {
+        toast({
+          description: getText({
+            storeCode: params?.storeCode,
+            text: Texts?.pleaseChooseSize,
+          }),
+          className: " text-center",
+          variant: "destructive",
+        });
+        scrollToId({ id: "size-scroll-detector" });
+      } else {
+        setAddedToCartOpen(true);
+        const addTocartData = await addItemToCart({
+          sku: configurableProduct?.sku,
+          quantity: productCount,
+          productType: productTypes.configurable,
+          configurableOptions: [
+            {
+              optionId: sizeVariant?.id ?? 0,
+              optionValue: curretSizeVariantOption?.id ?? 0,
+            },
+            {
+              optionId: colorVariant?.id ?? 0,
+              optionValue: curretColorVariantOption?.id ?? 0,
+            },
+          ],
+          simpleProductId: configurableProductCurrentVariant?.id,
+        });
+        if (addTocartData?.success) {
+          useUserStore.setState({
+            cart: addTocartData?.cart,
+            checkoutRewardPoints: addTocartData?.checkoutRewardPoints,
+          });
+          setProductRewardPoints(addTocartData?.productRewardPoints);
+          setAddedToCartSuccess(true);
+          successSoundRef?.current?.play();
+
+          const gtmProduct = ProductModel?.toGtm(configurableProduct);
+
+          gtmProduct.quantity = productCount;
+
+          // gtm event
+          new GtmEvents({
+            gtmProduct: gtmProduct,
+          }).addToCart();
+
+          // algolia event
+          algoliaEventsSingleton?.addToCart({
+            product: configurableProductCurrentVariant,
+            quantity: productCount,
+          });
+        } else {
+          toast({
+            description: addTocartData?.errorMessage,
+            variant: "destructive",
+          });
+        }
       }
     }
   }

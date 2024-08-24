@@ -37,18 +37,17 @@ export default function AddCartItemToWishList_Btn({
   }
   return (
     <Button
-      className={cn(
-        `gap-1 rounded-full p-1 text-xs ${
-          addedToWishList
-            ? "bg-accent text-background"
-            : "text-sub_secondry_text"
-        }`,
-        className,
-      )}
+      className={cn(`group gap-1 rounded-full text-xs  `, className)}
       onClick={handleAddOrRemoveWishlistItem}
       {...restProps}
     >
-      <HeartIcon className=" h-5 w-5" />
+      <HeartIcon
+        className={`h-5 w-5 lg:group-hover:fill-red-500 lg:group-hover:text-red-500 ${
+          addedToWishList
+            ? " fill-red-500 text-red-500"
+            : "fill-transparent text-slate-500"
+        }`}
+      />
     </Button>
   );
 }

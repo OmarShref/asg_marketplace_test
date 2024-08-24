@@ -91,7 +91,12 @@ export default async function page({ params, searchParams }: PageProps) {
 
     return (
       <>
-        <CmsPage params={params} searchParams={searchParams} cms={cms?.at(0)} />
+        <CmsPage
+          params={params}
+          searchParams={searchParams}
+          cms={cms?.at(0)}
+          isSmallDevice={isSmallDevice}
+        />
       </>
     );
   } else if (resolvedRoute.type === pageTypes.category) {

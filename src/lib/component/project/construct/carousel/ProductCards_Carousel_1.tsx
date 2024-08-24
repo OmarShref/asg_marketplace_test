@@ -41,7 +41,11 @@ export function ProductCards_Carousel_1({
                 : "ml-3"
             }`}
           >
-            <ProductCard_1 product={product} index={index} />
+            <ProductCard_1
+              storeCode={storeCode}
+              product={product}
+              index={index}
+            />
           </CarouselItem>
         ))}
       </CarouselContent>

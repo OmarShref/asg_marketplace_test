@@ -29,8 +29,6 @@ export async function getCmsPage({
     query: cmsPageQuery,
   }).getData();
 
-  console.log("data", data);
-
   const cmsPage: CmsPageModel[] = data?.data?.vestedCmsPage?.items?.map(
     (item: any): CmsPageModel => {
       return new CmsPageModel({

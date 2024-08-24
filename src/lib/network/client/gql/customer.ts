@@ -26,7 +26,6 @@ const gqlAddressItemInner = `
 `;
 const gqlCustomerItemInner = `
   id
-  date_of_birth
   email
   created_at
   updated_at
@@ -207,7 +206,6 @@ export async function updateCustomerInfo({
             query {
                 customer {
                     id
-                    date_of_birth
                     email
                     created_at
                     firstname

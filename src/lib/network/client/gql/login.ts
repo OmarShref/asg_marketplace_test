@@ -63,7 +63,6 @@ export async function verifyOtp({
             lastname
             email
             mobilenumber
-            date_of_birth
             created_at
             gender
         }

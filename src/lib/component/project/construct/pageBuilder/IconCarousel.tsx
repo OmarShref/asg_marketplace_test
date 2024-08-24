@@ -6,9 +6,14 @@ import Image from "@/lib/component/generic/pure/image";
 interface Props {
   storeCode: string;
   iconCarousel: PageBuilderType;
+  isSmallDevice?: boolean;
 }
 
-export default function IconCarousel({ storeCode, iconCarousel }: Props) {
+export default function IconCarousel({
+  storeCode,
+  iconCarousel,
+  isSmallDevice,
+}: Props) {
   const imageRadius = iconCarousel?.properties?.css["border-radius"];
   return (
     <section
@@ -29,7 +34,11 @@ export default function IconCarousel({ storeCode, iconCarousel }: Props) {
             target={item?.target}
           >
             <Image
-              src={item?.properties?.image}
+              src={
+                isSmallDevice
+                  ? item?.properties?.mobileIamge
+                  : item?.properties?.desktopImage
+              }
               alt={item?.componentType + index}
               highPeriority={true}
               style={{

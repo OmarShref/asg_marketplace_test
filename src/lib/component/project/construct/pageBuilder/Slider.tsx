@@ -6,16 +6,21 @@ import { Carousel_2 } from "../carousel/Carousel_2";
 interface Props {
   storeCode: string;
   slider: PageBuilderType;
+  isSmallDevice?: boolean;
 }
 
-export default function Slider({ storeCode, slider }: Props) {
+export default function Slider({ storeCode, slider, isSmallDevice }: Props) {
   if (
     slider?.children?.at(0)?.properties?.appearance ===
     pageBuilderAppearanceTypes.poster
   ) {
     return (
       <>
-        <Carousel_1 storeCode={storeCode} carouselItems={slider} />
+        <Carousel_1
+          storeCode={storeCode}
+          carouselItems={slider}
+          isSmallDevice={isSmallDevice}
+        />
       </>
     );
   } else if (
@@ -24,7 +29,11 @@ export default function Slider({ storeCode, slider }: Props) {
   ) {
     return (
       <>
-        <Carousel_2 storeCode={storeCode} carouselItems={slider} />
+        <Carousel_2
+          storeCode={storeCode}
+          carouselItems={slider}
+          isSmallDevice={isSmallDevice}
+        />
       </>
     );
   }

@@ -16,7 +16,6 @@ import {
 } from "@/lib/component/generic/pure/productcard";
 import RemoveCartItem_Btn from "../../part/button/RemoveCartItem_Btn";
 import AddCartItemToWishList_Btn from "../../part/button/AddCartItemToWishList_Btn";
-import AddGiftWrapToCartItem_Btn from "../../part/button/AddGiftWrapToCartItem_Btn";
 import Spacing from "@/lib/component/generic/pure/spacing";
 import { CartProductInterface } from "@/lib/data/models/CartModel";
 import {
@@ -28,7 +27,6 @@ import useUserStore from "@/lib/data/stores/UserStore";
 import Anchor from "@/lib/component/generic/pure/anchor";
 import { GtmEvents } from "@/lib/core/analytics/Gtm";
 import { ProductModel } from "@/lib/data/models/ProductModel";
-import { GiftWrap_Drawer } from "../drawer/GiftWrap_Drawer";
 import { Texts, getText } from "@/lib/assets/text";
 import { usePathname } from "next/navigation";
 import { useToast } from "@/lib/component/generic/ui/use-toast";
@@ -66,7 +64,7 @@ export default function Cart_Card({ storeCode, cartItem }: Props) {
     const removeItemFromCartData = await removeItemFromCart({
       sku: cartItem?.sku,
       quantity: 1000,
-      productType: productTypes?.configurable,
+      productType: productTypes?.simple,
       itemId: cartItem?.id,
     });
     if (removeItemFromCartData?.success) {
@@ -140,15 +138,15 @@ export default function Cart_Card({ storeCode, cartItem }: Props) {
   return (
     <Card>
       <CardContent className=" relative flex aspect-[180/100] max-h-48 w-full items-stretch justify-start gap-2 overflow-clip rounded-xl border border-slate-200 bg-background shadow-cart_card">
-        <CardSection className=" aspect-[50/100] h-full">
+        <CardSection className=" aspect-[70/100] h-full">
           <Anchor
-            href={`${cartItem?.product?.parentUrl}`}
+            href={`${cartItem?.product?.parentUrl?.length > 0 ? cartItem?.product?.parentUrl : cartItem?.product?.url}`}
             className=" relative h-full"
           >
             <Image
               src={cartItem?.product?.smallImage}
               alt=""
-              className={`${
+              className={` object-contain ${
                 cartItem?.product?.inStock ? "" : "opacity-50 grayscale-[50%]"
               }`}
             />
@@ -161,15 +159,24 @@ export default function Cart_Card({ storeCode, cartItem }: Props) {
                 {cartItem?.name}
               </ProductCardName>
             </Anchor>
-            {pathName === `/${storeCode}/cart` && (
-              <RemoveCartItem_Btn
-                storeCode={storeCode}
-                onClick={() => {
-                  handleRemoveItemFromCart();
-                }}
-                className="  pt-0.5"
-              />
-            )}
+            <div>
+              {pathName === `/${storeCode}/cart` && (
+                <RemoveCartItem_Btn
+                  storeCode={storeCode}
+                  onClick={() => {
+                    handleRemoveItemFromCart();
+                  }}
+                  className="  pt-0.5"
+                />
+              )}
+
+              {pathName === `/${storeCode}/cart` && (
+                <AddCartItemToWishList_Btn
+                  storeCode={storeCode}
+                  productId={cartItem?.product?.id ?? 0}
+                />
+              )}
+            </div>
           </CardSection>
           {pathName === `/${storeCode}/cart` && (
             <ProductStorage_Label
@@ -211,22 +218,6 @@ export default function Cart_Card({ storeCode, cartItem }: Props) {
               </ProductCardPrice>
             </ProductCardPrices>
           </CardSection>
-          <CardSection className=" flex items-center justify-between gap-3 pe-3">
-            {pathName === `/${storeCode}/cart` && (
-              <AddGiftWrapToCartItem_Btn
-                storeCode={storeCode}
-                itemId={cartItem?.id}
-                setOpenGiftWrapDrawer={setOpenGiftWrapDrawer}
-                disabled={!cartItem?.product?.inStock}
-              />
-            )}
-            {pathName === `/${storeCode}/cart` && (
-              <AddCartItemToWishList_Btn
-                storeCode={storeCode}
-                productId={cartItem?.product?.id ?? 0}
-              />
-            )}
-          </CardSection>
         </CardSection>
         {/* oos over lay */}
         {!cartItem?.product?.inStock && pathName === `/${storeCode}/cart` && (
@@ -258,13 +249,6 @@ export default function Cart_Card({ storeCode, cartItem }: Props) {
           </CardSection>
         )}
       </CardContent>
-      <Spacing value={2} />
-      <GiftWrap_Drawer
-        storeCode={storeCode}
-        open={openGiftWrapDrawer}
-        setOpen={setOpenGiftWrapDrawer}
-        itemId={cartItem?.id}
-      />
     </Card>
   );
 }

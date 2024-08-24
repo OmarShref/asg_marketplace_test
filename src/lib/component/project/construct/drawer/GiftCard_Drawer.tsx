@@ -33,7 +33,7 @@ export function GiftCard_Drawer({ storeCode }: Props) {
       >
         <DrawerHeader className=" relative flex items-center justify-center border-b border-b-devider_background py-2">
           <DrawerTitle>
-            {getText({ storeCode: storeCode, text: Texts.bloomingCards })}
+            {getText({ storeCode: storeCode, text: Texts.giftCards })}
           </DrawerTitle>
           <DrawerClose
             asChild

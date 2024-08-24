@@ -6,7 +6,7 @@ export function share(content: string) {
         url: content,
       })
       .then(() => {
-        console.log("Thanks for sharing!");
+        // console.log("Thanks for sharing!");
       })
       .catch((err) => console.error(err));
   } else {

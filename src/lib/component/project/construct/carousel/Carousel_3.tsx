@@ -15,9 +15,10 @@ import { PageBuilderType } from "@/lib/data/models/CmsPageModel";
 type Props = {
   storeCode: string;
   carouselItems: PageBuilderType;
+  isSmallDevice?: boolean;
 };
 
-export function Carousel_3({ storeCode, carouselItems }: Props) {
+export function Carousel_3({ storeCode, carouselItems, isSmallDevice }: Props) {
   // const carouselItems = carouselItems_3;
   const direction = useRef<"ltr" | "rtl">(getDirection(storeCode));
 
@@ -40,7 +41,11 @@ export function Carousel_3({ storeCode, carouselItems }: Props) {
           >
             <Anchor href={item?.url}>
               <Image
-                src={item?.properties?.image}
+                src={
+                  isSmallDevice
+                    ? item?.properties?.mobileIamge
+                    : item?.properties?.desktopImage
+                }
                 alt={item?.componentType + index}
                 highPeriority={index <= 4}
               />

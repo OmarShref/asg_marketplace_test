@@ -4,7 +4,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "cdn.blooming.vested.site",
+        hostname: "pwa-cdn.alsaifgallery.com",
       },
       {
         protocol: "https",

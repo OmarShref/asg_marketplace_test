@@ -3,9 +3,11 @@ import { ClientGqlRequest } from "./base-request/ClientGqlRequest";
 import useUserStore from "@/lib/data/stores/UserStore";
 import useUtilityStore from "@/lib/data/stores/UtilityStore";
 import { RewardPointsModel } from "@/lib/data/models/RewardPointsModel";
+import { productTypes } from "@/lib/core/basic/Constants";
 
 // ===================================constants===========================================
 
+// TODO: add type_id later
 export const gqlCartItemInner = `
                 id
                 items_count
@@ -44,9 +46,6 @@ export const gqlCartItemInner = `
                         value
                         area
                     }
-                }
-                reward_points{
-                  applied_points
                 }
                 gift_card_data {
                     gift_amount_total
@@ -157,24 +156,6 @@ function getCartQuerySting({
   cart${!userToken ? `(guestCartId: "${guestCart}")` : ""} {
     ${gqlCartItemInner}
   }
-  ${
-    !!userToken
-      ? `
-        rewardPointsForCheckout {
-          ${gqlRewardPointsItemInner}
-        }
-        `
-      : ""
-  }
-  ${
-    !!userToken && !!productId
-      ? `
-        rewardPointsForProduct(product_id: ${productId}) {
-          ${gqlRewardPointsItemInner}
-        }
-        `
-      : ""
-  }
   `;
 }
 
@@ -283,12 +264,18 @@ export async function addItemToCart({
         qty: ${quantity}
         ${!userToken ? `guestCartId: "${guestCart}"` : ""}
         productType: ${productType?.toUpperCase()}
+        ${
+          productType === productTypes?.configurable
+            ? `
         configurableOptions: [${configurableOptions?.map((option) => {
           return `{
                 optionId: ${option?.optionId}
                 optionValue: ${option?.optionValue}
             }`;
         })}]
+        `
+            : ""
+        }
     ) {
         success
         query {

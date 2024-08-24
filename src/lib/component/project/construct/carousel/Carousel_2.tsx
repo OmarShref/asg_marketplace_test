@@ -16,9 +16,10 @@ import { PageBuilderType } from "@/lib/data/models/CmsPageModel";
 type Props = {
   storeCode: string;
   carouselItems: PageBuilderType;
+  isSmallDevice?: boolean;
 };
 
-export function Carousel_2({ storeCode, carouselItems }: Props) {
+export function Carousel_2({ storeCode, carouselItems, isSmallDevice }: Props) {
   const direction = useRef<"ltr" | "rtl">(getDirection(storeCode));
 
   const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: false }));
@@ -31,12 +32,16 @@ export function Carousel_2({ storeCode, carouselItems }: Props) {
       onMouseLeave={plugin.current.reset}
       opts={{ direction: direction.current, loop: true }}
     >
-      <CarouselContent className=" mx-5 lg:mx-0">
+      <CarouselContent className="">
         {carouselItems?.children?.map((item, index) => (
           <CarouselItem key={index} className=" basis-3/4 pl-2">
             <Anchor href={item?.url}>
               <Image
-                src={item?.properties?.image + "?width=1200"}
+                src={
+                  isSmallDevice
+                    ? item?.properties?.mobileIamge
+                    : item?.properties?.desktopImage + "?width=1200"
+                }
                 alt={item?.componentType + index}
                 highPeriority={index <= 1}
               />

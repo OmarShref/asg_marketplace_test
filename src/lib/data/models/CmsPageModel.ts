@@ -11,7 +11,8 @@ export type PageBuilderType = {
   value: string;
   properties?: {
     appearance: string;
-    image: string;
+    desktopImage: string;
+    mobileIamge: string;
     autoPlay: boolean;
     autoPlaySpeed: number;
     infinite_loop: boolean;
@@ -20,6 +21,7 @@ export type PageBuilderType = {
     css: any;
     src: string;
     headingType: string;
+    classNames: string;
   };
   products: ProductModel[];
   children?: PageBuilderType[];
@@ -63,9 +65,12 @@ export class CmsPageModel implements CmsPageInterface {
         value: item?.value,
         properties: {
           appearance: item?.properties?.appearance,
-          image:
+          desktopImage:
             item?.properties?.background_images?.desktop_image ??
             item?.desktop_image,
+          mobileIamge:
+            item?.properties?.background_images?.mobile_image ??
+            item?.mobile_image,
           autoPlay: item?.properties?.autoplay,
           autoPlaySpeed: item?.properties?.autoplay_speed,
           infinite_loop: item?.properties?.infinite_loop,
@@ -74,6 +79,7 @@ export class CmsPageModel implements CmsPageInterface {
           css: item?.properties?.css,
           src: item?.properties?.src,
           headingType: item?.properties?.heading_type,
+          classNames: item?.properties?.class,
         },
         products: item?.value?.items?.map((item: any): ProductModel => {
           return new ProductModel({

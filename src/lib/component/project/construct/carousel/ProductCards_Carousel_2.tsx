@@ -8,9 +8,9 @@ import {
 } from "@/lib/component/generic/ui/carousel";
 import { getDirection } from "@/lib/helper/direction";
 import { useRef } from "react";
-import ProductCard_2 from "@/lib/component/project/construct/card/ProductCard_2";
 import { cn } from "@/lib/utils/utils";
 import { ProductModel } from "@/lib/data/models/ProductModel";
+import ProductCard_1 from "../card/ProductCard_1";
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
   storeCode: string;
@@ -41,7 +41,11 @@ export function ProductCards_Carousel_2({
                 : "ml-3"
             }`}
           >
-            <ProductCard_2 product={product} index={index} />
+            <ProductCard_1
+              storeCode={storeCode}
+              product={product}
+              index={index}
+            />
           </CarouselItem>
         ))}
       </CarouselContent>

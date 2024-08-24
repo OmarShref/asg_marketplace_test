@@ -29,7 +29,6 @@ import { getCart } from "@/lib/network/client/gql/cart";
 import { GtmEvents } from "@/lib/core/analytics/Gtm";
 import { CmsPageModel } from "@/lib/data/models/CmsPageModel";
 import Cms from "../construct/pageBuilder/Cms";
-import { GiftWrap_Drawer } from "../construct/drawer/GiftWrap_Drawer";
 import AddGiftWrapToCart_Btn from "../part/button/AddGiftWrapToCart_Btn";
 import { useToast } from "../../generic/ui/use-toast";
 import TrendingItems_Carousel from "../construct/carousel/TrendingItems_Carousel";
@@ -140,13 +139,6 @@ export default function CartPage({
             cartItems={cartState?.items}
           />
           <Spacing value={5} />
-          {!!cartState?.quantity && (
-            <AddGiftWrapToCart_Btn
-              storeCode={params?.storeCode}
-              setOpenGiftWrapDrawer={setOpenGiftWrapDrawer}
-            />
-          )}
-          <Spacing value={5} />
           <CartTotals_Card
             storeCode={params.storeCode}
             totalsLines={cartState?.totalsLines}
@@ -191,11 +183,6 @@ export default function CartPage({
             paymentMethodInfo={paymentMethodInfo}
           />
         </CartFooter>
-        <GiftWrap_Drawer
-          storeCode={params?.storeCode}
-          open={openGiftWrapDrawer}
-          setOpen={setOpenGiftWrapDrawer}
-        />
         <PageType pageType={pageTypes.cart} />
         <HeaderOptions
           headerOptions={{
@@ -231,7 +218,7 @@ export default function CartPage({
         {/* ============================================================= */}
 
         {/* cart content  */}
-        <section className=" items-start justify-start flex">
+        <section className=" flex items-start justify-start">
           {/* cart header and products */}
           <section className=" basis-1/2 overflow-hidden">
             <CartHeader>
@@ -258,11 +245,6 @@ export default function CartPage({
                 <CartCards_Grid
                   storeCode={params.storeCode}
                   cartItems={cartState?.items}
-                />
-                <Spacing value={5} />
-                <AddGiftWrapToCart_Btn
-                  storeCode={params?.storeCode}
-                  setOpenGiftWrapDrawer={setOpenGiftWrapDrawer}
                 />
               </CartContent>
             )}
@@ -330,11 +312,6 @@ export default function CartPage({
 
         {/* ============================================================= */}
 
-        <GiftWrap_Drawer
-          storeCode={params?.storeCode}
-          open={openGiftWrapDrawer}
-          setOpen={setOpenGiftWrapDrawer}
-        />
         <PageType pageType={pageTypes.cart} />
       </Cart>
     </Page_Transition>

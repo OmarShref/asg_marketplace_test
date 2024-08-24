@@ -29,7 +29,7 @@ export function GiftCard_Form({ storeCode, setGiftCardDrawerOpen }: Props) {
     giftCardCode: z.string().min(1, {
       message: getText({
         storeCode: storeCode,
-        text: Texts.bloomingCardCodeIsRequired,
+        text: Texts.giftCardCodeIsRequired,
       }),
     }),
   });

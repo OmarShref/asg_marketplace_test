@@ -23,7 +23,7 @@ const Row = React.forwardRef<HTMLElement, React.HTMLAttributes<HTMLElement>>(
         <section
           ref={ref}
           className={cn(
-            " mb-[10px] flex items-stretch justify-center gap-[10px]",
+            " mb-[10px] flex !flex-row items-stretch justify-center gap-[10px] px-[10px] lg:px-0",
             className,
           )}
           {...props}
@@ -43,7 +43,7 @@ const Column = React.forwardRef<HTMLElement, React.HTMLAttributes<HTMLElement>>(
     return (
       <section
         ref={ref}
-        className={cn(" grid gap-[10px]", className)}
+        className={cn(" relative grid gap-[10px]", className)}
         {...props}
       >
         {children}

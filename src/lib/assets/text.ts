@@ -78,13 +78,13 @@ export const Texts = {
   HaveACoupon: ["لديك كوبون خصم؟", "Have a coupon ?"],
   coupons: ["الكوبونات", "Coupons"],
   myPoints: ["نقاطي", "My points"],
-  HaveBloomingCard: ["لديك قسيمه بلومنج ؟", "Have blooming card ?"],
+  HaveGiftCard: ["لديك قسيمه هدايا ؟", "Have gift card ?"],
   applyCoupon: ["تطبيق الكوبون", "Apply coupon"],
   coupon: ["الكوبون", "Coupon"],
   apply: ["تطبيق", "Apply"],
   enterTheCouponCode: ["ادخل كوبون الخصم", "Enter the coupon code"],
   enterThePoints: ["ادخل النقاط", "Enter the Points"],
-  bloomingCards: ["قسايم بلومنج", "Blooming cards"],
+  giftCards: ["قسايم الهدايا", "Gift Cards"],
   enterCardCode: ["ادخل كود القسيمه", "Enter card code"],
   congratulationsYouGotADiscount: [
     "مبروك حصلت على خصم",
@@ -150,10 +150,7 @@ export const Texts = {
   ],
   couponCodeIsRequired: ["كود الكوبون مطلوب", "Coupon code is required"],
   pointsAreRequired: ["النقاط مطلوبة", "Points are required"],
-  bloomingCardCodeIsRequired: [
-    "كود الهدية مطلوب",
-    "Blooming card code is required",
-  ],
+  giftCardCodeIsRequired: ["كود الهدية مطلوب", "Gift card code is required"],
   youDeservedFreeShipping: [
     "لقد استحققت شحن مجاني",
     "You deserved free shipping",

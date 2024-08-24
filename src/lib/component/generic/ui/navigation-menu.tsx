@@ -41,7 +41,7 @@ NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName;
 const NavigationMenuItem = NavigationMenuPrimitive.Item;
 
 const navigationMenuTriggerStyle = cva(
-  "group inline-flex h-10 w-max items-center justify-center px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-background focus:outline-none data-[active]:text-background data-[active]:bg-accent data-[state=open]:text-background data-[state=open]:bg-accent ",
+  "group inline-flex h-8 w-max items-center justify-center px-4 py-2 text-sm font-medium transition-colors hover:bg-background hover:text-slate-800 focus:outline-none data-[active]:text-slate-800 data-[active]:bg-background data-[state=open]:text-slate-800 data-[state=open]:bg-background",
 );
 
 const NavigationMenuTrigger = React.forwardRef<
@@ -55,7 +55,7 @@ const NavigationMenuTrigger = React.forwardRef<
   >
     {children}
     <ChevronDown
-      className="relative top-[1px] ml-1 h-4 w-auto transition duration-200 group-data-[state=open]:rotate-180"
+      className="relative top-[1px] h-3 w-auto transition duration-200 group-data-[state=open]:rotate-180"
       aria-hidden="true"
     />
   </NavigationMenuPrimitive.Trigger>
@@ -83,10 +83,10 @@ const NavigationMenuViewport = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Viewport>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Viewport>
 >(({ className, ...props }, ref) => (
-  <div className={cn("absolute left-0 top-[45px] flex w-full justify-center")}>
+  <div className={cn("absolute left-0 top-[28px] flex w-full justify-center")}>
     <NavigationMenuPrimitive.Viewport
       className={cn(
-        "origin-top-center relative mt-1 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border border-slate-200 bg-white text-slate-950 shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90  dark:border-slate-800 dark:bg-slate-950 dark:text-slate-50",
+        "origin-top-center relative mt-1 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-b-3xl border border-t-0 bg-white text-slate-950 shadow-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90  dark:border-slate-800 dark:bg-slate-950 dark:text-slate-50",
         className,
       )}
       ref={ref}

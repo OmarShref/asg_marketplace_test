@@ -156,7 +156,7 @@ const CarouselContent = React.forwardRef<
   const { carouselRef, orientation } = useCarousel();
 
   return (
-    <div ref={carouselRef} className=" h-full overflow-clip">
+    <div ref={carouselRef} className="h-auto overflow-clip">
       <div
         ref={ref}
         className={cn(
@@ -201,7 +201,7 @@ const CarouselPrevious = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        "absolute  z-10 h-10 w-10 rounded-full bg-accent opacity-60 ring-2 ring-background transition hover:opacity-100 ",
+        "absolute  z-10 h-8 w-8 rounded-full bg-slate-100 opacity-60 transition hover:opacity-100 ",
         orientation === "horizontal"
           ? "start-3 top-1/2 -translate-y-1/2"
           : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
@@ -212,7 +212,7 @@ const CarouselPrevious = React.forwardRef<
       {...props}
     >
       <ChevronLeftIcon
-        className={`h-5 w-5 text-background ${
+        className={`h-5 w-5 text-accent ${
           opts?.direction === "rtl" ? "rotate-180" : ""
         }`}
       />
@@ -233,7 +233,7 @@ const CarouselNext = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        "absolute h-10 w-10 rounded-full bg-accent opacity-60 ring-2 ring-background transition hover:opacity-100 ",
+        "absolute h-8 w-8 rounded-full bg-slate-100 opacity-60 transition hover:opacity-100 ",
         orientation === "horizontal"
           ? "end-3 top-1/2 -translate-y-1/2"
           : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
@@ -244,7 +244,7 @@ const CarouselNext = React.forwardRef<
       {...props}
     >
       <ChevronRightIcon
-        className={`h-5 w-5 text-background ${
+        className={`h-5 w-5 text-accent ${
           opts?.direction === "rtl" ? "rotate-180" : ""
         }`}
       />

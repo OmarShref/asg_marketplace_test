@@ -79,9 +79,8 @@ export class MetaDataModel {
     // this.#defaultDescription = configuration?.defaultDescription;
     // this.#defaultKeywords = configuration?.defaultKeywords;
 
-    this.#defaultTitle = "أناقة وراحة بكل مناسبة | بلومنج السعودية";
-    this.#defaultDescription =
-      "اكتشفي عالماً من الموضة والراحة ببلومنج. من ملابس المنزل إلى لانجري العروسة، خيارات أنيقة ومريحة معك في كل لحظة";
+    this.#defaultTitle = "السيف غاليري";
+    this.#defaultDescription = "السيف غاليري";
     this.#defaultKeywords = configuration?.defaultKeywords;
 
     this.#websiteName = isArabic(params.storeCode) ? siteName.ar : siteName.en;

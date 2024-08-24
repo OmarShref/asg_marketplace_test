@@ -21,7 +21,7 @@ type Props = {
 
 export default function Main_Footer({ storeCode, configuration }: Props) {
   return (
-    <footer className=" relative border-t-2 border-accent md:mt-4">
+    <footer className=" relative z-0 border-t-2 border-accent md:mt-4">
       {/* footer decorator */}
       <Image
         src="/image/footer-decorator.png"

@@ -1,6 +1,6 @@
 import { getStyleJSXObjectFromString } from "../helper/style";
 
-export function getPageBuilderJSXStyle({ css }: { css: string }) {
+export function getPageBuilderBaseJSXStyle({ css }: { css: string }) {
   const cssJSXObject = getStyleJSXObjectFromString({
     styleString: JSON.stringify(css),
     separator: ",",

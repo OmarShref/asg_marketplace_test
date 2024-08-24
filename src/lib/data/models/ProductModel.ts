@@ -230,7 +230,7 @@ export class ProductModel implements ProductInterface {
     this.id = product?.entity_id
       ? Number(product?.entity_id)
       : Number(product?.product_id);
-    this.type = product?.type_id?.toLowerCase();
+    this.type = product?.type_id?.toString()?.toLowerCase();
     this.name = product?.name ?? "";
     this.sku = product?.sku ?? "";
     this.url = product?.url?.replace("SA_en", storeCode) ?? "";

@@ -148,7 +148,7 @@ export default function ProductCard_3({
     <ProductCard
       variant={"rounded"}
       size={"default"}
-      className={` group aspect-auto bg-background transition-all duration-300 hover:-translate-y-1 hover:shadow-lg`}
+      className={` group aspect-auto bg-background transition-all duration-300 lg:hover:-translate-y-1 lg:hover:shadow-lg`}
     >
       <ProductCardSection className=" relative">
         <ProductCardLink href={product.url} onClick={handleSelectItem}>
