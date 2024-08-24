@@ -17,7 +17,7 @@ export default function HeaderMenu_Tabs({ storeCode, menuItem }: Props) {
           <div className=" flex flex-col gap-1">
             <h4
               key={index}
-              className={`  pb-2 text-base font-bold text-accent`}
+              className={`  pb-1 text-base font-bold text-accent`}
             >
               {item.name}
             </h4>
