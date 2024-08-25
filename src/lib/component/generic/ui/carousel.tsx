@@ -156,7 +156,7 @@ const CarouselContent = React.forwardRef<
   const { carouselRef, orientation } = useCarousel();
 
   return (
-    <div ref={carouselRef} className="h-auto overflow-clip">
+    <div ref={carouselRef} className="h-auto overflow-x-clip">
       <div
         ref={ref}
         className={cn(

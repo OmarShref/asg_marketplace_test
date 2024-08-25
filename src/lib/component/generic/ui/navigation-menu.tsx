@@ -68,10 +68,7 @@ const NavigationMenuContent = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <NavigationMenuPrimitive.Content
     ref={ref}
-    className={cn(
-      "left-0 top-0 w-full data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52  md:w-full",
-      className,
-    )}
+    className={cn("left-0 top-0 w-full", className)}
     {...props}
   />
 ));
@@ -83,15 +80,16 @@ const NavigationMenuViewport = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Viewport>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Viewport>
 >(({ className, ...props }, ref) => (
-  <div className={cn("absolute left-0 top-[28px] flex w-full justify-center")}>
+  <div className={cn("absolute left-0 top-[27px] flex w-full justify-center")}>
     <NavigationMenuPrimitive.Viewport
       className={cn(
-        "origin-top-center relative mt-1 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-b-3xl border border-t-0 bg-white text-slate-950 shadow-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90  dark:border-slate-800 dark:bg-slate-950 dark:text-slate-50",
+        "origin-top-center relative mt-1 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-b-3xl border border-t-0 bg-white text-slate-950 shadow-sm  dark:border-slate-800 dark:bg-slate-950 dark:text-slate-50",
         className,
       )}
       ref={ref}
       {...props}
     />
+    <div className="animate-fade-in pointer-events-none absolute top-1 -z-10 h-[1000%] w-[200%] bg-black/50" />
   </div>
 ));
 NavigationMenuViewport.displayName =

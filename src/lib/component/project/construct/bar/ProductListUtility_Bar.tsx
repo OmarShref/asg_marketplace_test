@@ -1,11 +1,9 @@
 import { SortDrawer } from "../drawer/Sort_Drawer";
-import ChangeGridDisplay_Btn from "../../part/button/ChangeGridDisplay_Btn";
 import { FilterDrawer } from "../drawer/Filter_Drawer";
 import { CategoryQuantity } from "@/lib/component/generic/pure/category";
 import { SortItemType } from "@/lib/data/models/SortModel";
 import { FilterItemType } from "@/lib/data/models/FilterModel";
 import { PageProps } from "@/lib/data/types/PageProps";
-import QuickSort_Bar from "./QuickSort_Bar";
 import { Texts, getText } from "@/lib/assets/text";
 import { Sort_Select } from "../select/Sort_Select";
 
@@ -32,15 +30,6 @@ export default function ProductListUtility_Bar({
 
       {/* ================================================================================================ */}
 
-      {/* desktop only */}
-      <QuickSort_Bar
-        storeCode={params.storeCode}
-        setSort={setSort}
-        className="hidden md:flex"
-      />
-
-      {/* ================================================================================================ */}
-
       <div className=" flex items-center justify-center gap-2">
         {/* mobile only */}
         {!!setSort && (
@@ -61,11 +50,6 @@ export default function ProductListUtility_Bar({
             className=" hidden md:flex"
           />
         )}
-
-        {/* ================================================================================================ */}
-
-        {/* mobile only */}
-        {/* <ChangeGridDisplay_Btn className=" md:hidden" /> */}
 
         {/* ================================================================================================ */}
 

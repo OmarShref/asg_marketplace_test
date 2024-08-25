@@ -46,6 +46,14 @@ const config = {
             transform: "translateX(0)",
           },
         },
+        "fade-in": {
+          "0%": {
+            opacity: "0%",
+          },
+          "100%": {
+            opacity: "100%",
+          },
+        },
         "moving-promotion": {
           "0%": {
             transform: "translateX(-100%) ",
@@ -59,6 +67,7 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         backandforward: "backandforward 1.4s ease-in-out infinite",
+        "fade-in": "fade-in .4s ease-in ",
         "moving-promotion": "moving-promotion 10s linear  infinite",
       },
       transitionDuration: {

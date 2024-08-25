@@ -51,7 +51,7 @@ export const Texts = {
   youMayAlsoLike: ["قد يعجبك ايضاً", "You may also like"],
   similarProducts: ["منتجات مشابهه", "Similar products"],
   recommended: ["موصى بها", "Recommended"],
-  addToCart: ["اضف لسلة التسوق", "Add to cart"],
+  addToCart: ["اضف للسلة", "Add to cart"],
   pleaseNotifyMeWhenItIsAvailable: [
     "الرجاء اخطاري حال توفره",
     "Please notify me when it is available",

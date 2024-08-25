@@ -4,7 +4,6 @@ import Spacing from "../../generic/pure/spacing";
 import ProductListUtility_Bar from "../construct/bar/ProductListUtility_Bar";
 import ProductCards_Grid from "../construct/grid/ProductCards_Grid";
 import PageType from "../../generic/utility/PageType";
-import QuickSort_Bar from "../construct/bar/QuickSort_Bar";
 import { CategoryModel } from "@/lib/data/models/CategoryModel";
 import LoadMore from "../part/utility/LoadMore";
 import { PageProps } from "@/lib/data/types/PageProps";
@@ -46,7 +45,7 @@ export default function CategoryPage({
 
   const [spicialToDate, setSpicialToDate] = useState<string | undefined>(
     category?.products?.find((product) => product?.specialToDate?.length > 1)
-      ?.specialToDate
+      ?.specialToDate,
   );
 
   function handleSort() {
@@ -62,7 +61,7 @@ export default function CategoryPage({
         window.history.replaceState(
           {},
           "",
-          getLoadMoreUrl({ params, searchParams, page: 1 })
+          getLoadMoreUrl({ params, searchParams, page: 1 }),
         );
       });
     }
@@ -107,13 +106,13 @@ export default function CategoryPage({
       <Category className=" pb-20">
         <ScrollDetector id="category-page-scroll-detector" />
 
-        <section className=" flex max-w-project mx-auto gap-5 ">
+        <section className=" mx-auto flex max-w-project gap-5 ">
           {/* for desktop */}
           <Filter_Section
             params={params}
             searchParams={searchParams}
             filters={category?.filters}
-            className={" basis-3/12 mt-5"}
+            className={" mt-5 basis-3/12"}
           />
 
           {/* ============================================================================================= */}
@@ -123,7 +122,7 @@ export default function CategoryPage({
               <Spacing value={4} />
 
               <section className=" mx-5 flex max-w-project items-center justify-start gap-3 lg:mx-auto">
-                <CategoryName className="  text-lg text-secondry_text md:text-3xl font-medium">
+                <CategoryName className="  text-lg font-medium text-secondry_text md:text-3xl">
                   {category.name}
                 </CategoryName>
                 <Timer_1 specialToDate={spicialToDate ?? ""} />
@@ -139,19 +138,13 @@ export default function CategoryPage({
               />
               <Spacing value={3} />
 
-              <QuickSort_Bar
-                storeCode={params.storeCode}
-                setSort={setSort}
-                className="hidden md-max:flex"
-              />
-
               <Spacing value={3} />
             </CategoryHeader>
             {!!category?.image && (
               <Image
                 src={category?.image}
                 alt={`${category?.name} category image`}
-                className=" mx-auto max-w-project w-full h-auto"
+                className=" mx-auto h-auto w-full max-w-project"
               />
             )}
             <Spacing value={3} />

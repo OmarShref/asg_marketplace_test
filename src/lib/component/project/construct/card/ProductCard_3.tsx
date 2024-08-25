@@ -10,7 +10,6 @@ import {
   ProductCardSection,
 } from "@/lib/component/generic/pure/productcard";
 import DiscountLabel from "@/lib/component/project/part/label/Discount_Label";
-import Addtocart_Btn_1 from "../../part/button/Addtocart_Btn_1";
 import Addtowishlist_Btn from "../../part/button/Addtowhishlist_Btn";
 import {
   productLabelTypes,
@@ -19,11 +18,11 @@ import {
 import useUtilityStore from "@/lib/data/stores/UtilityStore";
 import {
   ProductModel,
-  VariantOptionType,
+  // VariantOptionType,
 } from "@/lib/data/models/ProductModel";
 import { useEffect, useRef, useState } from "react";
-import { getProduct } from "@/lib/network/server/gql/product";
-import { Button } from "@/lib/component/generic/ui/button";
+// import { getProduct } from "@/lib/network/server/gql/product";
+// import { Button } from "@/lib/component/generic/ui/button";
 import { GtmEvents } from "@/lib/core/analytics/Gtm";
 import DynamicProduct_Label from "../../part/label/DynamicProduct_Label";
 import { algoliaEventsSingleton } from "@/lib/core/analytics/Algolia";
@@ -61,53 +60,53 @@ export default function ProductCard_3({
   ] = useState<ProductModel>(
     configurableProduct?.currentVariant ?? configurableProduct,
   );
-  const [currentIndex, setCurrentIndex] = useState<number | null>(null);
-  const [sizeVariant, setSizeVariant] = useState(
-    product?.variants?.find((variant) => variant?.code === "size"),
-  );
-  const [colorVariant, setColorVariant] = useState(
-    product?.variants?.find((variant) => variant.code === "color"),
-  );
-  const [curretColorVariantOption, setCurretColorVariantOption] = useState<
-    VariantOptionType | undefined
-  >();
+  // const [currentIndex, setCurrentIndex] = useState<number | null>(null);
+  // const [sizeVariant, setSizeVariant] = useState(
+  //   product?.variants?.find((variant) => variant?.code === "size"),
+  // );
+  // const [colorVariant, setColorVariant] = useState(
+  //   product?.variants?.find((variant) => variant.code === "color"),
+  // );
+  // const [curretColorVariantOption, setCurretColorVariantOption] = useState<
+  //   VariantOptionType | undefined
+  // >();
 
-  useEffect(() => {
-    setConfigurableProduct(product);
-    setColorVariant(
-      product?.variants?.find((variant) => variant.code === "color"),
-    );
-    setSizeVariant(
-      product?.variants?.find((variant) => variant?.code === "size"),
-    );
-  }, [product]);
+  // useEffect(() => {
+  //   setConfigurableProduct(product);
+  //   setColorVariant(
+  //     product?.variants?.find((variant) => variant.code === "color"),
+  //   );
+  //   setSizeVariant(
+  //     product?.variants?.find((variant) => variant?.code === "size"),
+  //   );
+  // }, [product]);
 
-  useEffect(() => {
-    setConfigurableProductCurrentVariant(
-      configurableProduct?.currentVariant ?? configurableProduct,
-    );
-  }, [configurableProduct]);
+  // useEffect(() => {
+  //   setConfigurableProductCurrentVariant(
+  //     configurableProduct?.currentVariant ?? configurableProduct,
+  //   );
+  // }, [configurableProduct]);
 
-  useEffect(() => {
-    handleVariantChange();
-  }, [curretColorVariantOption]);
+  // useEffect(() => {
+  //   handleVariantChange();
+  // }, [curretColorVariantOption]);
 
   // ================================================================================
 
-  function handleVariantChange() {
-    if (curretColorVariantOption) {
-      getProduct({
-        params: { storeCode: storeCode },
-        id: product.id,
-        configurableProductUIds: [
-          sizeVariant?.options?.at(0)?.uId ?? "",
-          curretColorVariantOption?.uId ?? "",
-        ],
-      }).then((configurableProduct) => {
-        setConfigurableProduct(configurableProduct);
-      });
-    }
-  }
+  // function handleVariantChange() {
+  //   if (curretColorVariantOption) {
+  //     getProduct({
+  //       params: { storeCode: storeCode },
+  //       id: product.id,
+  //       configurableProductUIds: [
+  //         sizeVariant?.options?.at(0)?.uId ?? "",
+  //         curretColorVariantOption?.uId ?? "",
+  //       ],
+  //     }).then((configurableProduct) => {
+  //       setConfigurableProduct(configurableProduct);
+  //     });
+  //   }
+  // }
 
   // ================================================================================
 
@@ -151,7 +150,11 @@ export default function ProductCard_3({
       className={` group aspect-auto bg-background transition-all duration-300 lg:hover:-translate-y-1 lg:hover:shadow-lg`}
     >
       <ProductCardSection className=" relative">
-        <ProductCardLink href={product.url} onClick={handleSelectItem}>
+        <ProductCardLink
+          href={product.url}
+          onClick={handleSelectItem}
+          className=" p-3"
+        >
           <ProductCardImage
             variant={"rounded"}
             className=" overflow-clip transition-all duration-300 group-hover:scale-105"

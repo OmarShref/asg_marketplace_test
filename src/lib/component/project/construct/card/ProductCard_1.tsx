@@ -151,7 +151,11 @@ export default function ProductCard_1({
       className={` group aspect-auto w-52 bg-background transition-all duration-300 lg:hover:-translate-y-1 lg:hover:shadow-lg`}
     >
       <ProductCardSection className=" relative">
-        <ProductCardLink href={product.url} onClick={handleSelectItem}>
+        <ProductCardLink
+          href={product.url}
+          onClick={handleSelectItem}
+          className=" p-3"
+        >
           <ProductCardImage
             variant={"rounded"}
             className=" overflow-clip transition-all duration-300 group-hover:scale-105"
