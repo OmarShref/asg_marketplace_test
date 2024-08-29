@@ -44,7 +44,8 @@ export const pageTypes = {
   order: "order",
 };
 
-export const baseUrl = "http://localhost:3000";
+// export const baseUrl = "http://localhost:5050";
+export const baseUrl = "https://asg-vested.vercel.app";
 // export const baseUrl = "https://alsaifgallery.com";
 
 export const apiUrl = {

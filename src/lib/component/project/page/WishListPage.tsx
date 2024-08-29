@@ -32,7 +32,7 @@ export default function WishListPage({ params, searchParams, cms }: Props) {
   const router = useRouter();
   const { customer, wishList } = useUserStore((state) => state);
   const [wishListState, setWishListState] = useState<CategoryModel | null>(
-    null
+    null,
   );
 
   useEffect(() => {
@@ -54,7 +54,7 @@ export default function WishListPage({ params, searchParams, cms }: Props) {
           <ScrollDetector id="category-page-scroll-detector" />
           <Spacing value={3} />
           <CategoryHeader>
-            <CategoryName className=" mx-5 text-lg font-light text-secondry_text">
+            <CategoryName className=" mx-5 text-lg font-medium text-secondry_text lg:mx-0 lg:text-2xl">
               {getText({ storeCode: params.storeCode, text: Texts.myWishList })}
             </CategoryName>
             <ProductListUtility_Bar

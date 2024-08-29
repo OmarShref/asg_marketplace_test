@@ -60,6 +60,7 @@ export default function ProductCard_3({
   ] = useState<ProductModel>(
     configurableProduct?.currentVariant ?? configurableProduct,
   );
+
   // const [currentIndex, setCurrentIndex] = useState<number | null>(null);
   // const [sizeVariant, setSizeVariant] = useState(
   //   product?.variants?.find((variant) => variant?.code === "size"),
@@ -71,21 +72,21 @@ export default function ProductCard_3({
   //   VariantOptionType | undefined
   // >();
 
-  // useEffect(() => {
-  //   setConfigurableProduct(product);
-  //   setColorVariant(
-  //     product?.variants?.find((variant) => variant.code === "color"),
-  //   );
-  //   setSizeVariant(
-  //     product?.variants?.find((variant) => variant?.code === "size"),
-  //   );
-  // }, [product]);
+  useEffect(() => {
+    setConfigurableProduct(product);
+    // setColorVariant(
+    //   product?.variants?.find((variant) => variant.code === "color"),
+    // );
+    // setSizeVariant(
+    //   product?.variants?.find((variant) => variant?.code === "size"),
+    // );
+  }, [product]);
 
-  // useEffect(() => {
-  //   setConfigurableProductCurrentVariant(
-  //     configurableProduct?.currentVariant ?? configurableProduct,
-  //   );
-  // }, [configurableProduct]);
+  useEffect(() => {
+    setConfigurableProductCurrentVariant(
+      configurableProduct?.currentVariant ?? configurableProduct,
+    );
+  }, [configurableProduct]);
 
   // useEffect(() => {
   //   handleVariantChange();

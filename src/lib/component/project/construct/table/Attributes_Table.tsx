@@ -30,25 +30,3 @@ export default function Attributes_Table({ attributes, className }: Props) {
     </div>
   );
 }
-
-function extractTextContentArrayFromHtml(html: string) {
-  let textContentArray: string[][] = [];
-
-  let div;
-
-  if (typeof document != "undefined") {
-    div = document.createElement("div");
-  }
-
-  if (div) {
-    div.innerHTML = html;
-  }
-
-  const listItems = div?.querySelectorAll("li");
-
-  listItems?.forEach((item) => {
-    textContentArray.push(item?.textContent?.split(":") as string[]);
-  });
-
-  return textContentArray;
-}

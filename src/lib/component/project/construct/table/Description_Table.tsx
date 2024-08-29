@@ -46,7 +46,10 @@ function extractTextContentArrayFromHtml(html: string) {
     div.innerHTML = html;
   }
 
-  const listItems = div?.querySelectorAll("li");
+  const listItems =
+    (div?.querySelectorAll("li")?.length ?? 0) > 0
+      ? div?.querySelectorAll("li")
+      : div?.querySelectorAll("p");
 
   listItems?.forEach((item) => {
     textContentArray.push(item?.textContent?.split(":") as string[]);
