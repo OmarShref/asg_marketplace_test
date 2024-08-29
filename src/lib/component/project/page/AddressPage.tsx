@@ -14,7 +14,7 @@ import Spacing from "../../generic/pure/spacing";
 import useUserStore from "@/lib/data/stores/UserStore";
 import NavbarOptions from "../../generic/utility/NavbarOptions";
 import { usePathname, useRouter } from "next/navigation";
-// import { Map_Drawer } from "../construct/drawer/Map_Drawer";
+import { Map_Drawer } from "../construct/drawer/Map_Drawer";
 import { CustomerModel } from "@/lib/data/models/CustomerModel";
 import ConfirmAddress_Btn from "../part/button/ConfirmAddress_Btn";
 import { setCartAddress } from "@/lib/network/client/gql/cart";
@@ -25,7 +25,7 @@ import { getCustomer } from "@/lib/network/client/gql/customer";
 import { useToast } from "../../generic/ui/use-toast";
 import Address_Card from "../construct/card/Address_Card";
 import { getValidCartShippingAddressId } from "@/lib/controller/addressController";
-import { SaveAddress_Drawer } from "../construct/drawer/SaveAddress_Drawer";
+// import { SaveAddress_Drawer } from "../construct/drawer/SaveAddress_Drawer";
 import Page_Transition from "../part/transition/Page_Transition";
 
 type Props = {
@@ -39,7 +39,7 @@ export default function AddressPage({ storeCode }: Props) {
 
   const { customer, cart } = useUserStore((state) => state);
   const [customerState, setCustomerState] = useState<CustomerModel | null>(
-    null
+    null,
   );
 
   // ==============================================================================
@@ -117,13 +117,15 @@ export default function AddressPage({ storeCode }: Props) {
   // ==============================================================================
 
   const [choosenAddressId, setChoosenAddressId] = useState<number | undefined>(
-    Number(getValidCartShippingAddressId() ?? customer?.addresses?.at(-1)?.id)
+    Number(getValidCartShippingAddressId() ?? customer?.addresses?.at(-1)?.id),
   );
 
   // to set initial address selection
   useEffect(() => {
     setChoosenAddressId(
-      Number(getValidCartShippingAddressId() ?? customer?.addresses?.at(-1)?.id)
+      Number(
+        getValidCartShippingAddressId() ?? customer?.addresses?.at(-1)?.id,
+      ),
     );
   }, [customer?.addresses]);
 
@@ -168,7 +170,7 @@ export default function AddressPage({ storeCode }: Props) {
             {customerState && pathname?.includes("/checkout/shipping") && (
               <ConfirmAddress_Btn
                 storeCode={storeCode}
-                className="fixed bottom-16 left-0 w-full max-w-md bg-fixed_btn_container_background px-5 pb-5 pt-2 lg:bottom-0 lg:left-1/2 lg:-translate-x-1/2"
+                className="fixed bottom-16 left-0 z-10 w-full max-w-md bg-fixed_btn_container_background px-5 pb-5 pt-2 lg:bottom-0 lg:left-1/2 lg:-translate-x-1/2"
                 onClick={handleSetAddressOnCart}
               />
             )}
@@ -176,19 +178,19 @@ export default function AddressPage({ storeCode }: Props) {
         </AccountFooter>
         <Spacing value={40} />
         {/* Map_Drawer */}
-        {/* <Map_Drawer
-        storeCode={storeCode}
-        editAddressId={editAddressId}
-        openMapDrawer={openMap}
-        setOpenMapDrawer={setOpenMap}
-      /> */}
+        <Map_Drawer
+          storeCode={storeCode}
+          editAddressId={editAddressId}
+          openMapDrawer={openMap}
+          setOpenMapDrawer={setOpenMap}
+        />
         {/* Address Drawer */}
-        <SaveAddress_Drawer
+        {/* <SaveAddress_Drawer
           storeCode={storeCode}
           editAddressId={editAddressId}
           openSaveAddressDrawer={openSaveAddressDrawer}
           setOpenSaveAddressDrawer={setOpenSaveAddressDrawer}
-        />
+        /> */}
         <PageType pageType={pageTypes.address} />
         <HeaderOptions
           headerOptions={{

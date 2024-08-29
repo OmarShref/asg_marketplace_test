@@ -159,7 +159,7 @@ export default function Cart_Card({ storeCode, cartItem }: Props) {
                 {cartItem?.name}
               </ProductCardName>
             </Anchor>
-            <div>
+            <div className=" flex flex-col items-center justify-center gap-3">
               {pathName === `/${storeCode}/cart` && (
                 <RemoveCartItem_Btn
                   storeCode={storeCode}

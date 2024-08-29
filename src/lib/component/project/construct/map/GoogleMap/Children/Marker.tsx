@@ -20,7 +20,7 @@ export function Marker(options: any) {
     if (marker) {
       marker.setOptions(options);
       marker.setIcon({
-        url: "/image/ic_locatepin.png",
+        url: "/image/ic_locatepin.svg",
         scaledSize: new window.google.maps.Size(35, 41),
       });
     }

@@ -44,7 +44,7 @@ export default function ProductOverview_Section({
           <h5 className=" pb-3 text-slate-400">
             {getText({ storeCode, text: Texts.specifications })}
           </h5>
-          <Attributes_Table description={longDescription} />
+          <Attributes_Table attributes={attributes} />
         </div>
       </div>
     </section>

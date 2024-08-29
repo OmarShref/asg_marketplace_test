@@ -359,13 +359,14 @@ export default function ProductPage({
             id="mobile-product-images"
             className=" duration-400 relative aspect-square transition-all ease-in-out"
           >
-            <ProductImages className=" h-full">
+            {/* over flow auto fixes absolute buttons that dissappear */}
+            <ProductImages className=" relative h-full overflow-auto">
               <ProductImages_Carousel_1
                 storeCode={params.storeCode}
                 images={configurableProductCurrentVariant?.images}
                 productName={configurableProductCurrentVariant?.name}
               />
-              <div className=" absolute end-6 top-6 flex flex-col gap-3">
+              <div className=" absolute end-6 top-6 z-10 flex flex-col gap-3">
                 <Addtowishlist_Btn productId={product?.id} className="" />
                 <Shareproduct_Btn
                   className=""
@@ -614,7 +615,7 @@ export default function ProductPage({
             quantity={configurableProductCurrentVariant?.quantity}
           />
           <ProductSection className=" relative flex items-start justify-start gap-5">
-            <section className=" sticky top-[140px] aspect-auto basis-7/12">
+            <section className=" sticky top-[120px] aspect-auto basis-7/12">
               <Spacing value={8} />
               <ProductImages className=" relative h-full">
                 <ProductImages_Carousel_2

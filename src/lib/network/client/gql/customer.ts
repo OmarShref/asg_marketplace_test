@@ -22,7 +22,6 @@ const gqlAddressItemInner = `
   region_id
   street
   telephone
-  location
 `;
 const gqlCustomerItemInner = `
   id
@@ -128,20 +127,6 @@ const gqlOrderItemInner = `
     }
   }
 `;
-const gqlCustomerRewardPointsItemInner = `
-          current_balance
-          history {
-              id
-              action_date
-              amount
-              comment
-              action
-              points_left
-              visible_for_customer
-              expiration_date
-              expiring_amount
-          }
-`;
 
 export async function getCustomer(): Promise<GetCustomerModel> {
   const getCustomerQuery = `
@@ -154,9 +139,6 @@ export async function getCustomer(): Promise<GetCustomerModel> {
             }
             wishlist {
               ${gqlWishListInner}
-            }
-            customerRewardPoints {
-              ${gqlCustomerRewardPointsItemInner}
             }
         }
 `;
@@ -247,7 +229,8 @@ function getAddressMutationInput(address: AddressModel | undefined) {
           city: "${address?.city}"
           firstname: "${address?.firstName}"
           lastname: "${address?.lastName}"
-          location:[${address?.lat}, ${address?.lng}]
+          latitude: ${address?.lat}
+          longitude: ${address?.lng}
           default_shipping: true
           default_billing: true
   `

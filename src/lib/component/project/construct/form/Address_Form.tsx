@@ -82,33 +82,6 @@ export function Address_Form({
       .email({
         message: getText({ storeCode: storeCode, text: Texts.emailIsNotValid }),
       }),
-    country: z
-      .string()
-      .trim()
-      .min(1, {
-        message: getText({
-          storeCode: storeCode,
-          text: Texts.pleaseChooseYourCountry,
-        }),
-      }),
-    region: z
-      .string()
-      .trim()
-      .min(1, {
-        message: getText({
-          storeCode: storeCode,
-          text: Texts.pleaseChooseYourRegion,
-        }),
-      }),
-    city: z
-      .string()
-      .trim()
-      .min(1, {
-        message: getText({
-          storeCode: storeCode,
-          text: Texts.pleaseChooseYourCity,
-        }),
-      }),
     street: z
       .string()
       .trim()
@@ -118,7 +91,6 @@ export function Address_Form({
           text: Texts.pleaseChooseYourStreet,
         }),
       }),
-    homeDetails: z.string().trim(),
   });
 
   // 1. Define form with default values.
@@ -133,11 +105,7 @@ export function Address_Form({
         !/^\d+@/.test(customer?.email ?? "") && !!customer?.email
           ? customer?.email
           : "",
-      country: "SA",
-      region: "",
-      city: "",
-      street: "",
-      homeDetails: "",
+      street: choosenLocation?.street ?? "",
     },
   });
 
@@ -150,14 +118,12 @@ export function Address_Form({
 
     const email = values.email?.trim()?.toLowerCase();
 
-    const street = [values.street, values.homeDetails].join(" , ");
-
     const latLng = [1, 1];
 
     const address = new AddressModel({
       ...choosenLocation,
       ...values,
-      street: street,
+      street: values.street,
       latLng: latLng,
       phone: phone,
       email: email,
@@ -213,7 +179,7 @@ export function Address_Form({
         lastName: values.lastName,
         phone: phone,
         email: email,
-        gender: "FEMALE",
+        gender: "MALE",
       });
 
       if (updateAccountInfoData?.success === true) {
@@ -274,13 +240,6 @@ export function Address_Form({
   }
 
   const [countries, setCountries] = useState<PlaceInterface[]>([]);
-  const [regionId, setRegionId] = useState<number>(-1);
-
-  const countryState = form.watch("country");
-  const regionState = form.watch("region");
-  const cityState = form.watch("city");
-  const streetState = form.watch("street");
-
   async function handleGetAddressCountries() {
     const countriesData = await getAddressCountries();
 
@@ -296,173 +255,6 @@ export function Address_Form({
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-full px-5 ">
-        {/* country */}
-        <FormField
-          control={form.control}
-          name="country"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>
-                {getText({
-                  storeCode: storeCode,
-                  text: Texts.country,
-                })}
-              </FormLabel>
-              <Spacing value={1} />
-              <Country_ComboBox
-                setValue={(value: string) => {
-                  form.setValue("country", value);
-                }}
-                countries={countries}
-              />
-              <Spacing value={1} />
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Spacing value={3} />
-
-        {/* region */}
-        {countryState && (
-          <>
-            <FormField
-              control={form.control}
-              name="region"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>
-                    {getText({
-                      storeCode: storeCode,
-                      text: Texts.city,
-                    })}
-                  </FormLabel>
-                  <Spacing value={1} />
-                  <Region_ComboBox
-                    setValue={(value: string) => {
-                      form.setValue("region", value?.split("|")[0].trim());
-                      setRegionId(
-                        parseInt(value?.split("|")?.at(2)?.trim() ?? "-1"),
-                      );
-                    }}
-                    countryCode={countryState}
-                  />
-                  <Spacing value={1} />
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <Spacing value={3} />
-          </>
-        )}
-
-        {/* city */}
-        {regionState && (
-          <>
-            <FormField
-              control={form.control}
-              name="city"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>
-                    {getText({
-                      storeCode: storeCode,
-                      text: Texts.district,
-                    })}
-                  </FormLabel>
-                  <Spacing value={1} />
-                  <City_ComboBox
-                    setValue={(value: string) => {
-                      form.setValue("city", value);
-                    }}
-                    regionId={regionId}
-                  />
-                  <Spacing value={1} />
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <Spacing value={3} />
-          </>
-        )}
-
-        {/* street */}
-        {cityState && (
-          <>
-            <FormField
-              control={form.control}
-              name="street"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>
-                    {getText({
-                      storeCode: storeCode,
-                      text: Texts.street,
-                    })}
-                  </FormLabel>
-                  <Spacing value={1} />
-                  <FormControl>
-                    <div className="relative flex items-center justify-start gap-3 rounded-lg bg-form_field_background px-3 py-3">
-                      <HomeIcon className="h-5 w-5 text-accent" />
-                      <Input
-                        type="text"
-                        maxLength={50}
-                        placeholder={getText({
-                          storeCode: storeCode,
-                          text: Texts.street,
-                        })}
-                        className=" h-auto border-none bg-transparent p-0 text-base"
-                        {...field}
-                      />
-                    </div>
-                  </FormControl>
-                  <Spacing value={1} />
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <Spacing value={3} />
-          </>
-        )}
-
-        {/* home details */}
-        {streetState && (
-          <>
-            <FormField
-              control={form.control}
-              name="homeDetails"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>
-                    {getText({
-                      storeCode: storeCode,
-                      text: Texts.homeDetails,
-                    })}
-                  </FormLabel>
-                  <Spacing value={1} />
-                  <FormControl>
-                    <div className="relative flex items-center justify-start gap-3 rounded-lg bg-form_field_background px-3 py-3">
-                      <HomeIcon className="h-5 w-5 text-accent" />
-                      <Input
-                        type="text"
-                        maxLength={50}
-                        placeholder={getText({
-                          storeCode: storeCode,
-                          text: Texts.homeDetails,
-                        })}
-                        className=" h-auto border-none bg-transparent p-0 text-base"
-                        {...field}
-                      />
-                    </div>
-                  </FormControl>
-                  <Spacing value={1} />
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <Spacing value={3} />
-          </>
-        )}
-
         {/* first name */}
         <FormField
           control={form.control}
@@ -556,7 +348,7 @@ export function Address_Form({
                       defaultValue="966"
                       onValueChange={(value) => form.setValue("prefix", value)}
                     >
-                      <SelectTrigger className="font-fontEnglish px-2">
+                      <SelectTrigger className="px-2 font-fontEnglish">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent className=" font-fontEnglish">
@@ -581,7 +373,7 @@ export function Address_Form({
                   <Input
                     type="tel"
                     placeholder={"xxx xxxx ..."}
-                    className=" font-fontEnglish h-auto border-none bg-transparent p-0 text-base"
+                    className=" h-auto border-none bg-transparent p-0 font-fontEnglish text-base"
                     {...field}
                   />
                 </div>
@@ -626,6 +418,43 @@ export function Address_Form({
           )}
         />
         <Spacing value={3} />
+
+        {/* address */}
+        <>
+          <FormField
+            control={form.control}
+            name="street"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>
+                  {getText({
+                    storeCode: storeCode,
+                    text: Texts.address,
+                  })}
+                </FormLabel>
+                <Spacing value={1} />
+                <FormControl>
+                  <div className="relative flex items-center justify-start gap-3 rounded-lg bg-form_field_background px-3 py-3">
+                    <HomeIcon className="h-5 w-5 text-accent" />
+                    <Input
+                      type="text"
+                      maxLength={100}
+                      placeholder={getText({
+                        storeCode: storeCode,
+                        text: Texts.address,
+                      })}
+                      className=" h-auto border-none bg-transparent p-0 text-base"
+                      {...field}
+                    />
+                  </div>
+                </FormControl>
+                <Spacing value={1} />
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Spacing value={3} />
+        </>
 
         <div className=" sticky bottom-0 bg-background">
           <SaveAddress_Btn storeCode={storeCode} />

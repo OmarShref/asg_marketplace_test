@@ -117,7 +117,6 @@ export const productTypes = {
   configurable: "configurable",
 };
 
-// TODO: fix supportedCountries
 export const mapOptions = {
   defaultZoom: 5,
   defaultTimeout: 1000,
@@ -125,7 +124,10 @@ export const mapOptions = {
   zoomIn: 15,
   supportedCountries: ["SA", "AE", "KW"],
   unknown: "unknown",
-  googleMapsApiKey: "AIzaSyB31O-99fwVZTpBT4NgzN4G3XqpcAfTkBY",
+  // blooming api key
+  // googleMapsApiKey: "AIzaSyB31O-99fwVZTpBT4NgzN4G3XqpcAfTkBY",
+  // alsaif api key
+  googleMapsApiKey: "AIzaSyAAYsP6c15U1iMoImt79gHyEwrHE5gO964",
 };
 
 export const paymentTypes = {

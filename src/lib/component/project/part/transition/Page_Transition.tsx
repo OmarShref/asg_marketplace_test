@@ -14,7 +14,7 @@ export default function Page_Transition({ children, className }: Props) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className={cn("", className)}
+      className={cn("z-[1]", className)}
     >
       {children}
     </motion.div>

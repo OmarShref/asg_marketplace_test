@@ -55,15 +55,6 @@ export const gqlCartItemInner = `
                         amount
                     }
                 }
-                gift_wrap_data {
-                  item_id
-                  wrap_id
-                  name
-                  amount
-                  image
-                  price
-                  all_cart
-                }
                 items {
                     item_id
                     sku
@@ -107,12 +98,6 @@ export const gqlCartItemInner = `
                     }
                 }
                 `;
-
-export const gqlRewardPointsItemInner = `
-          visible
-          points
-          color
-`;
 
 // =====================================types=========================================
 

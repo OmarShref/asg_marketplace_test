@@ -192,7 +192,7 @@ export class ProductModel implements ProductInterface {
         code: attribute?.attribute_code,
         name: attribute?.label,
         value: attribute?.value,
-        show: !!(attribute?.used_in_product_listing && attribute?.value),
+        show: !!(attribute?.is_html_allowed_on_front && attribute?.value),
       });
     });
   }

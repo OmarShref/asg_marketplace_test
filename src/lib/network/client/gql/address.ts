@@ -33,7 +33,7 @@ export async function getAddressyRegions({
   countryCode,
 }: AddressRequestProps): Promise<PlaceModel[]> {
   const getAddressRegionsQuery = `
-    {
+    query addressRegions {
         addressRegions(countryCode: "${countryCode}") {
             region_id
             region_code

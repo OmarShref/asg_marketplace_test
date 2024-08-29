@@ -47,7 +47,7 @@ export function ProductImages_Carousel_1({
       setApi={setApi}
       opts={{ direction: direction.current, align: "start" }}
     >
-      <CarouselContent className=" relative h-full">
+      <CarouselContent className=" relative h-full ">
         {images?.map((image, index) => (
           <CarouselItem key={index} className=" basis-[100%]">
             <Image
