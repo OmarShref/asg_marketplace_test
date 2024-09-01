@@ -55,7 +55,7 @@
   }
   .desktop-styled-products-carousel > section:nth-child(1) {
     position: relative;
-    width: 210px !important;
+    width: 220px !important;
     flex-shrink: 0 !important;
     padding-top: 32px !important;
   }
@@ -78,7 +78,7 @@
     -o-transform: translateY(-50%) !important;
   }
   .desktop-styled-products-carousel > section:nth-child(2) {
-    width: calc(100% - 220px) !important;
+    width: calc(100% - 230px) !important;
     flex-shrink: 0 !important;
   }
 

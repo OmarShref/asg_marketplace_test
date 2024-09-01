@@ -10,6 +10,7 @@ import { useState } from "react";
 import { renderPageBuilderComponent } from "../pageBuilder/Cms";
 import { PageBuilderType } from "@/lib/data/models/CmsPageModel";
 import Transition_1 from "../../part/transition/Transition_1";
+import Image from "@/lib/component/generic/pure/image";
 
 type Props = {
   storeCode: string;
@@ -32,16 +33,16 @@ export default function Menu_Tabs({ storeCode, tabs }: Props) {
     >
       <section className="flex justify-start gap-3">
         {/* Side bar tabs */}
-        <TabsList className=" flex aspect-square w-[20%] flex-col justify-start gap-2 overflow-y-scroll">
+        <TabsList className=" flex aspect-square w-[20%] flex-col justify-start overflow-y-scroll">
           {tabs?.children?.map((item, index) => {
             return (
               <TabsTrigger
                 key={index}
                 value={`${index}`}
-                className={` relative flex w-full items-center justify-start whitespace-normal border-b pb-2 duration-300 lg:hover:border-b-accent lg:hover:text-accent  ${index === currentIndex ? "border-b-accent text-accent" : "font-light text-slate-400"}`}
+                className={` relative flex w-full items-center justify-start whitespace-normal border-b py-2.5 lg:hover:border-b-accent lg:hover:text-accent  ${index === currentIndex ? "border-b-accent font-medium text-accent" : "font-light text-slate-400"} ${index === 0 && "pt-0"}`}
               >
                 <p
-                  className={`line-clamp-1 w-full text-ellipsis text-start text-base `}
+                  className={`line-clamp-1 w-full text-ellipsis text-start text-base`}
                 >
                   {item.name}
                 </p>
@@ -58,12 +59,23 @@ export default function Menu_Tabs({ storeCode, tabs }: Props) {
             <TabsContent
               key={index}
               value={`${index}`}
-              className=" w-[calc(80%-12px)] "
+              className=" w-[calc(80%-12px)]"
             >
-              {renderPageBuilderComponent({
-                storeCode,
-                child,
-              })}
+              <Transition_1 className="flex h-full w-full items-stretch justify-start gap-3">
+                <div className="w-[210px] shrink-0 pt-8">
+                  <Image
+                    src={child?.properties?.mobileIamge}
+                    alt=""
+                    className=" rounded-lg"
+                  />
+                </div>
+                <div className="w-[calc(100%-212px)]">
+                  {renderPageBuilderComponent({
+                    storeCode,
+                    child,
+                  })}
+                </div>
+              </Transition_1>
             </TabsContent>
           );
         })}
