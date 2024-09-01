@@ -21,7 +21,6 @@ export default function CmsPage({ params, cms, isSmallDevice }: Props) {
       <Cms
         cms={cms}
         storeCode={params?.storeCode}
-        classNameArray={[]}
         isSmallDevice={isSmallDevice}
       />
 

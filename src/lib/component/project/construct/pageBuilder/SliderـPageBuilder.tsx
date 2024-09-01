@@ -9,7 +9,11 @@ interface Props {
   isSmallDevice?: boolean;
 }
 
-export default function Slider({ storeCode, slider, isSmallDevice }: Props) {
+export default function SliderـPageBuilder({
+  storeCode,
+  slider,
+  isSmallDevice,
+}: Props) {
   if (
     slider?.children?.at(0)?.properties?.appearance ===
     pageBuilderAppearanceTypes.poster
@@ -20,6 +24,7 @@ export default function Slider({ storeCode, slider, isSmallDevice }: Props) {
           storeCode={storeCode}
           carouselItems={slider}
           isSmallDevice={isSmallDevice}
+          properties={slider?.properties}
         />
       </>
     );
@@ -33,6 +38,7 @@ export default function Slider({ storeCode, slider, isSmallDevice }: Props) {
           storeCode={storeCode}
           carouselItems={slider}
           isSmallDevice={isSmallDevice}
+          properties={slider?.properties}
         />
       </>
     );

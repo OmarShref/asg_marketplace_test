@@ -1,5 +1,6 @@
 import { unicodeToChar } from "@/lib/helper/unicode";
 import { ProductModel } from "./ProductModel";
+import { turnStringToBoolean } from "@/lib/helper/boolean_helper";
 
 export type PageBuilderType = {
   componentType: string;
@@ -50,10 +51,14 @@ export class CmsPageModel implements CmsPageInterface {
   #castPageBuilderJson(
     parsedPageBuilder: PageBuilderType[] | null,
   ): PageBuilderType[] | undefined {
-    return parsedPageBuilder?.map((item: any): PageBuilderType => {
+    const parsedPageBuilderArray = Array.isArray(parsedPageBuilder)
+      ? parsedPageBuilder
+      : Object?.values(parsedPageBuilder ?? {});
+
+    return parsedPageBuilderArray?.map((item: any): PageBuilderType => {
       return {
         componentType: item?.component_type,
-        name: item?.properties?.icon_name,
+        name: item?.properties?.tab_name ?? item?.properties?.icon_name,
         title: item?.properties?.header?.title,
         html: item?.html,
         url: (
@@ -71,11 +76,11 @@ export class CmsPageModel implements CmsPageInterface {
           mobileIamge:
             item?.properties?.background_images?.mobile_image ??
             item?.mobile_image,
-          autoPlay: item?.properties?.autoplay,
+          autoPlay: turnStringToBoolean(item?.properties?.autoplay),
           autoPlaySpeed: item?.properties?.autoplay_speed,
-          infinite_loop: item?.properties?.infinite_loop,
-          show_arrows: item?.properties?.show_arrows,
-          show_dots: item?.properties?.show_dots,
+          infinite_loop: turnStringToBoolean(item?.properties?.infinite_loop),
+          show_arrows: turnStringToBoolean(item?.properties?.show_arrows),
+          show_dots: turnStringToBoolean(item?.properties?.show_dots),
           css: item?.properties?.css,
           src: item?.properties?.src,
           headingType: item?.properties?.heading_type,

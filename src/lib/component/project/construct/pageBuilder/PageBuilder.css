@@ -1,4 +1,4 @@
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1023px) {
   .mobile-columns-slider {
     overflow-x: auto !important;
     flex-wrap: nowrap !important;
@@ -49,7 +49,38 @@
   }
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (min-width: 1024px) {
   .desktop-styled-products-carousel {
+    margin-bottom: 24px;
   }
+  .desktop-styled-products-carousel > section:nth-child(1) {
+    position: relative;
+    width: 210px !important;
+    flex-shrink: 0 !important;
+    padding-top: 32px !important;
+  }
+  .desktop-styled-products-carousel > section:nth-child(1) > a {
+    position: relative !important;
+  }
+  .desktop-styled-products-carousel > section:nth-child(1) > a::before {
+    content: "" !important;
+    width: 350px !important;
+    height: 420px !important;
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    margin-inline-start: 0px !important;
+    z-index: -1 !important;
+    background-color: inherit !important;
+    -webkit-transform: translateY(-50%) !important;
+    -moz-transform: translateY(-50%) !important;
+    -ms-transform: translateY(-50%) !important;
+    -o-transform: translateY(-50%) !important;
+  }
+  .desktop-styled-products-carousel > section:nth-child(2) {
+    width: calc(100% - 220px) !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* ================================== */
 }

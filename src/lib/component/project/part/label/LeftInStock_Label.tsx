@@ -9,7 +9,7 @@ type Props = {
 export default function LeftInStock_Label({ storeCode, quantity }: Props) {
   return (
     quantity <= 10 && (
-      <Label className=" bg-accent/15 text-xs text-red-500 md:text-base">
+      <Label className=" bg-accent/15 text-xs text-red-500 md:text-sm">
         <p className=" ">
           {`${getText({
             storeCode: storeCode,

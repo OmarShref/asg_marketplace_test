@@ -9,7 +9,7 @@ interface Props {
   isSmallDevice?: boolean;
 }
 
-export default function IconCarousel({
+export default function IconCarousel_PageBuilder({
   storeCode,
   iconCarousel,
   isSmallDevice,

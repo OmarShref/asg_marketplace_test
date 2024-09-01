@@ -20,12 +20,23 @@ type Props = {
   storeCode: string;
   carouselItems: PageBuilderType;
   isSmallDevice?: boolean;
+  properties?: PageBuilderType["properties"];
 };
 
-export function Carousel_1({ storeCode, carouselItems, isSmallDevice }: Props) {
+export function Carousel_1({
+  storeCode,
+  carouselItems,
+  isSmallDevice,
+  properties,
+}: Props) {
   const direction = useRef<"ltr" | "rtl">(getDirection(storeCode));
 
-  const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: false }));
+  const plugin = useRef(
+    Autoplay({
+      delay: properties?.autoPlaySpeed ?? 2000,
+      stopOnInteraction: false,
+    }),
+  );
 
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
@@ -46,9 +57,11 @@ export function Carousel_1({ storeCode, carouselItems, isSmallDevice }: Props) {
 
   return (
     <Carousel
-      plugins={[plugin.current]}
-      onMouseEnter={plugin.current.stop}
-      onMouseLeave={plugin.current.reset}
+      {...(properties?.autoPlay && {
+        plugins: [plugin.current],
+        onMouseEnter: plugin.current.stop,
+        onMouseLeave: plugin.current.reset,
+      })}
       setApi={setApi}
       opts={{ direction: direction.current, loop: true }}
       className=" mx-auto w-full"
@@ -70,21 +83,27 @@ export function Carousel_1({ storeCode, carouselItems, isSmallDevice }: Props) {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselBullets>
-        {carouselItems?.children?.map((_, index) => {
-          return (
-            <CarouselBullet
-              key={index}
-              className={`${
-                index === current ? " bg-accent" : " bg-faint_accent"
-              }`}
-              onClick={() => api?.scrollTo(index)}
-            />
-          );
-        })}
-      </CarouselBullets>
-      <CarouselPrevious className=" hidden lg:inline-flex" />
-      <CarouselNext className=" hidden lg:inline-flex" />
+      {properties?.show_dots && (
+        <CarouselBullets>
+          {carouselItems?.children?.map((_, index) => {
+            return (
+              <CarouselBullet
+                key={index}
+                className={`${
+                  index === current ? " bg-accent" : " bg-faint_accent"
+                }`}
+                onClick={() => api?.scrollTo(index)}
+              />
+            );
+          })}
+        </CarouselBullets>
+      )}
+      {properties?.show_arrows && (
+        <>
+          <CarouselPrevious className=" hidden lg:inline-flex" />
+          <CarouselNext className=" hidden lg:inline-flex" />
+        </>
+      )}
     </Carousel>
   );
 }

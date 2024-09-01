@@ -1,8 +1,11 @@
 "use client";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
+  CarouselApi,
+  CarouselBullet,
+  CarouselBullets,
   CarouselContent,
   CarouselItem,
   CarouselNext,
@@ -17,19 +20,50 @@ type Props = {
   storeCode: string;
   carouselItems: PageBuilderType;
   isSmallDevice?: boolean;
+  properties?: PageBuilderType["properties"];
 };
 
-export function Carousel_2({ storeCode, carouselItems, isSmallDevice }: Props) {
+export function Carousel_2({
+  storeCode,
+  carouselItems,
+  isSmallDevice,
+  properties,
+}: Props) {
   const direction = useRef<"ltr" | "rtl">(getDirection(storeCode));
 
-  const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: false }));
+  const plugin = useRef(
+    Autoplay({
+      delay: properties?.autoPlaySpeed ?? 2000,
+      stopOnInteraction: false,
+    }),
+  );
+
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  // const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    // setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap());
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
 
   return (
     <Carousel
-      plugins={[plugin.current]}
+      {...(properties?.autoPlay && {
+        plugins: [plugin.current],
+        onMouseEnter: plugin.current.stop,
+        onMouseLeave: plugin.current.reset,
+      })}
+      setApi={setApi}
       className=" mx-auto w-full"
-      onMouseEnter={plugin.current.stop}
-      onMouseLeave={plugin.current.reset}
       opts={{ direction: direction.current, loop: true }}
     >
       <CarouselContent className="">
@@ -49,8 +83,27 @@ export function Carousel_2({ storeCode, carouselItems, isSmallDevice }: Props) {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious className=" hidden lg:inline-flex" />
-      <CarouselNext className=" hidden lg:inline-flex" />
+      {properties?.show_dots && (
+        <CarouselBullets>
+          {carouselItems?.children?.map((_, index) => {
+            return (
+              <CarouselBullet
+                key={index}
+                className={`${
+                  index === current ? " bg-accent" : " bg-faint_accent"
+                }`}
+                onClick={() => api?.scrollTo(index)}
+              />
+            );
+          })}
+        </CarouselBullets>
+      )}
+      {properties?.show_arrows && (
+        <>
+          <CarouselPrevious className=" hidden lg:inline-flex" />
+          <CarouselNext className=" hidden lg:inline-flex" />
+        </>
+      )}
     </Carousel>
   );
 }

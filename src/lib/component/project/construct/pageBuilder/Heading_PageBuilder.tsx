@@ -4,7 +4,7 @@ interface Props {
   heading: PageBuilderType;
 }
 
-export default function Heading({ heading }: Props) {
+export default function Heading_PageBuilder({ heading }: Props) {
   const HeadingType = heading?.properties?.headingType as
     | "h1"
     | "h2"

@@ -114,11 +114,11 @@ export default function Header_1({ params, configuration, menu }: Props) {
             </section>
           </section>
           {/* landing pages tabs */}
-          {(pageType === pageTypes?.cms || pageType === pageTypes?.home) && (
+          {/* {(pageType === pageTypes?.cms || pageType === pageTypes?.home) && (
             <section>
               <LandingPages_Bar configuration={configuration} className="" />
             </section>
-          )}
+          )} */}
         </header>
       )}
 

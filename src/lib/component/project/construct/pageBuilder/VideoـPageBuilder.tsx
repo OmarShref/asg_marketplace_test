@@ -4,7 +4,7 @@ type Props = {
   video: PageBuilderType;
 };
 
-export default function Video({ video }: Props) {
+export default function VideoـPageBuilder({ video }: Props) {
   const videoUrl = video?.children
     ?.at(0)
     ?.children?.at(0)

@@ -22,7 +22,6 @@ export default function ProductListUtility_Bar({
   sort,
   setSort,
 }: Props) {
-  console.log(filters);
   return (
     <div className=" mx-5 flex max-w-project items-center justify-between lg:mx-auto">
       <CategoryQuantity className=" text-xs font-light text-secondry_text md:text-base">{`${totalCount} ${getText(

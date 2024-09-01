@@ -35,7 +35,7 @@ export default function Filter_Section({
   const pathname = usePathname();
 
   const [stagedFilters, setStagedFilters] = useState<FilterItemType[]>(
-    new FilterModel(searchParams?.customFilter).filters
+    new FilterModel(searchParams?.customFilter).filters,
   );
 
   function isStaged({
@@ -47,7 +47,7 @@ export default function Filter_Section({
   }): boolean {
     if (filter.code === "price") {
       const priceStagedFilter = stagedFilters?.find(
-        (stagedFilter) => stagedFilter?.code === "price"
+        (stagedFilter) => stagedFilter?.code === "price",
       );
       return (
         (priceStagedFilter?.min ?? 999999) === (filter?.min ?? 0) &&
@@ -58,7 +58,7 @@ export default function Filter_Section({
         (stagedFilters
           ?.find((stagedFilter) => stagedFilter?.code === filter.code)
           ?.options?.findIndex(
-            (stagedOption) => stagedOption?.value === optionValue
+            (stagedOption) => stagedOption?.value === optionValue,
           ) ?? -1) >= 0
       );
     }
@@ -92,7 +92,7 @@ export default function Filter_Section({
     optionValue: string;
   }): void {
     let targetFilterIndex = stagedFilters?.findIndex(
-      (stagedFilter) => stagedFilter?.code === filter?.code
+      (stagedFilter) => stagedFilter?.code === filter?.code,
     );
     let targetFilter =
       targetFilterIndex >= 0 ? stagedFilters?.at(targetFilterIndex) : null;
@@ -110,7 +110,7 @@ export default function Filter_Section({
         }
       } else {
         let targetOptionIndex = targetFilter?.options?.findIndex(
-          (option) => option?.value === optionValue
+          (option) => option?.value === optionValue,
         );
         targetOptionIndex >= 0
           ? targetFilter?.options?.splice(targetOptionIndex, 1)
@@ -128,14 +128,14 @@ export default function Filter_Section({
     if (targetFilter) {
       setStagedFilters([
         ...stagedFilters?.filter(
-          (stagedFilter) => stagedFilter?.code !== filter?.code
+          (stagedFilter) => stagedFilter?.code !== filter?.code,
         ),
         targetFilter,
       ]);
     } else {
       setStagedFilters([
         ...stagedFilters?.filter(
-          (stagedFilter) => stagedFilter?.code !== filter?.code
+          (stagedFilter) => stagedFilter?.code !== filter?.code,
         ),
       ]);
     }
@@ -143,7 +143,7 @@ export default function Filter_Section({
 
   function confirmFilters(): void {
     router.push(
-      pathname + turnFiltersToSearchParams({ filters: stagedFilters })
+      pathname + turnFiltersToSearchParams({ filters: stagedFilters }),
     );
   }
 
@@ -155,8 +155,8 @@ export default function Filter_Section({
   return (
     <section
       className={cn(
-        " hidden md:block border border-stone-200 px-2 pb-3 h-fit rounded-xl sticky top-44 max-h-[calc(100vh-196px)] overflow-y-auto",
-        className
+        " sticky top-36 hidden h-fit max-h-[calc(100vh-170px)] overflow-y-auto rounded-xl border border-stone-200 px-2 pb-0 md:block",
+        className,
       )}
     >
       <Filter className=" overflow-y-auto">
@@ -244,7 +244,7 @@ export default function Filter_Section({
           ?.reverse()}
       </Filter>
       <Spacing value={3} />
-      <section className=" flex flex-row items-center justify-between gap-3 sticky bottom-0 bg-white">
+      <section className=" sticky bottom-0 flex flex-row items-center justify-between gap-3 bg-white pb-2">
         <Confirm_Filter_Btn
           className=" basis-1/2 rounded-lg"
           onClick={() => {

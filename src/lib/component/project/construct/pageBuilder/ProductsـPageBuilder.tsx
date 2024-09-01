@@ -10,7 +10,7 @@ interface Props {
   products: PageBuilderType | undefined;
 }
 
-export default function Products({ storeCode, products }: Props) {
+export default function ProductsـPageBuilder({ storeCode, products }: Props) {
   const specialToDate = useRef(
     products?.products?.find((product) => product?.specialToDate?.length > 0)
       ?.specialToDate,
@@ -29,6 +29,7 @@ export default function Products({ storeCode, products }: Props) {
         storeCode={storeCode}
         className=""
         carouselItems={products?.products}
+        properties={products?.properties}
       />
     </div>
   );

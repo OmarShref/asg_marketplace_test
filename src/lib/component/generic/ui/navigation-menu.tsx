@@ -90,7 +90,7 @@ const NavigationMenuViewport = React.forwardRef<
       {...props}
     />
     {/* over lay background */}
-    <div className="pointer-events-none absolute top-1 -z-10 h-[1000%] w-[400%] animate-fade-in bg-black/30" />
+    <div className="pointer-events-none absolute top-1 -z-10 h-[1000%] w-[400%] animate-fade-in bg-black/30 backdrop-blur-sm" />
   </div>
 ));
 NavigationMenuViewport.displayName =

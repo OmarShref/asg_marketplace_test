@@ -9,15 +9,12 @@ interface Props {
   isSmallDevice?: boolean;
 }
 
-export default function Banner({ banner, isSmallDevice }: Props) {
+export default function Banner_PageBuilder({ banner, isSmallDevice }: Props) {
+  const JSXStyle = getPageBuilderBaseJSXStyle({
+    css: banner?.properties?.css,
+  });
   return (
-    <Anchor
-      href={banner?.url}
-      className={cn("h-full")}
-      style={getPageBuilderBaseJSXStyle({
-        css: banner?.properties?.css,
-      })}
-    >
+    <Anchor href={banner?.url} className={cn("h-full")} style={JSXStyle}>
       <Image
         src={
           isSmallDevice

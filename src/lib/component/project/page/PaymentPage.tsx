@@ -118,7 +118,7 @@ export default function PaymentPage({
             />
           </AccountSection>
           <Spacing value={4} />
-          <Cms storeCode={storeCode} cms={cms} classNameArray={["p-0"]} />
+          <Cms storeCode={storeCode} cms={cms} />
           <Spacing value={1} />
           <ScrollDetector id="select-payment-method-section" />
           <AccountSection>

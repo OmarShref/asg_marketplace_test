@@ -131,6 +131,9 @@ export default function Menu_Tabs({ storeCode, menu }: Props) {
             );
           })}
         </TabsList>
+
+        {/* ============================================ */}
+
         {/* Content */}
         {menu?.items?.map((item, index) => {
           return (
@@ -149,7 +152,6 @@ export default function Menu_Tabs({ storeCode, menu }: Props) {
                       })
                     }
                     storeCode={storeCode}
-                    classNameArray={["px-0 w-full rounded-lg overflow-clip"]}
                   />
                 </div>
                 <div>

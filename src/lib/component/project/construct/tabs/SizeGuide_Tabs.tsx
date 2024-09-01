@@ -40,11 +40,7 @@ export default function SizeGuide_Tabs({ storeCode, cms }: Props) {
         {cms?.map((cmsPage, index) => {
           return (
             <TabsContent key={index} value={cmsPage?.url} className="">
-              <Cms
-                storeCode={storeCode}
-                cms={cmsPage}
-                classNameArray={["px-2"]}
-              />
+              <Cms storeCode={storeCode} cms={cmsPage} />
             </TabsContent>
           );
         })}

@@ -95,7 +95,7 @@ export default function AccountPage({ storeCode, configuration, cms }: Props) {
         <AccountContent>
           {customerState && <AccountUtility_Bar storeCode={storeCode} />}
           <Spacing value={4} />
-          <Cms storeCode={storeCode} cms={cms} classNameArray={["p-0"]} />
+          <Cms storeCode={storeCode} cms={cms} />
           <Spacing value={4} />
           {customerState && (
             <CustomerRewardPoints_Drawer storeCode={storeCode} />

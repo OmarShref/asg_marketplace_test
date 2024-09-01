@@ -10,6 +10,14 @@ export const defaultCurrency: { [key: string]: CurrencyType } = {
     label: "SAR",
     value: "SAR",
   },
+  AE_ar: {
+    label: "د.إ",
+    value: "AED",
+  },
+  AE_en: {
+    label: "AED",
+    value: "AED",
+  },
 };
 
 export const siteName = {
@@ -44,8 +52,8 @@ export const pageTypes = {
   order: "order",
 };
 
-// export const baseUrl = "http://localhost:5050";
-export const baseUrl = "https://asg-vested.vercel.app";
+export const baseUrl = "http://localhost:5050";
+// export const baseUrl = "https://asg-vested.vercel.app";
 // export const baseUrl = "https://alsaifgallery.com";
 
 export const apiUrl = {
@@ -86,6 +94,7 @@ export const pageBuilderComponentTypes = {
   products: "products",
   video: "video",
   image: "image",
+  tabs: "tabs",
 };
 
 export const pageBuilderAppearanceTypes = {
