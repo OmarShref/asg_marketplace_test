@@ -8,14 +8,14 @@ import { useEffect, useMemo, useState } from "react";
 type SliderProps = React.ComponentProps<typeof Slider> & {
   storeCode: string;
   filter: FilterItemType;
-  setRabgeCallback: ({ range }: { range: [number, number] }) => void;
+  setRangeCallback: ({ range }: { range: [number, number] }) => void;
 };
 
 export function PriceFilter_MultiRange_Slider({
   className,
   storeCode,
   filter,
-  setRabgeCallback,
+  setRangeCallback,
   ...props
 }: SliderProps) {
   const direction = useMemo(() => getDirection(storeCode), [storeCode]);
@@ -42,7 +42,7 @@ export function PriceFilter_MultiRange_Slider({
         onValueChange={(value) => {
           setMin(value?.at(0));
           setMax(value?.at(1));
-          setRabgeCallback({ range: value as [number, number] });
+          setRangeCallback({ range: value as [number, number] });
         }}
         {...props}
       />

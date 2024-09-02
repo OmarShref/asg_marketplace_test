@@ -72,8 +72,6 @@ export const deviceTypes = {
 export const sortTypes = {
   priceLowToHigh: "{ Price_rangeMinimum_priceFinal_priceValue: ASC }",
   priceHighToLow: "{ Price_rangeMinimum_priceFinal_priceValue: DESC }",
-  positionLowToHigh: "{ General_position: ASC }",
-  positionHighToLow: "{ General_position: DESC }",
   disCountHighToLow: "{ Price_rangeMinimum_priceDiscountPercent_off: DESC }",
   merchandising: "{}",
 };

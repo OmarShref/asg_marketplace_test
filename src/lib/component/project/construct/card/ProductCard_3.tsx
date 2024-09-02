@@ -158,7 +158,7 @@ export default function ProductCard_3({
         >
           <ProductCardImage
             variant={"rounded"}
-            className=" overflow-clip transition-all duration-300 lg:group-hover:scale-105"
+            className=" overflow-clip transition-all duration-300 lg:group-hover:scale-110"
           >
             <Image
               src={`${configurableProductCurrentVariant.smallImage}?width=300`}

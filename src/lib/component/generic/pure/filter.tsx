@@ -100,7 +100,6 @@ const FilterOptionVariants = cva(
     variants: {
       variant: {
         default: " ",
-        swatch: " ",
       },
     },
     defaultVariants: {
@@ -132,7 +131,7 @@ const FilterOption = React.forwardRef<HTMLButtonElement, FilterOptionProps>(
         )}
         {...props}
       >
-        {filterOption?.swatchType !== "text" && (
+        {filterOption?.swatchType !== "text" && filterOption?.isSwatch && (
           <div
             className={`aspect-square w-10 overflow-hidden rounded-full bg-cover bg-center bg-no-repeat shadow-md ring-2 md:w-6 ${
               isStaged
@@ -152,11 +151,11 @@ const FilterOption = React.forwardRef<HTMLButtonElement, FilterOptionProps>(
 
         {filterOption?.label && (
           <p
-            className={` font-fontEnglish md-max:min-w-10 md-max:rounded-lg md-max:py-1 md-max:ring-2 ${
+            className={` md-max:min-w-10 md-max:rounded-lg md-max:px-2 md-max:py-1 md-max:ring-2 ${
               isStaged
                 ? "md-max:text-accent md-max:ring-accent"
                 : "md-max:ring-filter_option_border"
-            } ${variant === "swatch" ? "md-max:hidden" : ""} `}
+            } ${filterOption?.swatchType !== "text" && filterOption?.isSwatch ? "md-max:hidden" : ""} `}
           >
             {!!filterOption?.label ? filterOption?.label : ""}
           </p>

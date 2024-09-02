@@ -35,7 +35,7 @@ export default function Filter_Section({
   const pathname = usePathname();
 
   const [stagedFilters, setStagedFilters] = useState<FilterItemType[]>(
-    new FilterModel(searchParams?.customFilter).filters,
+    new FilterModel(searchParams?.customFilters).filters,
   );
 
   function isStaged({
@@ -175,7 +175,7 @@ export default function Filter_Section({
                         <PriceFilter_MultiRange_Slider
                           storeCode={params?.storeCode}
                           filter={filter}
-                          setRabgeCallback={({ range }) => {
+                          setRangeCallback={({ range }) => {
                             const priceFilter = {
                               filter: {
                                 code: filter?.code,
@@ -194,44 +194,22 @@ export default function Filter_Section({
                     ) : (
                       <FilterOptions>
                         {filter.options.map((option) => {
-                          switch (filter.code) {
-                            case "color":
-                            case "brand":
-                              return (
-                                <FilterOption
-                                  key={option.value}
-                                  variant={"swatch"}
-                                  isStaged={isStaged({
-                                    filter: filter,
-                                    optionValue: option.value,
-                                  })}
-                                  onClick={() => {
-                                    setOrRemoveOption({
-                                      filter: filter,
-                                      optionValue: option.value,
-                                    });
-                                  }}
-                                  filterOption={option}
-                                ></FilterOption>
-                              );
-                            default:
-                              return (
-                                <FilterOption
-                                  key={option.value}
-                                  isStaged={isStaged({
-                                    filter: filter,
-                                    optionValue: option.value,
-                                  })}
-                                  onClick={() => {
-                                    setOrRemoveOption({
-                                      filter: filter,
-                                      optionValue: option.value,
-                                    });
-                                  }}
-                                  filterOption={option}
-                                ></FilterOption>
-                              );
-                          }
+                          return (
+                            <FilterOption
+                              key={option.value}
+                              isStaged={isStaged({
+                                filter: filter,
+                                optionValue: option.value,
+                              })}
+                              onClick={() => {
+                                setOrRemoveOption({
+                                  filter: filter,
+                                  optionValue: option.value,
+                                });
+                              }}
+                              filterOption={option}
+                            ></FilterOption>
+                          );
                         })}
                       </FilterOptions>
                     )}

@@ -22,10 +22,6 @@ export class SortModel implements SortInterface {
     };
     this.options = [
       {
-        Label: isArabicLanguage ? Texts.newArrival[0] : Texts.newArrival[1],
-        value: sortTypes.positionHighToLow,
-      },
-      {
         Label: isArabicLanguage ? Texts.sales[0] : Texts.sales[1],
         value: sortTypes.disCountHighToLow,
       },

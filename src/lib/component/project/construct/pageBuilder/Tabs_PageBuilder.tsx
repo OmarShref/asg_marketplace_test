@@ -15,9 +15,10 @@ import Image from "@/lib/component/generic/pure/image";
 type Props = {
   storeCode: string;
   tabs: PageBuilderType | undefined;
+  isSmallDevice: boolean;
 };
 
-export default function Menu_Tabs({ storeCode, tabs }: Props) {
+export default function Menu_Tabs({ storeCode, tabs, isSmallDevice }: Props) {
   const direction = getDirection(storeCode);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -64,7 +65,11 @@ export default function Menu_Tabs({ storeCode, tabs }: Props) {
               <Transition_1 className="flex h-full w-full flex-col items-stretch justify-start gap-3 lg:flex-row">
                 <div className="w-full shrink-0 lg:w-[210px] lg:pt-8">
                   <Image
-                    src={child?.properties?.mobileIamge}
+                    src={
+                      isSmallDevice
+                        ? child?.properties?.mobileIamge
+                        : child?.properties?.desktopImage
+                    }
                     alt=""
                     className=" rounded-lg"
                   />

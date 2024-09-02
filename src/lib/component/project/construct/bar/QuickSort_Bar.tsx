@@ -22,7 +22,7 @@ export default function QuickSort_Bar({
   return (
     !!setSort && (
       <div className={cn(" flex items-center justify-center gap-2", className)}>
-        <QuickSort_Btn
+        {/* <QuickSort_Btn
           onClick={() => {
             setSort({
               Label: isArabicLanguage
@@ -36,7 +36,7 @@ export default function QuickSort_Bar({
           <p className=" text-[13px] font-light">
             {isArabicLanguage ? Texts.newArrival[0] : Texts.newArrival[1]}
           </p>
-        </QuickSort_Btn>
+        </QuickSort_Btn> */}
         <QuickSort_Btn
           onClick={() => {
             setSort({

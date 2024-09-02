@@ -17,7 +17,7 @@ export class MetaDataModel {
   #category: CategoryModel;
   #product: ProductModel;
   #params: { storeCode: string; route?: string[]; searchTerm?: string };
-  #searchParams: { page?: string; customFilter?: string } | undefined;
+  #searchParams: { page?: string; customFilters?: string } | undefined;
 
   #defaultTitle: string;
   #defaultDescription: string;
@@ -157,7 +157,7 @@ export class MetaDataModel {
         : (this.#category?.name ?? this.#defaultDescription);
     this.keywords = this.#category?.metaKeywords ?? this.#defaultKeywords;
     this.robots = {
-      index: this.#searchParams?.customFilter ? false : true,
+      index: this.#searchParams?.customFilters ? false : true,
       follow: true,
     };
     this.alternates = {

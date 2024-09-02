@@ -11,7 +11,7 @@ interface FilterBtnInterface
 const Filter_Btn = forwardRef<HTMLButtonElement, FilterBtnInterface>(
   ({ params, searchParams, ...props }, ref) => {
     const appliedFilters =
-      searchParams?.customFilter
+      searchParams?.customFilters
         ?.split(";")
         ?.map((filter) => {
           const options = filter?.split(",");
@@ -22,14 +22,14 @@ const Filter_Btn = forwardRef<HTMLButtonElement, FilterBtnInterface>(
       <Button
         ref={ref}
         variant={"circle"}
-        className=" bg-secondary w-9"
+        className=" w-9 bg-secondary"
         {...props}
       >
         <FilterIcon className=" h-auto w-5 text-accent" />
         {appliedFilters > 0 && (
           <Itemcount_Label
             value={`${appliedFilters}`}
-            className="  bottom-0 left-0 font-fontEnglish"
+            className="  bottom-0 left-0 font-fontEnglish text-white"
           />
         )}
       </Button>

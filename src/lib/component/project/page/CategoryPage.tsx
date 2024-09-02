@@ -43,7 +43,7 @@ export default function CategoryPage({
   const [sort, setSort] = useState<SortItemType>();
   const [clientCategory, setClientCategory] = useState<CategoryModel>();
 
-  const [spicialToDate, setSpicialToDate] = useState<string | undefined>(
+  const [spicialToDate] = useState<string | undefined>(
     category?.products?.find((product) => product?.specialToDate?.length > 1)
       ?.specialToDate,
   );
@@ -87,7 +87,7 @@ export default function CategoryPage({
 
   useEffect(() => {
     handleFilter();
-  }, [searchParams?.customFilter]);
+  }, [searchParams?.customFilters]);
 
   useEffect(() => {
     // gtm view item list event
@@ -149,7 +149,7 @@ export default function CategoryPage({
             )}
             <Spacing value={3} />
             <ProductCards_Grid
-              key={`${searchParams?.customFilter}`}
+              key={`${searchParams?.customFilters}`}
               storeCode={params.storeCode}
               products={clientCategory?.products ?? category?.products}
               category={clientCategory ?? category}
@@ -174,7 +174,6 @@ export default function CategoryPage({
               withUrlPagination={false}
               className=" xl:grid-cols-4"
             />
-            <Spacing value={3} />
           </div>
         </section>
 

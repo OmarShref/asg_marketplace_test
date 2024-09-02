@@ -49,7 +49,7 @@ export function FilterDrawer({
   const direction = getDirection(params.storeCode);
 
   const [stagedFilters, setStagedFilters] = useState<FilterItemType[]>(
-    new FilterModel(searchParams?.customFilter).filters,
+    new FilterModel(searchParams?.customFilters).filters,
   );
 
   function isStaged({
@@ -188,7 +188,7 @@ export function FilterDrawer({
             </DrawerClose>
           </DrawerHeader>
           <Spacing value={3} />
-          <Filter className=" overflow-y-auto">
+          <Filter className=" overflow-y-auto" data-vaul-no-drag>
             {filters
               .map((filter, index) => {
                 return (
@@ -204,7 +204,7 @@ export function FilterDrawer({
                             <PriceFilter_MultiRange_Slider
                               storeCode={params?.storeCode}
                               filter={filter}
-                              setRabgeCallback={({ range }) => {
+                              setRangeCallback={({ range }) => {
                                 const priceFilter = {
                                   filter: {
                                     code: filter?.code,
@@ -223,44 +223,22 @@ export function FilterDrawer({
                         ) : (
                           <FilterOptions>
                             {filter.options.map((option) => {
-                              switch (filter.code) {
-                                case "color":
-                                case "brand":
-                                  return (
-                                    <FilterOption
-                                      key={option.value}
-                                      variant={"swatch"}
-                                      isStaged={isStaged({
-                                        filter: filter,
-                                        optionValue: option.value,
-                                      })}
-                                      onClick={() => {
-                                        setOrRemoveOption({
-                                          filter: filter,
-                                          optionValue: option.value,
-                                        });
-                                      }}
-                                      filterOption={option}
-                                    ></FilterOption>
-                                  );
-                                default:
-                                  return (
-                                    <FilterOption
-                                      key={option.value}
-                                      isStaged={isStaged({
-                                        filter: filter,
-                                        optionValue: option.value,
-                                      })}
-                                      onClick={() => {
-                                        setOrRemoveOption({
-                                          filter: filter,
-                                          optionValue: option.value,
-                                        });
-                                      }}
-                                      filterOption={option}
-                                    ></FilterOption>
-                                  );
-                              }
+                              return (
+                                <FilterOption
+                                  key={option.value}
+                                  isStaged={isStaged({
+                                    filter: filter,
+                                    optionValue: option.value,
+                                  })}
+                                  onClick={() => {
+                                    setOrRemoveOption({
+                                      filter: filter,
+                                      optionValue: option.value,
+                                    });
+                                  }}
+                                  filterOption={option}
+                                ></FilterOption>
+                              );
                             })}
                           </FilterOptions>
                         )}

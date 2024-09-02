@@ -11,12 +11,12 @@ export function getLoadMoreUrl({
   page,
 }: PageProps & { page: number }): string {
   const newUrl = `${baseUrl}/${params.storeCode}/${params.route?.join("/")}${
-    searchParams?.customFilter
-      ? `?customFilter=${searchParams?.customFilter}`
+    searchParams?.customFilters
+      ? `?customFilters=${searchParams?.customFilters}`
       : ""
   }${
     page > 1
-      ? searchParams?.customFilter
+      ? searchParams?.customFilters
         ? `&page=${page}`
         : `?page=${page}`
       : ""

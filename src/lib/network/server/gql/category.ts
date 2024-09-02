@@ -1,10 +1,10 @@
 "use server";
 import { ServerReqProps } from "@/lib/data/types/ServerReqProps";
 import { ServerGqlGetRequest } from "./base-request/ServerGqlGetRequest";
-import { getFilterQuery } from "@/lib/controller/filterController";
 import { CategoryModel } from "@/lib/data/models/CategoryModel";
 import { sortTypes } from "@/lib/core/basic/Constants";
 import { gqlCategoryInnerItem } from "../../query/categoryQuery";
+import { FilterModel } from "@/lib/data/models/FilterModel";
 
 export interface CategoryRequestProps extends ServerReqProps {
   page?: number;
@@ -57,4 +57,30 @@ export async function getCategory({
   })?.create();
 
   return category;
+}
+
+function getFilterQuery(searchParams?: { customFilters?: string }): string {
+  const customFilters = searchParams?.customFilters;
+
+  if (!customFilters) {
+    return "";
+  }
+
+  const filter = new FilterModel(customFilters);
+
+  const filterQuery = filter.filters
+    .map((filter) => {
+      if (filter.code === "price") {
+        return `${filter.correspondingFilter}: { between: [${filter.min} ,${filter.max}] }`;
+      } else {
+        return `${filter.correspondingFilter}: { in: [${filter.options
+          .map((option) => option.value)
+          .join(",")}] }`;
+      }
+    })
+    ?.join(" ");
+
+  console.log(filterQuery);
+
+  return filterQuery;
 }

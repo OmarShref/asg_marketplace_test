@@ -38,20 +38,10 @@ export class FilterModel implements FilterInterface {
 
   #getCorrespondingFilter = (code: string) => {
     switch (code) {
-      case "color":
-        return "Configurable_optionsColorValuesValue_dataOption_id";
-      case "size":
-        return "Configurable_optionsSizeValuesValue_dataOption_id";
-      case "material":
-        return "AttributesMaterialOption_id";
-      case "brand":
-        return "AttributesBrandOption_id";
-      case "function":
-        return "AttributesFunctionOption_id";
       case "price":
         return "Price_rangeMinimum_priceFinal_priceValue";
       default:
-        return "";
+        return `Attributes${code.charAt(0).toUpperCase() + code.slice(1)}Option_id`;
     }
   };
 

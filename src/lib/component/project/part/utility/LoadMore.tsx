@@ -38,10 +38,10 @@ export default function LoadMore({
   const [products, setProducts] = useState<ProductModel[]>([]);
   const [category, setCategory] = useState<CategoryModel | undefined>();
   const [page, setPage] = useState<number>(
-    getPageNumber(pageNumber ?? searchParams?.page) + 1
+    getPageNumber(pageNumber ?? searchParams?.page) + 1,
   );
   const currentSort = useRef(sort?.value);
-  const currentFilter = useRef(searchParams?.customFilter);
+  const currentFilter = useRef(searchParams?.customFilters);
 
   function resetLoadMore(page?: number) {
     setProducts([]);
@@ -55,9 +55,9 @@ export default function LoadMore({
     }
   }
   function handleFilterChange() {
-    if (currentFilter.current != searchParams?.customFilter) {
+    if (currentFilter.current != searchParams?.customFilters) {
       resetLoadMore();
-      currentFilter.current = searchParams?.customFilter;
+      currentFilter.current = searchParams?.customFilters;
     }
   }
   function handlePageChange() {
@@ -86,7 +86,7 @@ export default function LoadMore({
       window.history.replaceState(
         {},
         "",
-        getLoadMoreUrl({ params, searchParams, page: page })
+        getLoadMoreUrl({ params, searchParams, page: page }),
       );
     }
   }

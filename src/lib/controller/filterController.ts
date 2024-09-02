@@ -1,30 +1,5 @@
 import { FilterItemType, FilterModel } from "../data/models/FilterModel";
 
-export function getFilterQuery(searchParams?: {
-  customFilter?: string;
-}): string {
-  const customFilter = searchParams?.customFilter;
-  if (customFilter) {
-    const filter = new FilterModel(customFilter);
-
-    const filterQuery = filter.filters
-      .map((filter) => {
-        if (filter.code === "price") {
-          return `${filter.correspondingFilter}: { between: [${filter.min} ,${filter.max}] }`;
-        } else {
-          return `${filter.correspondingFilter}: { in: [${filter.options
-            .map((option) => option.value)
-            .join(",")}] }`;
-        }
-      })
-      ?.join(" ");
-
-    return filterQuery;
-  } else {
-    return "";
-  }
-}
-
 export function turnFiltersToSearchParams({
   filters,
 }: {
@@ -45,7 +20,9 @@ export function turnFiltersToSearchParams({
   const filterSearchParams = filterSearchParamsArray?.join(";");
 
   const searchParams =
-    filterSearchParams?.length > 0 ? `?customFilter=${filterSearchParams}` : "";
+    filterSearchParams?.length > 0
+      ? `?customFilters=${filterSearchParams}`
+      : "";
 
   return searchParams;
 }

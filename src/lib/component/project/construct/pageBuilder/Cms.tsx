@@ -148,7 +148,12 @@ export function renderPageBuilderComponent({
 
       case pageBuilderComponentTypes.tabs:
         return (
-          <Tabs_PageBuilder key={index} storeCode={storeCode} tabs={child} />
+          <Tabs_PageBuilder
+            key={index}
+            storeCode={storeCode}
+            tabs={child}
+            isSmallDevice={isSmallDevice}
+          />
         );
 
       default:
