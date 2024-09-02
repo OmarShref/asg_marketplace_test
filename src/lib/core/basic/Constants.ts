@@ -93,6 +93,7 @@ export const pageBuilderComponentTypes = {
   video: "video",
   image: "image",
   tabs: "tabs",
+  block: "block",
 };
 
 export const pageBuilderAppearanceTypes = {

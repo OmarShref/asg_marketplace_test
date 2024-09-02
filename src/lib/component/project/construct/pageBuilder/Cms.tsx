@@ -156,6 +156,13 @@ export function renderPageBuilderComponent({
           />
         );
 
+      case pageBuilderComponentTypes.block:
+        return renderPageBuilderComponent({
+          storeCode,
+          isSmallDevice,
+          child,
+        })?.reverse();
+
       default:
         return null;
     }
