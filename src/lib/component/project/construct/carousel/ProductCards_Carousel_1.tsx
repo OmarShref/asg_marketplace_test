@@ -31,7 +31,7 @@ export function ProductCards_Carousel_1({
   const plugin = useRef(
     Autoplay({
       delay: properties?.autoPlaySpeed ?? 2000,
-      stopOnInteraction: false,
+      stopOnInteraction: true,
     }),
   );
 
@@ -39,8 +39,12 @@ export function ProductCards_Carousel_1({
     <Carousel
       {...(properties?.autoPlay && {
         plugins: [plugin.current],
-        onMouseEnter: plugin.current.stop,
-        onMouseLeave: plugin.current.reset,
+        onMouseEnter: () => {
+          plugin.current.stop();
+        },
+        onMouseLeave: () => {
+          plugin.current.play();
+        },
       })}
       className={cn(" mx-auto w-full", className)}
       opts={{ direction: direction.current, skipSnaps: true, align: "start" }}

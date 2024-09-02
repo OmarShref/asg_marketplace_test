@@ -34,7 +34,7 @@ export function Carousel_2({
   const plugin = useRef(
     Autoplay({
       delay: properties?.autoPlaySpeed ?? 2000,
-      stopOnInteraction: false,
+      stopOnInteraction: true,
     }),
   );
 
@@ -59,8 +59,12 @@ export function Carousel_2({
     <Carousel
       {...(properties?.autoPlay && {
         plugins: [plugin.current],
-        onMouseEnter: plugin.current.stop,
-        onMouseLeave: plugin.current.reset,
+        onMouseEnter: () => {
+          plugin.current.stop();
+        },
+        onMouseLeave: () => {
+          plugin.current.play();
+        },
       })}
       setApi={setApi}
       className=" mx-auto w-full"

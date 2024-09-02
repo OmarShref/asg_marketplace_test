@@ -50,7 +50,7 @@ export function renderPageBuilderComponent({
   storeCode: string;
   isSmallDevice?: boolean;
   child: PageBuilderType | PageBuilderType[] | undefined;
-}) {
+}): React.ReactNode[] {
   const children = Array.isArray(child) ? child : child?.children;
   return children?.map((child: PageBuilderType, index: number) => {
     switch (child.componentType) {
@@ -166,5 +166,5 @@ export function renderPageBuilderComponent({
       default:
         return null;
     }
-  });
+  }) as React.ReactNode[];
 }
