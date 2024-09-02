@@ -31,18 +31,18 @@ export default function Menu_Tabs({ storeCode, tabs }: Props) {
         setCurrentIndex(Number(value));
       }}
     >
-      <section className="flex justify-start gap-3">
+      <section className=" flex flex-col justify-start gap-3 lg:flex-row">
         {/* Side bar tabs */}
-        <TabsList className=" flex aspect-square w-[20%] flex-col justify-start overflow-y-scroll">
+        <TabsList className=" flex w-full flex-row justify-start gap-4 overflow-y-scroll lg:aspect-square lg:w-[20%] lg:flex-col lg:gap-0">
           {tabs?.children?.map((item, index) => {
             return (
               <TabsTrigger
                 key={index}
                 value={`${index}`}
-                className={` relative flex w-full items-center justify-start whitespace-normal border-b py-2.5 lg:hover:border-b-accent lg:hover:text-accent  ${index === currentIndex ? "border-b-accent font-medium text-accent" : "font-light text-slate-400"} ${index === 0 && "pt-0"}`}
+                className={` relative flex w-fit items-center justify-start whitespace-nowrap border-b py-2.5 lg:w-full lg:whitespace-normal lg:hover:border-b-accent lg:hover:text-accent  ${index === currentIndex ? "border-b-accent font-medium text-accent" : "font-light text-slate-400"} ${index === 0 && "lg:pt-0"}`}
               >
                 <p
-                  className={`line-clamp-1 w-full text-ellipsis text-start text-base`}
+                  className={`w-fit text-start text-base lg:line-clamp-1 lg:w-full lg:text-ellipsis`}
                 >
                   {item.name}
                 </p>
@@ -59,17 +59,17 @@ export default function Menu_Tabs({ storeCode, tabs }: Props) {
             <TabsContent
               key={index}
               value={`${index}`}
-              className=" w-[calc(80%-12px)]"
+              className=" w-full lg:w-[calc(80%-12px)]"
             >
-              <Transition_1 className="flex h-full w-full items-stretch justify-start gap-3">
-                <div className="w-[210px] shrink-0 pt-8">
+              <Transition_1 className="flex h-full w-full flex-col items-stretch justify-start gap-3 lg:flex-row">
+                <div className="w-full shrink-0 lg:w-[210px] lg:pt-8">
                   <Image
                     src={child?.properties?.mobileIamge}
                     alt=""
                     className=" rounded-lg"
                   />
                 </div>
-                <div className="w-[calc(100%-212px)]">
+                <div className="w-full lg:w-[calc(100%-212px)]">
                   {renderPageBuilderComponent({
                     storeCode,
                     child,
