@@ -3,6 +3,7 @@ import Spacing from "@/lib/component/generic/pure/spacing";
 import { AttributeType } from "@/lib/data/models/ProductModel";
 import { cn } from "@/lib/utils/utils";
 import Attributes_Table from "../table/Attributes_Table";
+import RichContent_template_1 from "../template/rich-content/RichContent_template_1";
 
 type Props = {
   storeCode: string;
@@ -47,6 +48,10 @@ export default function ProductOverview_Section({
           <Attributes_Table attributes={attributes} />
         </div>
       </div>
+
+      {/* ============================== */}
+
+      <RichContent_template_1 />
     </section>
   );
 }

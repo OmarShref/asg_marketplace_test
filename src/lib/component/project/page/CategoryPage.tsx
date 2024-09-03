@@ -112,7 +112,7 @@ export default function CategoryPage({
             params={params}
             searchParams={searchParams}
             filters={category?.filters}
-            className={" mt-5 basis-3/12"}
+            className={" basis-3/12"}
           />
 
           {/* ============================================================================================= */}
@@ -122,7 +122,7 @@ export default function CategoryPage({
               <Spacing value={4} />
 
               <section className=" mx-5 flex max-w-project items-center justify-start gap-3 lg:mx-auto">
-                <CategoryName className="  text-lg font-medium text-secondry_text md:text-3xl">
+                <CategoryName className="  text-lg font-medium text-secondry_text md:text-xl">
                   {category.name}
                 </CategoryName>
                 <Timer_1 specialToDate={spicialToDate ?? ""} />
