@@ -7,9 +7,18 @@ import {
 } from "../network/client/gql/customer";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { GtmEvents } from "../core/analytics/Gtm";
-import { ProductModel } from "../data/models/ProductModel";
+import {
+  ProductModel,
+  VariantOptionType,
+  VariantType,
+} from "../data/models/ProductModel";
 import { baseUrl, productTypes } from "../core/basic/Constants";
 import { ConfigurationModel } from "../data/models/ConfigurationModel";
+import { addItemToCart } from "../network/client/gql/cart";
+import { Texts, getText } from "../assets/text";
+import { scrollToId } from "./scrollController";
+import { algoliaEventsSingleton } from "../core/analytics/Algolia";
+import { RewardPointsModel } from "../data/models/RewardPointsModel";
 
 export async function addOrRemoveWishlistItemController({
   productId,
@@ -67,6 +76,8 @@ export async function addOrRemoveWishlistItemController({
     }
   }
 }
+
+// ===================================================
 
 // TODO: add patern to product structured data
 export function getProductStructuredData({
@@ -266,4 +277,155 @@ export function getProductStructuredData({
   //     name: product?.reviews?.at(0)?.name,
   //   },
   // },
+}
+
+// ===================================================
+
+export async function handleAddToCart({
+  configurableProduct,
+  configurableProductCurrentVariant,
+  sizeVariant,
+  colorVariant,
+  curretSizeVariantOption,
+  curretColorVariantOption,
+  productCount,
+  setAddedToCartOpen,
+  setAddedToCartSuccess,
+  setProductRewardPoints,
+  successSoundRef,
+  toast,
+}: {
+  configurableProduct: ProductModel;
+  configurableProductCurrentVariant: ProductModel;
+  sizeVariant: VariantType | undefined;
+  colorVariant: VariantType | undefined;
+  curretSizeVariantOption: VariantOptionType | undefined;
+  curretColorVariantOption: VariantOptionType | undefined;
+  productCount: number;
+  setAddedToCartOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setAddedToCartSuccess: React.Dispatch<React.SetStateAction<boolean>>;
+  setProductRewardPoints: React.Dispatch<
+    React.SetStateAction<RewardPointsModel | undefined>
+  >;
+  successSoundRef: React.RefObject<HTMLAudioElement>;
+  toast: any;
+}) {
+  if (configurableProductCurrentVariant?.type === productTypes?.simple) {
+    setAddedToCartOpen(true);
+    const addTocartData = await addItemToCart({
+      sku: configurableProduct?.sku,
+      quantity: productCount,
+      productType: productTypes.configurable,
+      configurableOptions: [
+        {
+          optionId: sizeVariant?.id ?? 0,
+          optionValue: curretSizeVariantOption?.id ?? 0,
+        },
+        {
+          optionId: colorVariant?.id ?? 0,
+          optionValue: curretColorVariantOption?.id ?? 0,
+        },
+      ],
+      simpleProductId: configurableProductCurrentVariant?.id,
+    });
+    if (addTocartData?.success) {
+      useUserStore.setState({
+        cart: addTocartData?.cart,
+        checkoutRewardPoints: addTocartData?.checkoutRewardPoints,
+      });
+      setProductRewardPoints(addTocartData?.productRewardPoints);
+      setAddedToCartSuccess(true);
+      successSoundRef?.current?.play();
+
+      const gtmProduct = ProductModel?.toGtm(configurableProduct);
+
+      gtmProduct.quantity = productCount;
+
+      // gtm event
+      new GtmEvents({
+        gtmProduct: gtmProduct,
+      }).addToCart();
+
+      // algolia event
+      algoliaEventsSingleton?.addToCart({
+        product: configurableProductCurrentVariant,
+        quantity: productCount,
+      });
+    } else {
+      toast({
+        description: addTocartData?.errorMessage,
+        variant: "destructive",
+      });
+    }
+  } else if (
+    configurableProductCurrentVariant?.type === productTypes?.configurable
+  ) {
+    if (!curretColorVariantOption) {
+      toast({
+        description: getText({
+          storeCode: useUtilityStore?.getState()?.storeCode,
+          text: Texts?.pleaseChooseColor,
+        }),
+        variant: "destructive",
+      });
+      scrollToId({ id: "color-scroll-detector" });
+    } else if (!curretSizeVariantOption) {
+      toast({
+        description: getText({
+          storeCode: useUtilityStore?.getState()?.storeCode,
+          text: Texts?.pleaseChooseSize,
+        }),
+        className: " text-center",
+        variant: "destructive",
+      });
+      scrollToId({ id: "size-scroll-detector" });
+    } else {
+      setAddedToCartOpen(true);
+      const addTocartData = await addItemToCart({
+        sku: configurableProduct?.sku,
+        quantity: productCount,
+        productType: productTypes.configurable,
+        configurableOptions: [
+          {
+            optionId: sizeVariant?.id ?? 0,
+            optionValue: curretSizeVariantOption?.id ?? 0,
+          },
+          {
+            optionId: colorVariant?.id ?? 0,
+            optionValue: curretColorVariantOption?.id ?? 0,
+          },
+        ],
+        simpleProductId: configurableProductCurrentVariant?.id,
+      });
+      if (addTocartData?.success) {
+        useUserStore.setState({
+          cart: addTocartData?.cart,
+          checkoutRewardPoints: addTocartData?.checkoutRewardPoints,
+        });
+        setProductRewardPoints(addTocartData?.productRewardPoints);
+        setAddedToCartSuccess(true);
+        successSoundRef?.current?.play();
+
+        const gtmProduct = ProductModel?.toGtm(configurableProduct);
+
+        gtmProduct.quantity = productCount;
+
+        // gtm event
+        new GtmEvents({
+          gtmProduct: gtmProduct,
+        }).addToCart();
+
+        // algolia event
+        algoliaEventsSingleton?.addToCart({
+          product: configurableProductCurrentVariant,
+          quantity: productCount,
+        });
+      } else {
+        toast({
+          description: addTocartData?.errorMessage,
+          variant: "destructive",
+        });
+      }
+    }
+  }
 }

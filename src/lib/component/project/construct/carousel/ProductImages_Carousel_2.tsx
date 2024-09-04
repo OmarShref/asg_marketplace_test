@@ -85,8 +85,8 @@ export function ProductImages_Carousel_2({
       {/* =========================================================== */}
 
       {/* bullets or thumbs */}
-      <div className=" h-full shrink-0 basis-2/12 overflow-y-scroll">
-        <CarouselBullets className=" w-full flex-col justify-start gap-2 bg-background px-2 pt-0">
+      <div className=" h-full shrink-0 basis-2/12 overflow-y-scroll overscroll-contain">
+        <CarouselBullets className=" w-full flex-col justify-start gap-2 overscroll-contain bg-background px-2 pt-0">
           {images?.map((image, index) => {
             return (
               <Image
@@ -99,7 +99,14 @@ export function ProductImages_Carousel_2({
                     ? " z-10 border-2 border-accent blur-0"
                     : " blur-[1px]"
                 } `}
-                onClick={() => api?.scrollTo(index)}
+                onClick={(e) => {
+                  api?.scrollTo(index);
+                  // (e.target as HTMLElement)?.scrollIntoView({
+                  //   behavior: "smooth",
+                  //   block: "center",
+                  //   inline: "nearest",
+                  // });
+                }}
               />
             );
           })}

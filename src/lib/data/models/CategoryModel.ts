@@ -2,6 +2,7 @@ import { CurrencyType, getCurrency } from "@/lib/helper/currency";
 import { FilterItemType, FilterModel } from "./FilterModel";
 import { GtmProductType, ProductModel } from "./ProductModel";
 import { baseUrl } from "@/lib/core/basic/Constants";
+import { CmsPageModel } from "./CmsPageModel";
 
 export type GtmCategoryType = {
   currency: string | undefined;
@@ -52,6 +53,7 @@ export class CategoryModel implements CategoryInterface {
   products: ProductModel[];
   filters: FilterItemType[];
   queryId?: string;
+  pageBuilder: CmsPageModel | undefined;
 
   #getPaginationUrl() {
     const hasPrevious =
@@ -110,6 +112,10 @@ export class CategoryModel implements CategoryInterface {
       return new ProductModel({ productData, storeCode })?.create();
     });
     this.filters = new FilterModel(categoryFilters).filters;
+    this.pageBuilder = new CmsPageModel({
+      storeCode: storeCode ?? "SA_ar",
+      cmsPageData: categoryMetaData?.page_builder_json,
+    })?.create();
   }
 
   create(): CategoryModel {
@@ -129,6 +135,7 @@ export class CategoryModel implements CategoryInterface {
       metaKeywords: this.metaKeywords,
       products: this.products,
       filters: this.filters,
+      pageBuilder: this.pageBuilder,
     } as CategoryModel;
   }
 

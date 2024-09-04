@@ -30,6 +30,7 @@ export async function getCategory({
         meta_keywords
         meta_description
         image
+        page_builder_json
     }
     vestedProducts(
         filter: {
@@ -79,8 +80,6 @@ function getFilterQuery(searchParams?: { customFilters?: string }): string {
       }
     })
     ?.join(" ");
-
-  console.log(filterQuery);
 
   return filterQuery;
 }

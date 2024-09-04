@@ -29,15 +29,18 @@ import Timer_1 from "../part/timer/Timer_1";
 import { algoliaEventsSingleton } from "@/lib/core/analytics/Algolia";
 import Filter_Section from "../construct/section/Filter_Section";
 import Page_Transition from "../part/transition/Page_Transition";
+import Cms from "../construct/pageBuilder/Cms";
 
 interface Props extends PageProps {
   category: CategoryModel;
+  isSmallDevice: boolean;
 }
 
 export default function CategoryPage({
   category,
   params,
   searchParams,
+  isSmallDevice,
 }: Props) {
   const sortOptions = useRef(new SortModel({ storeCode: params.storeCode }));
   const [sort, setSort] = useState<SortItemType>();
@@ -105,7 +108,16 @@ export default function CategoryPage({
     <Page_Transition>
       <Category className=" pb-20">
         <ScrollDetector id="category-page-scroll-detector" />
+        <Spacing value={4} />
 
+        {/* page builder */}
+        <Cms
+          storeCode={params.storeCode}
+          cms={category?.pageBuilder}
+          isSmallDevice={isSmallDevice}
+        />
+
+        {/* category products */}
         <section className=" mx-auto flex max-w-project gap-5 ">
           {/* for desktop */}
           <Filter_Section

@@ -71,6 +71,7 @@ import LeftInStock_Label from "../part/label/LeftInStock_Label";
 import dynamic from "next/dynamic";
 import ProductOverview_Section from "../construct/section/ProductOverview_Section";
 import Description_Table from "../construct/table/Description_Table";
+import { handleAddToCart } from "@/lib/controller/productController";
 // const Sizes_Drawer = dynamic(() => import("../construct/drawer/Sizes_Drawer"));
 // const SizeGuide_Drawer = dynamic(
 //   () => import("../construct/drawer/SizeGuide_Drawer"),
@@ -208,127 +209,23 @@ export default function ProductPage({
     RewardPointsModel | undefined
   >(undefined);
 
-  // ===========================================================
+  // ============================================================
 
-  async function handleAddToCart() {
-    if (configurableProductCurrentVariant?.type === productTypes?.simple) {
-      setAddedToCartOpen(true);
-      const addTocartData = await addItemToCart({
-        sku: configurableProduct?.sku,
-        quantity: productCount,
-        productType: productTypes.configurable,
-        configurableOptions: [
-          {
-            optionId: sizeVariant?.id ?? 0,
-            optionValue: curretSizeVariantOption?.id ?? 0,
-          },
-          {
-            optionId: colorVariant?.id ?? 0,
-            optionValue: curretColorVariantOption?.id ?? 0,
-          },
-        ],
-        simpleProductId: configurableProductCurrentVariant?.id,
-      });
-      if (addTocartData?.success) {
-        useUserStore.setState({
-          cart: addTocartData?.cart,
-          checkoutRewardPoints: addTocartData?.checkoutRewardPoints,
-        });
-        setProductRewardPoints(addTocartData?.productRewardPoints);
-        setAddedToCartSuccess(true);
-        successSoundRef?.current?.play();
-
-        const gtmProduct = ProductModel?.toGtm(configurableProduct);
-
-        gtmProduct.quantity = productCount;
-
-        // gtm event
-        new GtmEvents({
-          gtmProduct: gtmProduct,
-        }).addToCart();
-
-        // algolia event
-        algoliaEventsSingleton?.addToCart({
-          product: configurableProductCurrentVariant,
-          quantity: productCount,
-        });
-      } else {
-        toast({
-          description: addTocartData?.errorMessage,
-          variant: "destructive",
-        });
-      }
-    } else if (
-      configurableProductCurrentVariant?.type === productTypes?.configurable
-    ) {
-      if (!curretColorVariantOption) {
-        toast({
-          description: getText({
-            storeCode: params?.storeCode,
-            text: Texts?.pleaseChooseColor,
-          }),
-          variant: "destructive",
-        });
-        scrollToId({ id: "color-scroll-detector" });
-      } else if (!curretSizeVariantOption) {
-        toast({
-          description: getText({
-            storeCode: params?.storeCode,
-            text: Texts?.pleaseChooseSize,
-          }),
-          className: " text-center",
-          variant: "destructive",
-        });
-        scrollToId({ id: "size-scroll-detector" });
-      } else {
-        setAddedToCartOpen(true);
-        const addTocartData = await addItemToCart({
-          sku: configurableProduct?.sku,
-          quantity: productCount,
-          productType: productTypes.configurable,
-          configurableOptions: [
-            {
-              optionId: sizeVariant?.id ?? 0,
-              optionValue: curretSizeVariantOption?.id ?? 0,
-            },
-            {
-              optionId: colorVariant?.id ?? 0,
-              optionValue: curretColorVariantOption?.id ?? 0,
-            },
-          ],
-          simpleProductId: configurableProductCurrentVariant?.id,
-        });
-        if (addTocartData?.success) {
-          useUserStore.setState({
-            cart: addTocartData?.cart,
-            checkoutRewardPoints: addTocartData?.checkoutRewardPoints,
-          });
-          setProductRewardPoints(addTocartData?.productRewardPoints);
-          setAddedToCartSuccess(true);
-          successSoundRef?.current?.play();
-
-          const gtmProduct = ProductModel?.toGtm(configurableProduct);
-
-          gtmProduct.quantity = productCount;
-
-          // gtm event
-          new GtmEvents({
-            gtmProduct: gtmProduct,
-          }).addToCart();
-
-          // algolia event
-          algoliaEventsSingleton?.addToCart({
-            product: configurableProductCurrentVariant,
-            quantity: productCount,
-          });
-        } else {
-          toast({
-            description: addTocartData?.errorMessage,
-            variant: "destructive",
-          });
-        }
-      }
-    }
+  function addToCartHandler() {
+    handleAddToCart({
+      configurableProduct,
+      configurableProductCurrentVariant,
+      colorVariant,
+      sizeVariant,
+      curretColorVariantOption,
+      curretSizeVariantOption,
+      setAddedToCartOpen,
+      setAddedToCartSuccess,
+      productCount,
+      setProductRewardPoints,
+      successSoundRef,
+      toast,
+    });
   }
 
   // ============================================================
@@ -513,6 +410,7 @@ export default function ProductPage({
               description={configurableProductCurrentVariant?.shortDescription}
             />
             <Spacing value={4} />
+
             {/* =================================== */}
 
             <Separator />
@@ -578,7 +476,7 @@ export default function ProductPage({
             productCount={productCount}
             setProductCount={setProductCount}
             disabled={!configurableProductCurrentVariant?.inStock}
-            onClick={handleAddToCart}
+            onClick={addToCartHandler}
           />
           <AddedToCart_Drawer
             storeCode={params.storeCode}
@@ -783,7 +681,7 @@ export default function ProductPage({
                 productCount={productCount}
                 setProductCount={setProductCount}
                 disabled={!configurableProductCurrentVariant?.inStock}
-                onClick={handleAddToCart}
+                onClick={addToCartHandler}
                 className=" relative bg-background"
               />
             </section>

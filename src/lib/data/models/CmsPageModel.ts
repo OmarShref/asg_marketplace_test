@@ -108,7 +108,7 @@ export class CmsPageModel implements CmsPageInterface {
 
     const cmsPage = cmsPageData;
     const pageBuilderJson =
-      cmsPage?.page_builder_json ?? cmsPage?.pageBuilderJson;
+      cmsPage?.page_builder_json ?? cmsPage?.pageBuilderJson ?? cmsPage;
     let parsedPageBuilder = null;
     if (pageBuilderJson) {
       parsedPageBuilder = JSON.parse(

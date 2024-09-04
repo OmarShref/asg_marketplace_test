@@ -1,12 +1,16 @@
-import { Separator } from "@/lib/component/generic/ui/separator";
+"use client";
 import { cn } from "@/lib/utils/utils";
+import { useEffect, useState } from "react";
 
 type Props = {
   description: string;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export default function Description_Table({ description, className }: Props) {
-  const decriptionArray = extractTextContentArrayFromHtml(description);
+  const [decriptionArray, setDecriptionArray] = useState<string[][]>();
+  useEffect(() => {
+    setDecriptionArray(extractTextContentArrayFromHtml(description));
+  }, []);
 
   return (
     <div
@@ -15,7 +19,7 @@ export default function Description_Table({ description, className }: Props) {
         className,
       )}
     >
-      {decriptionArray.map((item, index) => (
+      {decriptionArray?.map((item, index) => (
         <div key={index} className={` flex `}>
           <p
             className={` flex basis-1/2 items-center py-1 ps-3 text-sm ${index % 2 === 0 ? "bg-slate-200" : ""}`}

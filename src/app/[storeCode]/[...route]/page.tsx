@@ -119,6 +119,7 @@ export default async function page({ params, searchParams }: PageProps) {
           params={params}
           searchParams={searchParams}
           category={category}
+          isSmallDevice={isSmallDevice}
         />
       </>
     );

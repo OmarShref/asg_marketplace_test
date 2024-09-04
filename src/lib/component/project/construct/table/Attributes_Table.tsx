@@ -22,7 +22,7 @@ export default function Attributes_Table({ attributes, className }: Props) {
             </p>
             <div
               dangerouslySetInnerHTML={{ __html: attribute?.value ?? "" }}
-              className={` flex basis-1/2 items-center py-1 ps-3 text-sm ${index % 2 != 0 ? "bg-slate-300 " : "bg-background"}`}
+              className={` flex basis-1/2 flex-col items-start py-1 ps-3 text-sm ${index % 2 != 0 ? "bg-slate-300 " : "bg-background"}`}
             ></div>
           </div>
         ))}
