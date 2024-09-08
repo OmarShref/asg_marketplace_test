@@ -25,7 +25,7 @@ export default function NotFound({}: Props) {
         </p>
         <Spacing value={10} />
         <Anchor href={`/${storeCode}/`}>
-          <BasicConfirm_Btn className=" flex max-w-md lg:mx-auto ">
+          <BasicConfirm_Btn className=" flex max-w-md  lg:mx-auto">
             {getText({ storeCode: storeCode, text: Texts.continueShopping })}
           </BasicConfirm_Btn>
         </Anchor>

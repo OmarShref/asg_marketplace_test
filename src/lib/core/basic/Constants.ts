@@ -95,7 +95,7 @@ export const pageBuilderComponentTypes = {
   tabs: "tabs",
   block: "block",
 };
-//
+
 export const pageBuilderAppearanceTypes = {
   focusCarousel: "focus-carousel",
   carousel: "carousel",

@@ -5,7 +5,7 @@ import useUtilityStore from "@/lib/data/stores/UtilityStore";
 import { CrownIcon } from "lucide-react";
 
 type Props = {
-  productRewardPoints: RewardPointsModel | undefined;
+  productRewardPoints: RewardPointsModel | undefined | null;
 };
 
 export function FinishBuyingProductToGetPoints_Label({
@@ -29,7 +29,7 @@ export function FinishBuyingProductToGetPoints_Label({
           storeCode: useUtilityStore?.getState()?.storeCode,
           text: Texts.finishBuyingThisProductToGet,
         })} `}
-        <span className="font-fontEnglish animate-pulse text-lg font-medium">{`${productRewardPoints?.points}`}</span>
+        <span className="animate-pulse font-fontEnglish text-lg font-medium">{`${productRewardPoints?.points}`}</span>
         {` ${getText({
           storeCode: useUtilityStore?.getState()?.storeCode,
           text: Texts.point,

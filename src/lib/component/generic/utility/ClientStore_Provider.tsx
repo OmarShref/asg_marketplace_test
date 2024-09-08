@@ -8,7 +8,7 @@ type Props = {
   storeCode: string;
 };
 
-export default function ClientUtility({ storeCode }: Props) {
+export default function ClientStore_Provider({ storeCode }: Props) {
   const { anonymousId } = useUserStore((state) => state);
   useEffect(() => {
     useUtilityStore.setState({ storeCode: storeCode });

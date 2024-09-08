@@ -4,8 +4,8 @@ import NavBar from "@/lib/component/project/construct/bar/NavBar";
 import Header_1 from "@/lib/component/project/construct/header/Header_1";
 import "../globals.css";
 // import CheckCustomerInfoUpdated from "@/lib/component/generic/utility/CheckCustomerInfoUpdated";
-import ClientUtility from "@/lib/component/generic/utility/ClientUtility";
-import Analytics from "@/lib/component/generic/utility/Analytics";
+import ClientStore_Provider from "@/lib/component/generic/utility/ClientStore_Provider";
+// import Analytics from "@/lib/component/generic/utility/Analytics";
 import { getConfiguration } from "@/lib/network/server/gql/configuration";
 import { getMenu } from "@/lib/network/server/gql/menu";
 import { Toaster } from "@/lib/component/generic/ui/toaster";
@@ -14,6 +14,9 @@ import Main_Footer from "@/lib/component/project/construct/footer/Main_Footer";
 // import Above_Header from "@/lib/component/project/construct/header/Above_Header";
 import { Suspense } from "react";
 import LoadingPage from "./loading";
+import AddedToCart_Utility from "@/lib/component/project/part/utility/AddedToCart_Utility";
+import { checkSmallDevice } from "@/lib/helper/devicetype";
+import { headers } from "next/headers";
 
 // export const dynamic = "force-static";
 // export const dynamicParams = true;
@@ -50,6 +53,7 @@ type Props = {
 
 export default async function layout({ children, params }: Props) {
   const direction = getDirection(params.storeCode);
+  const isSmallDevice = checkSmallDevice(headers());
 
   const [configuration, menu] = await Promise.all([
     getConfiguration({ params }),
@@ -68,7 +72,10 @@ export default async function layout({ children, params }: Props) {
           style={{ direction: direction }}
         >
           {/* client utitlities  */}
-          <ClientUtility storeCode={params.storeCode} />
+          <ClientStore_Provider storeCode={params.storeCode} />
+
+          {/* added to cart utility */}
+          <AddedToCart_Utility isSmallDevice={isSmallDevice} />
 
           {/* Analytics */}
           {/* <Analytics /> */}

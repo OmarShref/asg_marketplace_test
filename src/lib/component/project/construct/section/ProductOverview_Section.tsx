@@ -4,6 +4,7 @@ import { AttributeType } from "@/lib/data/models/ProductModel";
 import { cn } from "@/lib/utils/utils";
 import Attributes_Table from "../table/Attributes_Table";
 import RichContent_template_1 from "../template/rich-content/RichContent_template_1";
+import { correctHtml } from "@/lib/helper/html_helper";
 
 type Props = {
   storeCode: string;
@@ -35,7 +36,9 @@ export default function ProductOverview_Section({
             {getText({ storeCode, text: Texts.highlights })}
           </h5>
           <div
-            dangerouslySetInnerHTML={{ __html: longDescription }}
+            dangerouslySetInnerHTML={{
+              __html: correctHtml(longDescription),
+            }}
             className="text-sm"
           ></div>
         </div>

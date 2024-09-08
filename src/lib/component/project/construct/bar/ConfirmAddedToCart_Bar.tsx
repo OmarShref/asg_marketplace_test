@@ -23,11 +23,16 @@ export default function ConfirmAddedToCart_Bar({
             setAddedToCartDrawerOpen(false);
           }}
         >
-          <p className=" text-primary_text text-sm">
+          <p className=" text-sm text-primary_text">
             {getText({ storeCode: storeCode, text: Texts.continueShopping })}
           </p>
         </BasicConfirm_Btn>
-        <BasicConfirm_Btn className={` basis-1/2 `}>
+        <BasicConfirm_Btn
+          className={` basis-1/2 `}
+          onClick={() => {
+            setAddedToCartDrawerOpen(false);
+          }}
+        >
           <Anchor href={`/${storeCode}/cart`}>
             <p className="text-sm">
               {getText({ storeCode: storeCode, text: Texts.showCart })}

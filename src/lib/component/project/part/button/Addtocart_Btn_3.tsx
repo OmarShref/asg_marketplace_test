@@ -1,7 +1,6 @@
 "use client";
 import { Texts, getText } from "@/lib/assets/text";
 import { Button } from "@/lib/component/generic/ui/button";
-import useUserStore from "@/lib/data/stores/UserStore";
 import { cn } from "@/lib/utils/utils";
 import { ShoppingCartIcon } from "lucide-react";
 

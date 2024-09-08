@@ -1,5 +1,6 @@
 import { Separator } from "@/lib/component/generic/ui/separator";
 import { AttributeType } from "@/lib/data/models/ProductModel";
+import { correctHtml } from "@/lib/helper/html_helper";
 import { cn } from "@/lib/utils/utils";
 
 type Props = {
@@ -9,24 +10,28 @@ type Props = {
 export default function Attributes_Table({ attributes, className }: Props) {
   return (
     <div
-      className={cn(" relative w-full overflow-hidden rounded-lg ", className)}
+      className={cn(
+        " relative w-full overflow-hidden rounded-lg border",
+        className,
+      )}
     >
       {attributes
         ?.filter((attribute) => attribute?.show)
         ?.map((attribute, index) => (
           <div key={index} className={` flex  ${index !== 0 ? "" : ""}`}>
             <p
-              className={` flex basis-1/2 items-center py-1 ps-3 text-sm ${index % 2 === 0 ? "bg-slate-300 " : "bg-background"}`}
+              className={` flex basis-1/2 items-center border-l py-1 ps-3 text-sm ${index % 2 === 0 ? "bg-slate-200 " : "bg-background"}`}
             >
               {attribute?.name}
             </p>
             <div
-              dangerouslySetInnerHTML={{ __html: attribute?.value ?? "" }}
-              className={` flex basis-1/2 flex-col items-start py-1 ps-3 text-sm ${index % 2 != 0 ? "bg-slate-300 " : "bg-background"}`}
+              dangerouslySetInnerHTML={{
+                __html: correctHtml(attribute?.value ?? ""),
+              }}
+              className={` flex basis-1/2 flex-col items-start py-1 ps-3 text-sm ${index % 2 === 0 ? "bg-slate-200 " : "bg-background"}`}
             ></div>
           </div>
         ))}
-      <Separator orientation="vertical" className=" absolute start-1/2 top-0" />
     </div>
   );
 }

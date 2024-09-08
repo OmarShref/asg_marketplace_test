@@ -18,7 +18,6 @@ import { addItemToCart } from "../network/client/gql/cart";
 import { Texts, getText } from "../assets/text";
 import { scrollToId } from "./scrollController";
 import { algoliaEventsSingleton } from "../core/analytics/Algolia";
-import { RewardPointsModel } from "../data/models/RewardPointsModel";
 
 export async function addOrRemoveWishlistItemController({
   productId,
@@ -289,10 +288,6 @@ export async function handleAddToCart({
   curretSizeVariantOption,
   curretColorVariantOption,
   productCount,
-  setAddedToCartOpen,
-  setAddedToCartSuccess,
-  setProductRewardPoints,
-  successSoundRef,
   toast,
 }: {
   configurableProduct: ProductModel;
@@ -302,30 +297,34 @@ export async function handleAddToCart({
   curretSizeVariantOption: VariantOptionType | undefined;
   curretColorVariantOption: VariantOptionType | undefined;
   productCount: number;
-  setAddedToCartOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  setAddedToCartSuccess: React.Dispatch<React.SetStateAction<boolean>>;
-  setProductRewardPoints: React.Dispatch<
-    React.SetStateAction<RewardPointsModel | undefined>
-  >;
-  successSoundRef: React.RefObject<HTMLAudioElement>;
   toast: any;
 }) {
+  const setAddedToCartOpen = useUtilityStore?.getState()?.setAddedToCartOpen;
+  const setAddedToCartSuccess =
+    useUtilityStore?.getState()?.setAddedToCartSuccess;
+  const setAddedToCartProduct =
+    useUtilityStore?.getState().setAddedToCartProduct;
+  const setAddedToCartRewardPoints =
+    useUtilityStore?.getState()?.setAddedToCartRewardPoints;
+
   if (configurableProductCurrentVariant?.type === productTypes?.simple) {
     setAddedToCartOpen(true);
+    setAddedToCartProduct(configurableProduct);
+
     const addTocartData = await addItemToCart({
       sku: configurableProduct?.sku,
       quantity: productCount,
       productType: productTypes.simple,
       simpleProductId: configurableProductCurrentVariant?.id,
     });
+
     if (addTocartData?.success) {
       useUserStore.setState({
         cart: addTocartData?.cart,
         checkoutRewardPoints: addTocartData?.checkoutRewardPoints,
       });
-      setProductRewardPoints(addTocartData?.productRewardPoints);
+      setAddedToCartRewardPoints(addTocartData?.productRewardPoints);
       setAddedToCartSuccess(true);
-      successSoundRef?.current?.play();
 
       const gtmProduct = ProductModel?.toGtm(configurableProduct);
 
@@ -371,6 +370,8 @@ export async function handleAddToCart({
       scrollToId({ id: "size-scroll-detector" });
     } else {
       setAddedToCartOpen(true);
+      setAddedToCartProduct(configurableProduct);
+
       const addTocartData = await addItemToCart({
         sku: configurableProduct?.sku,
         quantity: productCount,
@@ -387,14 +388,14 @@ export async function handleAddToCart({
         ],
         simpleProductId: configurableProductCurrentVariant?.id,
       });
+
       if (addTocartData?.success) {
         useUserStore.setState({
           cart: addTocartData?.cart,
           checkoutRewardPoints: addTocartData?.checkoutRewardPoints,
         });
-        setProductRewardPoints(addTocartData?.productRewardPoints);
+        setAddedToCartRewardPoints(addTocartData?.productRewardPoints);
         setAddedToCartSuccess(true);
-        successSoundRef?.current?.play();
 
         const gtmProduct = ProductModel?.toGtm(configurableProduct);
 

@@ -6,6 +6,7 @@ export const gqlCategoryInnerItem = `
         sku
         special_to_date
         small_image
+        type_id
         media_gallery {
           value
         }

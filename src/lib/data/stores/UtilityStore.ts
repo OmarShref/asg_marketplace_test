@@ -1,5 +1,7 @@
 import { productsListDisplayModes, stores } from "@/lib/core/basic/Constants";
 import { create } from "zustand";
+import { ProductModel } from "../models/ProductModel";
+import { RewardPointsModel } from "../models/RewardPointsModel";
 
 export type HeaderOptionsType = {
   showHeader?: boolean;
@@ -24,6 +26,17 @@ export type Utility = {
   navbarOptions: NavbarOptionsType;
   openAddPaymentCardDrawer: boolean;
   generalLoading: boolean;
+  // ====================================
+  addedToCartOpen: boolean;
+  setAddedToCartOpen: (value: boolean) => void;
+  addedToCartSuccess: boolean;
+  setAddedToCartSuccess: (value: boolean) => void;
+  addedToCartProduct: ProductModel | null;
+  setAddedToCartProduct: (product: ProductModel | null) => void;
+  addedToCartRewardPoints: RewardPointsModel | null;
+  setAddedToCartRewardPoints: (
+    rewardPoints: RewardPointsModel | null | undefined,
+  ) => void;
 };
 
 const useUtilityStore = create<Utility>((set) => ({
@@ -52,6 +65,25 @@ const useUtilityStore = create<Utility>((set) => ({
   },
   openAddPaymentCardDrawer: false,
   generalLoading: false,
+
+  // ====================================
+
+  addedToCartOpen: false,
+  setAddedToCartOpen: (value: boolean) => set({ addedToCartOpen: value }),
+  addedToCartSuccess: false,
+  setAddedToCartSuccess: (value: boolean) => set({ addedToCartSuccess: value }),
+  addedToCartProduct: null,
+  setAddedToCartProduct: (product: ProductModel | null) =>
+    set({
+      addedToCartProduct: product,
+    }),
+  addedToCartRewardPoints: null,
+  setAddedToCartRewardPoints: (
+    rewardPoints: RewardPointsModel | null | undefined,
+  ) =>
+    set({
+      addedToCartRewardPoints: rewardPoints,
+    }),
 }));
 
 export default useUtilityStore;

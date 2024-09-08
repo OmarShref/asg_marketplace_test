@@ -50,7 +50,6 @@ import Addtocart_Btn_2 from "../part/button/AddToCart_Btn_2";
 import { getProduct } from "@/lib/network/server/gql/product";
 import HeaderOptions from "../../generic/utility/HeaderOptions";
 import NavbarOptions from "../../generic/utility/NavbarOptions";
-import { addItemToCart } from "@/lib/network/client/gql/cart";
 import useUserStore from "@/lib/data/stores/UserStore";
 import { CartModel } from "@/lib/data/models/CartModel";
 import { useRouter } from "next/navigation";
@@ -61,31 +60,24 @@ import { GtmEvents } from "@/lib/core/analytics/Gtm";
 import { ConfigurationModel } from "@/lib/data/models/ConfigurationModel";
 import Timer_1 from "../part/timer/Timer_1";
 import { useToast } from "../../generic/ui/use-toast";
-import { scrollToId } from "@/lib/controller/scrollController";
+// import { scrollToId } from "@/lib/controller/scrollController";
 import { ProductImages_Carousel_2 } from "../construct/carousel/ProductImages_Carousel_2";
 import DynamicProduct_Label from "../part/label/DynamicProduct_Label";
-import { algoliaEventsSingleton } from "@/lib/core/analytics/Algolia";
-import { RewardPointsModel } from "@/lib/data/models/RewardPointsModel";
+// import { algoliaEventsSingleton } from "@/lib/core/analytics/Algolia";
 import Page_Transition from "../part/transition/Page_Transition";
 import LeftInStock_Label from "../part/label/LeftInStock_Label";
-import dynamic from "next/dynamic";
 import ProductOverview_Section from "../construct/section/ProductOverview_Section";
 import Description_Table from "../construct/table/Description_Table";
 import { handleAddToCart } from "@/lib/controller/productController";
+// import dynamic from "next/dynamic";
 // const Sizes_Drawer = dynamic(() => import("../construct/drawer/Sizes_Drawer"));
 // const SizeGuide_Drawer = dynamic(
 //   () => import("../construct/drawer/SizeGuide_Drawer"),
 // );
-const AddedToCart_Drawer = dynamic(
-  () => import("../construct/drawer/AddedToCart_Drawer"),
-);
 // const Sizes_Select = dynamic(() => import("../construct/select/Sizes_Select"));
 // const SizeGiude_Sheet = dynamic(
 //   () => import("../construct/sheet/SizeGiude_Sheet"),
 // );
-const AddedToCart_Sheet = dynamic(
-  () => import("../construct/sheet/AddedToCart_Sheet"),
-);
 
 interface Props extends PageProps {
   configuration: ConfigurationModel;
@@ -104,8 +96,6 @@ export default function ProductPage({
 
   const { toast } = useToast();
 
-  const successSoundRef = useRef<HTMLAudioElement>(null);
-
   // ===========================================================
 
   // redirect to parent product
@@ -122,10 +112,6 @@ export default function ProductPage({
   useEffect(() => {
     setCartState(cart);
   }, [cart]);
-
-  const [addedToCartOpen, setAddedToCartOpen] = useState(false);
-
-  const [addedToCartSuccess, setAddedToCartSuccess] = useState(false);
 
   const [productCount, setProductCount] = useState<number>(1);
 
@@ -203,12 +189,6 @@ export default function ProductPage({
     handleVariantChange();
   }, [curretSizeVariantOption, curretColorVariantOption]);
 
-  // ===========================================================
-
-  const [productRewardPoints, setProductRewardPoints] = useState<
-    RewardPointsModel | undefined
-  >(undefined);
-
   // ============================================================
 
   function addToCartHandler() {
@@ -219,11 +199,7 @@ export default function ProductPage({
       sizeVariant,
       curretColorVariantOption,
       curretSizeVariantOption,
-      setAddedToCartOpen,
-      setAddedToCartSuccess,
       productCount,
-      setProductRewardPoints,
-      successSoundRef,
       toast,
     });
   }
@@ -478,20 +454,6 @@ export default function ProductPage({
             disabled={!configurableProductCurrentVariant?.inStock}
             onClick={addToCartHandler}
           />
-          <AddedToCart_Drawer
-            storeCode={params.storeCode}
-            open={addedToCartOpen}
-            setOpen={setAddedToCartOpen}
-            addedtoCartSuccess={addedToCartSuccess}
-            setAddedtoCartSuccess={setAddedToCartSuccess}
-            productIds={[product?.id]}
-            productRewardPoints={productRewardPoints}
-          />
-          <audio
-            id="audio"
-            src="/sound/sound.mp3"
-            ref={successSoundRef}
-          ></audio>
           <PageType pageType={pageTypes.product} />
           <HeaderOptions
             headerOptions={{
@@ -709,20 +671,6 @@ export default function ProductPage({
               productIds={[product?.id]}
             />
           </ProductSection>
-          <AddedToCart_Sheet
-            storeCode={params.storeCode}
-            open={addedToCartOpen}
-            setOpen={setAddedToCartOpen}
-            addedtoCartSuccess={addedToCartSuccess}
-            setAddedtoCartSuccess={setAddedToCartSuccess}
-            productIds={[product?.id]}
-            productRewardPoints={productRewardPoints}
-          />
-          <audio
-            id="audio"
-            src="/sound/sound.mp3"
-            ref={successSoundRef}
-          ></audio>
           <PageType pageType={pageTypes.product} />
         </Product>
       )}

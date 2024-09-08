@@ -1,4 +1,5 @@
 "use client";
+import { Separator } from "@/lib/component/generic/ui/separator";
 import { cn } from "@/lib/utils/utils";
 import { useEffect, useState } from "react";
 
@@ -20,14 +21,14 @@ export default function Description_Table({ description, className }: Props) {
       )}
     >
       {decriptionArray?.map((item, index) => (
-        <div key={index} className={` flex `}>
+        <div key={index} className={` flex items-center`}>
           <p
-            className={` flex basis-1/2 items-center py-1 ps-3 text-sm ${index % 2 === 0 ? "bg-slate-200" : ""}`}
+            className={` flex basis-1/2 items-center border-l py-1 ps-3 text-sm ${index % 2 === 0 ? "bg-slate-100" : ""}`}
           >
             {item[0]}
           </p>
           <p
-            className={` flex basis-1/2 items-center py-1 ps-3 text-sm ${index % 2 != 0 ? "bg-slate-200" : ""}`}
+            className={` flex basis-1/2 items-center py-1 ps-3 text-sm ${index % 2 === 0 ? "bg-slate-100" : ""}`}
           >
             {item[1]}
           </p>

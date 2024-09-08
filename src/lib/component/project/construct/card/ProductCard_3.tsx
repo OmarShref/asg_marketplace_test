@@ -18,7 +18,7 @@ import {
 import useUtilityStore from "@/lib/data/stores/UtilityStore";
 import {
   ProductModel,
-  // VariantOptionType,
+  VariantOptionType,
 } from "@/lib/data/models/ProductModel";
 import { useEffect, useRef, useState } from "react";
 // import { getProduct } from "@/lib/network/server/gql/product";
@@ -27,6 +27,8 @@ import { GtmEvents } from "@/lib/core/analytics/Gtm";
 import DynamicProduct_Label from "../../part/label/DynamicProduct_Label";
 import { algoliaEventsSingleton } from "@/lib/core/analytics/Algolia";
 import Addtocart_Btn_3 from "../../part/button/Addtocart_Btn_3";
+import { handleAddToCart } from "@/lib/controller/productController";
+import { useToast } from "@/lib/component/generic/ui/use-toast";
 
 type Props = {
   storeCode: string;
@@ -46,6 +48,8 @@ export default function ProductCard_3({
   categoryName,
   queryId,
 }: Props) {
+  const { toast } = useToast();
+
   const { productsListDisplayMode } = useUtilityStore();
   const isMultiColumn =
     productsListDisplayMode === productsListDisplayModes.multiColumn;
@@ -62,15 +66,19 @@ export default function ProductCard_3({
   );
 
   // const [currentIndex, setCurrentIndex] = useState<number | null>(null);
-  // const [sizeVariant, setSizeVariant] = useState(
-  //   product?.variants?.find((variant) => variant?.code === "size"),
-  // );
-  // const [colorVariant, setColorVariant] = useState(
-  //   product?.variants?.find((variant) => variant.code === "color"),
-  // );
-  // const [curretColorVariantOption, setCurretColorVariantOption] = useState<
-  //   VariantOptionType | undefined
-  // >();
+
+  const [sizeVariant, setSizeVariant] = useState(
+    product?.variants?.find((variant) => variant?.code === "size"),
+  );
+  const [curretSizeVariantOption, setCurretSizeVariantOption] = useState<
+    VariantOptionType | undefined
+  >();
+  const [colorVariant, setColorVariant] = useState(
+    product?.variants?.find((variant) => variant.code === "color"),
+  );
+  const [curretColorVariantOption, setCurretColorVariantOption] = useState<
+    VariantOptionType | undefined
+  >();
 
   useEffect(() => {
     setConfigurableProduct(product);
@@ -134,6 +142,21 @@ export default function ProductCard_3({
         product,
       });
     }
+  }
+
+  // ================================================================================
+
+  function addToCartHandler() {
+    handleAddToCart({
+      configurableProduct,
+      configurableProductCurrentVariant,
+      colorVariant,
+      sizeVariant,
+      curretColorVariantOption,
+      curretSizeVariantOption,
+      productCount: 1,
+      toast,
+    });
   }
 
   // ================================================================================
@@ -254,7 +277,11 @@ export default function ProductCard_3({
           </ProductCardSection>
         )} */}
 
-        <Addtocart_Btn_3 storeCode={storeCode} className=" mx-2 w-auto" />
+        <Addtocart_Btn_3
+          storeCode={storeCode}
+          className=" mx-2 w-auto"
+          onClick={addToCartHandler}
+        />
       </ProductCardSection>
 
       {/* <Image

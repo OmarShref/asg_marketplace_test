@@ -1,13 +1,12 @@
 import { PageBuilderType } from "@/lib/data/models/CmsPageModel";
+import { correctHtml } from "@/lib/helper/html_helper";
 
 interface Props {
   html: PageBuilderType;
 }
 
 export default function Html_PageBuilder({ html }: Props) {
-  const correctedHtml = html?.html
-    ?.replaceAll("&lt;", "<")
-    ?.replaceAll("&gt;", ">");
+  const correctedHtml = correctHtml(html?.html ?? "");
   return (
     <div
       dangerouslySetInnerHTML={{
