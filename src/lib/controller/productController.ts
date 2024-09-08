@@ -315,17 +315,7 @@ export async function handleAddToCart({
     const addTocartData = await addItemToCart({
       sku: configurableProduct?.sku,
       quantity: productCount,
-      productType: productTypes.configurable,
-      configurableOptions: [
-        {
-          optionId: sizeVariant?.id ?? 0,
-          optionValue: curretSizeVariantOption?.id ?? 0,
-        },
-        {
-          optionId: colorVariant?.id ?? 0,
-          optionValue: curretColorVariantOption?.id ?? 0,
-        },
-      ],
+      productType: productTypes.simple,
       simpleProductId: configurableProductCurrentVariant?.id,
     });
     if (addTocartData?.success) {

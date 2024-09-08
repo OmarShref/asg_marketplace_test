@@ -144,32 +144,66 @@ function getCartQuerySting({
   `;
 }
 
-function getcartDataforMutation({
+async function getcartDataforMutation({
   data,
   mutationName,
 }: {
   data: any;
   mutationName: string;
 }) {
+  const dataMutation = data?.data?.[mutationName];
+  const dataQuery = dataMutation?.query;
+
+  const userToken = useUserStore.getState()?.customer?.token;
+
+  let errorData;
+  let success = data?.data?.[mutationName]?.success;
+  let errorMessage =
+    data?.errors?.at(0)?.message ?? data?.data?.message ?? dataMutation?.error;
+  let cart = dataQuery?.cart;
+  let checkoutRewardPoints = dataQuery?.rewardPointsForCheckout;
+  let productRewardPoints = dataQuery?.rewardPointsForProduct;
+
+  if (errorMessage && userToken) {
+    errorData = await handleCartErrors();
+  }
+
+  if (errorData?.shouldUpdateCart) {
+    success = true;
+    errorMessage = null;
+    cart = errorData?.cart;
+    checkoutRewardPoints = errorData?.checkoutRewardPoints;
+    productRewardPoints = errorData?.productRewardPoints;
+  }
+
   return {
-    success: data?.data?.[mutationName]?.success,
-    errorMessage:
-      data?.errors?.at(0)?.message ??
-      data?.data?.message ??
-      data?.data?.[mutationName]?.error,
+    success: success,
+    errorMessage: errorMessage,
     cart: new CartModel({
-      cartData: data?.data?.[mutationName]?.query?.cart,
+      cartData: cart,
       storeCode: useUtilityStore.getState()?.storeCode,
     }),
     checkoutRewardPoints: new RewardPointsModel({
-      rewardPointsData:
-        data?.data?.[mutationName]?.query?.rewardPointsForCheckout,
+      rewardPointsData: checkoutRewardPoints,
     })?.fromCheckout(),
     productRewardPoints: new RewardPointsModel({
-      rewardPointsData:
-        data?.data?.[mutationName]?.query?.rewardPointsForProduct,
+      rewardPointsData: productRewardPoints,
     })?.fromProduct(),
   };
+}
+
+async function handleCartErrors() {
+  const getCartData = await getCart({});
+  const shouldUpdateCart = !!((getCartData?.cart?.count ?? 0) === 0);
+
+  const errorData = {
+    shouldUpdateCart: shouldUpdateCart,
+    cart: getCartData?.cart,
+    checkoutRewardPoints: getCartData?.checkoutRewardPoints,
+    productRewardPoints: getCartData?.productRewardPoints,
+  };
+
+  return errorData;
 }
 
 // ===================================queries===========================================
