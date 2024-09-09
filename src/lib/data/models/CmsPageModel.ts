@@ -10,6 +10,7 @@ export type PageBuilderType = {
   name: string;
   html: string;
   value: string;
+  label: string;
   properties?: {
     appearance: string;
     desktopImage: string;
@@ -68,6 +69,7 @@ export class CmsPageModel implements CmsPageInterface {
         )?.replace("SA_en", this.#storeCode),
         target: item?.link?.target ?? "",
         value: item?.value,
+        label: item?.label,
         properties: {
           appearance: item?.properties?.appearance,
           desktopImage:

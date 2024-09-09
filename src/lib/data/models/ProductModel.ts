@@ -1,3 +1,4 @@
+import { productTypes } from "@/lib/core/basic/Constants";
 import { CurrencyType, getCurrency } from "@/lib/helper/currency";
 
 export type GtmProductType = {

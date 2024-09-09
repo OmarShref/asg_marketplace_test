@@ -20,6 +20,7 @@ import ProductsـPageBuilder from "./ProductsـPageBuilder";
 import VideoـPageBuilder from "./VideoـPageBuilder";
 import HeadingـPageBuilder from "./Heading_PageBuilder";
 import Tabs_PageBuilder from "./Tabs_PageBuilder";
+import Buttons_PageBuilder from "./Buttons_PageBuilder";
 
 type Props = {
   storeCode: string;
@@ -161,7 +162,16 @@ export function renderPageBuilderComponent({
           storeCode,
           isSmallDevice,
           child,
-        })?.reverse();
+        });
+
+      case pageBuilderComponentTypes.buttons:
+        return (
+          <Buttons_PageBuilder
+            key={index}
+            storeCode={storeCode}
+            buttons={child}
+          />
+        );
 
       default:
         return null;

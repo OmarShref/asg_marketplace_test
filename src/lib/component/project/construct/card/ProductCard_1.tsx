@@ -10,7 +10,6 @@ import {
   ProductCardSection,
 } from "@/lib/component/generic/pure/productcard";
 import DiscountLabel from "@/lib/component/project/part/label/Discount_Label";
-import Addtocart_Btn_1 from "../../part/button/Addtocart_Btn_1";
 import Addtowishlist_Btn from "../../part/button/Addtowhishlist_Btn";
 import {
   productLabelTypes,
@@ -28,6 +27,8 @@ import { GtmEvents } from "@/lib/core/analytics/Gtm";
 import DynamicProduct_Label from "../../part/label/DynamicProduct_Label";
 import { algoliaEventsSingleton } from "@/lib/core/analytics/Algolia";
 import Addtocart_Btn_3 from "../../part/button/Addtocart_Btn_3";
+import { useToast } from "@/lib/component/generic/ui/use-toast";
+import { handleAddToCart } from "@/lib/controller/productController";
 
 type Props = {
   storeCode: string;
@@ -47,6 +48,8 @@ export default function ProductCard_1({
   categoryName,
   queryId,
 }: Props) {
+  const { toast } = useToast();
+
   const { productsListDisplayMode } = useUtilityStore();
   const isMultiColumn =
     productsListDisplayMode === productsListDisplayModes.multiColumn;
@@ -61,10 +64,14 @@ export default function ProductCard_1({
   ] = useState<ProductModel>(
     configurableProduct?.currentVariant ?? configurableProduct,
   );
-  const [currentIndex, setCurrentIndex] = useState<number | null>(null);
+  // const [currentIndex, setCurrentIndex] = useState<number | null>(null);
   const [sizeVariant, setSizeVariant] = useState(
     product?.variants?.find((variant) => variant?.code === "size"),
   );
+
+  const [curretSizeVariantOption, setCurretSizeVariantOption] = useState<
+    VariantOptionType | undefined
+  >();
   const [colorVariant, setColorVariant] = useState(
     product?.variants?.find((variant) => variant.code === "color"),
   );
@@ -134,6 +141,21 @@ export default function ProductCard_1({
         product,
       });
     }
+  }
+
+  // ================================================================================
+
+  function addToCartHandler() {
+    handleAddToCart({
+      configurableProduct,
+      configurableProductCurrentVariant,
+      colorVariant,
+      sizeVariant,
+      curretColorVariantOption,
+      curretSizeVariantOption,
+      productCount: 1,
+      toast,
+    });
   }
 
   // ================================================================================
@@ -254,7 +276,11 @@ export default function ProductCard_1({
           </ProductCardSection>
         )} */}
 
-        <Addtocart_Btn_3 storeCode={storeCode} className=" mx-2 w-auto" />
+        <Addtocart_Btn_3
+          storeCode={storeCode}
+          className=" mx-2 w-auto"
+          onClick={addToCartHandler}
+        />
       </ProductCardSection>
 
       {/* <Image

@@ -94,6 +94,7 @@ export const pageBuilderComponentTypes = {
   image: "image",
   tabs: "tabs",
   block: "block",
+  buttons: "buttons",
 };
 
 export const pageBuilderAppearanceTypes = {
