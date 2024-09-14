@@ -9,8 +9,8 @@ type Props = {
 
 export default function Above_Header({ storeCode }: Props) {
   return (
-    <section className=" bg-accent/15 py-0.5 px-5">
-      <div className=" max-w-project mx-auto flex flex-nowrap items-center justify-start gap-28 animate-moving-promotion md:duration-20000">
+    <section className=" bg-accent/15 px-5 py-0.5">
+      <div className=" mx-auto flex max-w-project animate-moving-promotion flex-nowrap items-center justify-start gap-28 md:duration-20000">
         {Array.from({ length: 3 }).map((_, index) => (
           <div
             key={index}

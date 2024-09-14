@@ -1,3 +1,34 @@
+button.pagebuilder-button-primary {
+  background-color: #1979c3;
+  color: white;
+  box-sizing: border-box;
+  vertical-align: middle;
+  padding: 14px 0px;
+  border: 1px solid #1979c3;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+button.pagebuilder-button-secondary {
+  background-color: #f2f2f2;
+  color: #514943;
+  box-sizing: border-box;
+  vertical-align: middle;
+  padding: 14px 0px;
+  border: 1px solid #cdcdcd;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+button.pagebuilder-button-link {
+  color: #007bdb;
+  box-sizing: border-box;
+  vertical-align: middle;
+  padding: 14px 0px;
+  font-weight: 600;
+  background-color: antiquewhite;
+}
+
 @media only screen and (max-width: 1023px) {
   .mobile-columns-slider {
     overflow-x: auto !important;

@@ -3,7 +3,7 @@ import Spacing from "@/lib/component/generic/pure/spacing";
 import { AttributeType } from "@/lib/data/models/ProductModel";
 import { cn } from "@/lib/utils/utils";
 import Attributes_Table from "../table/Attributes_Table";
-import RichContent_template_1 from "../template/rich-content/RichContent_template_1";
+import "@/lib/component/project/construct/template/rich-content/RichContent_Templates.css";
 import { correctHtml } from "@/lib/helper/html_helper";
 
 type Props = {
@@ -29,7 +29,21 @@ export default function ProductOverview_Section({
         {getText({ storeCode, text: Texts.overView })}
       </h3>
       <Spacing value={6} />
-      <div className=" flex flex-col items-start justify-between gap-8 lg:flex-row">
+      <div
+        className={` flex flex-col items-start justify-between gap-8 ${longDescription?.includes("rich_content_template") ? "" : "lg:flex-row-reverse"}`}
+      >
+        {/* attributes */}
+        <div
+          className={` lg:basis-1/2 ${longDescription?.includes("rich_content_template") ? "w-1/2" : "w-full"}`}
+        >
+          <h5 className=" pb-3 text-slate-400">
+            {getText({ storeCode, text: Texts.specifications })}
+          </h5>
+          <Attributes_Table attributes={attributes} />
+        </div>
+
+        {/* ================================== */}
+
         {/* long description */}
         <div className=" w-full lg:basis-1/2">
           <h5 className=" pb-3 text-slate-400">
@@ -42,19 +56,7 @@ export default function ProductOverview_Section({
             className="text-sm"
           ></div>
         </div>
-
-        {/* attributes */}
-        <div className=" w-full lg:basis-1/2">
-          <h5 className=" pb-3 text-slate-400">
-            {getText({ storeCode, text: Texts.specifications })}
-          </h5>
-          <Attributes_Table attributes={attributes} />
-        </div>
       </div>
-
-      {/* ============================== */}
-
-      <RichContent_template_1 />
     </section>
   );
 }

@@ -141,7 +141,7 @@ const config = {
         header_menubar_background: "#333333",
       },
       maxWidth: {
-        project: "1200px",
+        project: "1600px",
       },
     },
   },

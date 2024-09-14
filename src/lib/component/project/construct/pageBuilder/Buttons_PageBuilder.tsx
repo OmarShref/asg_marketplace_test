@@ -1,6 +1,7 @@
 import Anchor from "@/lib/component/generic/pure/anchor";
 import { getPageBuilderBaseJSXStyle } from "@/lib/controller/pageBuilderController";
 import { PageBuilderType } from "@/lib/data/models/CmsPageModel";
+import { cn } from "@/lib/utils/utils";
 
 type Props = {
   storeCode: string;
@@ -13,7 +14,7 @@ export default function Buttons_PageBuilder({ storeCode, buttons }: Props) {
   });
 
   return (
-    <div style={JSXStyle}>
+    <div style={JSXStyle} className="flex items-center justify-start gap-2.5">
       {buttons?.children?.map((button, index) => {
         const JSXStyle = getPageBuilderBaseJSXStyle({
           css: button?.properties?.css,
@@ -21,7 +22,15 @@ export default function Buttons_PageBuilder({ storeCode, buttons }: Props) {
 
         return (
           <Anchor key={index} href={button?.url}>
-            <button style={JSXStyle}>{button?.label}</button>
+            <button
+              style={JSXStyle}
+              className={cn(
+                "flex items-center justify-center",
+                button?.properties?.classNames,
+              )}
+            >
+              {button?.label}
+            </button>
           </Anchor>
         );
       })}

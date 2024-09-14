@@ -23,7 +23,7 @@ const Row = React.forwardRef<HTMLElement, React.HTMLAttributes<HTMLElement>>(
         <section
           ref={ref}
           className={cn(
-            " mb-[10px] flex !flex-row items-stretch justify-center gap-[10px] px-[10px] lg:px-0",
+            " mb-[10px] flex !flex-row items-stretch justify-between gap-[10px] px-[10px] lg:px-0",
             className,
           )}
           {...props}

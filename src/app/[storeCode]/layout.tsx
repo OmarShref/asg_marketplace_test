@@ -68,7 +68,7 @@ export default async function layout({ children, params }: Props) {
         } ${fontArabic.variable} ${fontEnglish.variable}`}
       >
         <main
-          className={`min-h-screen overflow-x-clip `}
+          className={`min-h-screen overflow-x-clip`}
           style={{ direction: direction }}
         >
           {/* client utitlities  */}

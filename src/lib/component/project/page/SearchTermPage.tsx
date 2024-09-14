@@ -22,7 +22,7 @@ import Page_Transition from "../part/transition/Page_Transition";
 
 export default function SearchTermPage({ params }: PageProps) {
   const [searchCategory, setSearchCategory] = useState<CategoryModel | null>(
-    null
+    null,
   );
   async function handleSearch() {
     const searchresults = await getSearchCategoryController({
