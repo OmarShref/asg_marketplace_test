@@ -42,7 +42,7 @@ export const pageTypes = {
   account: "account",
   wishlist: "wishlist",
   menu: "menu",
-  cms: "cms",
+  cms: "cms-page",
   login: "login",
   updateInfo: "updateInfo",
   success: "success",
@@ -219,7 +219,7 @@ export const appLinks = [
 ];
 
 export const targetTypes = {
-  cms: "cms",
+  cms: "cms-page",
   category: "category",
   product: "product",
   notfound: "notfound",

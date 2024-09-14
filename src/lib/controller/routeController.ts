@@ -1,58 +1,74 @@
-import {
-  pageTypes,
-  targetTypes,
-  targetTypesShortHands,
-} from "../core/basic/Constants";
+import { targetTypes, targetTypesShortHands } from "../core/basic/Constants";
 import { getResolvedRoute } from "../network/server/gql/resolvedRoute";
 import { RouteModel } from "../data/models/RouteModel";
 import { ServerReqProps } from "../data/types/ServerReqProps";
+import { redirect } from "next/navigation";
 
 export async function getPageType({
   params,
-}: ServerReqProps): Promise<RouteModel> {
-  // check target with the new route short hands
+}: ServerReqProps): Promise<RouteModel | undefined> {
   const target = params?.route?.at(0);
-  if (
-    target?.startsWith("m-") ||
-    target?.startsWith("c-") ||
-    target?.startsWith("p-")
-  ) {
-    const { targetType, targetId } = getResolvedTarget({ target });
-    return { type: targetType, id: Number(targetId) } as RouteModel;
+
+  // check target is resolved in the url already
+  if (isTargetResolved({ target })) {
+    const resolvedRoute = getResolvedTarget({ target });
+    return resolvedRoute;
   }
 
-  // check resolved route if above failed as fall back
-  if (params?.route?.length === 1 && !params?.route?.at(0)?.endsWith(".html")) {
-    return { type: pageTypes.cms, id: 0 } as RouteModel;
-  } else {
-    const resolvedRoute = await getResolvedRoute({
-      params,
-    });
+  // resolve route if above failed as fall back
+  const unresolvedRoute = await getUnresolvedTarget({ params });
 
-    return resolvedRoute;
+  const unresolvedRouteShortHand =
+    targetTypesShortHands?.[unresolvedRoute?.type];
+  const unresolvedRouteId = unresolvedRoute?.id;
+
+  if (!!unresolvedRouteShortHand && !!unresolvedRouteId) {
+    redirect(
+      `/${params?.storeCode}/${unresolvedRouteShortHand}-${unresolvedRouteId}/${params?.route?.join("/")}`,
+    );
   }
 }
 
-export function getResolvedTarget({ target }: { target: string | undefined }) {
-  const splittedTarget = target?.split("-");
-  let targetType;
+function isTargetResolved({ target }: { target: string | undefined }) {
+  return !!(
+    target?.startsWith("m-") ||
+    target?.startsWith("c-") ||
+    target?.startsWith("p-)")
+  );
+}
 
-  switch (splittedTarget?.at(0)) {
-    case targetTypesShortHands.cms:
-      targetType = targetTypes.cms;
+function getResolvedTarget({ target }: { target: string | undefined }) {
+  const splittedTarget = target?.split("-");
+
+  const targetShortHand = splittedTarget?.at(0);
+  let type;
+
+  switch (targetShortHand) {
+    case targetTypesShortHands["cms-page"]:
+      type = targetTypes.cms;
       break;
 
     case targetTypesShortHands.category:
-      targetType = targetTypes.category;
+      type = targetTypes.category;
       break;
 
     case targetTypesShortHands.product:
-      targetType = targetTypes.product;
+      type = targetTypes.product;
       break;
 
     default:
-      targetType = targetTypes.notfound;
+      type = targetTypes.notfound;
   }
 
-  return { targetType, targetId: splittedTarget?.at(1) };
+  return { type, id: Number(splittedTarget?.at(1)) } as RouteModel;
+}
+
+async function getUnresolvedTarget({
+  params,
+}: ServerReqProps): Promise<RouteModel> {
+  const resolvedRoute = await getResolvedRoute({
+    params,
+  });
+
+  return resolvedRoute as RouteModel;
 }

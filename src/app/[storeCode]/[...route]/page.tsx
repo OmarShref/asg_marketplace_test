@@ -17,6 +17,10 @@ import { headers } from "next/headers";
 
 export async function generateMetadata({ params, searchParams }: PageProps) {
   const resolvedRoute = await getPageType({ params });
+  if (!resolvedRoute) {
+    return null;
+  }
+
   if (resolvedRoute.type === pageTypes.cms) {
     const [configuration, cms] = await Promise.all([
       getConfiguration({ params }),
@@ -75,7 +79,12 @@ export async function generateMetadata({ params, searchParams }: PageProps) {
 
 export default async function page({ params, searchParams }: PageProps) {
   const resolvedRoute = await getPageType({ params });
+
   const isSmallDevice = checkSmallDevice(headers());
+
+  if (!resolvedRoute) {
+    notFound();
+  }
 
   if (resolvedRoute.type === pageTypes.cms) {
     const [cms] = await Promise.all([
