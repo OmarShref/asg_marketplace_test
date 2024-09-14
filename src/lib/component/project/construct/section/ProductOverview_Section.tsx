@@ -34,7 +34,7 @@ export default function ProductOverview_Section({
       >
         {/* attributes */}
         <div
-          className={` lg:basis-1/2 ${longDescription?.includes("rich_content_template") ? "w-1/2" : "w-full"}`}
+          className={`w-full lg:basis-1/2 ${longDescription?.includes("rich_content_template") ? "lg:w-1/2" : ""}`}
         >
           <h5 className=" pb-3 text-slate-400">
             {getText({ storeCode, text: Texts.specifications })}
