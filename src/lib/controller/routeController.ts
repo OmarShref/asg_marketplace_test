@@ -22,7 +22,11 @@ export async function getPageType({
     targetTypesShortHands?.[unresolvedRoute?.type];
   const unresolvedRouteId = unresolvedRoute?.id;
 
-  if (!!unresolvedRouteShortHand && !!unresolvedRouteId) {
+  if (
+    !!unresolvedRouteShortHand &&
+    !!unresolvedRouteId &&
+    !isTargetResolved({ target })
+  ) {
     redirect(
       `/${params?.storeCode}/${unresolvedRouteShortHand}-${unresolvedRouteId}/${params?.route?.join("/")}`,
     );
@@ -33,7 +37,7 @@ function isTargetResolved({ target }: { target: string | undefined }) {
   return !!(
     target?.startsWith("m-") ||
     target?.startsWith("c-") ||
-    target?.startsWith("p-)")
+    target?.startsWith("p-")
   );
 }
 
