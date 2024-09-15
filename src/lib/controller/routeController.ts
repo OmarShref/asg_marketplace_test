@@ -1,8 +1,9 @@
+"use server";
 import { targetTypes, targetTypesShortHands } from "../core/basic/Constants";
 import { getResolvedRoute } from "../network/server/gql/resolvedRoute";
 import { RouteModel } from "../data/models/RouteModel";
 import { ServerReqProps } from "../data/types/ServerReqProps";
-import { redirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 
 export async function getPageType({
   params,
@@ -27,9 +28,8 @@ export async function getPageType({
     !!unresolvedRouteId &&
     !isTargetResolved({ target })
   ) {
-    redirect(
-      `/${params?.storeCode}/${unresolvedRouteShortHand}-${unresolvedRouteId}/${params?.route?.join("/")}`,
-    );
+    const newRoute = `/${params?.storeCode}/${unresolvedRouteShortHand}-${unresolvedRouteId}/${params?.route?.join("/")}`;
+    permanentRedirect(newRoute);
   }
 }
 

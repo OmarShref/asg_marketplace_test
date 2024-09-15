@@ -13,7 +13,7 @@ import { Viewport } from "next";
 import Main_Footer from "@/lib/component/project/construct/footer/Main_Footer";
 // import Above_Header from "@/lib/component/project/construct/header/Above_Header";
 import { Suspense } from "react";
-import LoadingPage from "./loading";
+// import LoadingPage from "./load";
 import AddedToCart_Utility from "@/lib/component/project/part/utility/AddedToCart_Utility";
 import { checkSmallDevice } from "@/lib/helper/devicetype";
 import { headers } from "next/headers";
@@ -87,7 +87,8 @@ export default async function layout({ children, params }: Props) {
           <Header_1 params={params} configuration={configuration} menu={menu} />
 
           {/* all pages */}
-          <Suspense fallback={<LoadingPage />}>{children}</Suspense>
+          {/* <Suspense fallback={<LoadingPage />}>{children}</Suspense> */}
+          {children}
 
           {/* footer */}
           <Main_Footer
