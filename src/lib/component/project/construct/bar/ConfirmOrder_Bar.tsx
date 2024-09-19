@@ -7,13 +7,13 @@ import Spacing from "@/lib/component/generic/pure/spacing";
 import { CartModel } from "@/lib/data/models/CartModel";
 import useUserStore from "@/lib/data/stores/UserStore";
 import { usePathname, useRouter } from "next/navigation";
-import { codPlaceOrder } from "@/lib/network/client/gql/cod";
+import { codPlaceOrder } from "@/lib/network/repo/client_repos/gql/cod";
 import { paymentTypes } from "@/lib/core/basic/Constants";
-import { tamaraPlaceOrder } from "@/lib/network/client/gql/tamara";
+import { tamaraPlaceOrder } from "@/lib/network/repo/client_repos/gql/tamara";
 import { PaymentMethodInfoModel } from "@/lib/data/models/PaymentMethodInfoModel";
 import { useEffect, useState } from "react";
-import ApplePayProcess from "@/lib/network/client/gql/applepay";
-import { checkoutcomPlaceOrder } from "@/lib/network/client/gql/checkoutcom";
+import ApplePayProcess from "@/lib/network/repo/client_repos/gql/applepay";
+import { checkoutcomPlaceOrder } from "@/lib/network/repo/client_repos/gql/checkoutcom";
 import useUtilityStore from "@/lib/data/stores/UtilityStore";
 import { GtmEvents } from "@/lib/core/analytics/Gtm";
 import { useToast } from "@/lib/component/generic/ui/use-toast";
@@ -21,7 +21,7 @@ import { ArrowLeftIcon } from "lucide-react";
 import { isArabic } from "@/lib/helper/language";
 import { getValidCartShippingAddressId } from "@/lib/controller/addressController";
 import { scrollToId } from "@/lib/controller/scrollController";
-import { tabbyPlaceOrder } from "@/lib/network/client/gql/tabby";
+import { tabbyPlaceOrder } from "@/lib/network/repo/client_repos/gql/tabby";
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   storeCode: string;

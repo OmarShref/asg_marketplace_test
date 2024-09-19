@@ -3,7 +3,7 @@ import { ServerReqProps } from "@/lib/data/types/ServerReqProps";
 import { ServerGqlGetRequest } from "./base-request/ServerGqlGetRequest";
 import { CategoryModel } from "@/lib/data/models/CategoryModel";
 import { sortTypes } from "@/lib/core/basic/Constants";
-import { gqlCategoryInnerItem } from "../../query/categoryQuery";
+import { gqlCategoryInnerItem } from "../../../queries/categoryQuery";
 import { FilterModel } from "@/lib/data/models/FilterModel";
 
 export interface CategoryRequestProps extends ServerReqProps {
@@ -11,8 +11,7 @@ export interface CategoryRequestProps extends ServerReqProps {
   sort?: string;
 }
 
-export async function getCategory({
-  id,
+export async function getSearch({
   params,
   searchParams,
   page,
@@ -22,22 +21,12 @@ export async function getCategory({
 
   // TODO: add product type to filter -ex : "configurable"-
   const categoryQuery = `query vestedCategory {
-    vestedCategory(filter: { Entity_id: { eq: ${id} } }) {
-        name
-        entity_id
-        url
-        meta_title
-        meta_keywords
-        meta_description
-        image
-        page_builder_json
-    }
     vestedProducts(
+        search: "${params?.searchTerm ?? ""}"
         filter: {
           Is_in_stock: { eq: 1 }
-          CategoriesId: { eq: ${id} }
           ${filterQuery}
-      }
+        }
         sort: ${sort ?? sortTypes.merchandising}
         pageSize: 20
         currentPage: ${page ? page : (searchParams?.page ?? 1)}

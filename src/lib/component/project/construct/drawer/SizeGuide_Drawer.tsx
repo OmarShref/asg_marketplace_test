@@ -13,7 +13,7 @@ import Spacing from "@/lib/component/generic/pure/spacing";
 import { getDirection } from "@/lib/helper/direction";
 import SizeGuide_Btn from "../../part/button/SizeGuide_Btn";
 import { useEffect, useState } from "react";
-import { getCmsPage } from "@/lib/network/server/gql/cmsPage";
+import { getCmsPage } from "@/lib/network/repo/server_repos/gql/cmsPage";
 import { CmsPageModel } from "@/lib/data/models/CmsPageModel";
 import SizeGuide_Tabs from "../tabs/SizeGuide_Tabs";
 

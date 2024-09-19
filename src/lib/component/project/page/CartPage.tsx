@@ -25,7 +25,7 @@ import { useEffect, useState } from "react";
 import { CartModel } from "@/lib/data/models/CartModel";
 import Image from "../../generic/pure/image";
 import { PaymentMethodInfoModel } from "@/lib/data/models/PaymentMethodInfoModel";
-import { getCart } from "@/lib/network/client/gql/cart";
+import { getCart } from "@/lib/network/repo/client_repos/gql/cart";
 import { GtmEvents } from "@/lib/core/analytics/Gtm";
 import { CmsPageModel } from "@/lib/data/models/CmsPageModel";
 import Cms from "../construct/pageBuilder/Cms";

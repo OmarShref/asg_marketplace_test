@@ -8,7 +8,7 @@ import {
 } from "@/lib/component/generic/ui/sheet";
 import { CmsPageModel } from "@/lib/data/models/CmsPageModel";
 import { getDirection } from "@/lib/helper/direction";
-import { getCmsPage } from "@/lib/network/server/gql/cmsPage";
+import { getCmsPage } from "@/lib/network/repo/server_repos/gql/cmsPage";
 import { useEffect, useState } from "react";
 import SizeGuide_Btn from "../../part/button/SizeGuide_Btn";
 import { Texts, getText } from "@/lib/assets/text";

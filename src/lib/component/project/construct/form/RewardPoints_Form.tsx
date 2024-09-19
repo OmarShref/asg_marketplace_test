@@ -16,7 +16,7 @@ import Spacing from "@/lib/component/generic/pure/spacing";
 import {
   applyCouponToCart,
   applyRewardPointsToCart,
-} from "@/lib/network/client/gql/cart";
+} from "@/lib/network/repo/client_repos/gql/cart";
 import useUserStore from "@/lib/data/stores/UserStore";
 import { useToast } from "@/lib/component/generic/ui/use-toast";
 import validator from "validator";

@@ -4,13 +4,13 @@ import ProductPage from "@/lib/component/project/page/ProductPage";
 import { getPageType } from "@/lib/controller/routeController";
 import { pageTypes, sortTypes } from "@/lib/core/basic/Constants";
 import { PageProps } from "@/lib/data/types/PageProps";
-import { getCategory } from "@/lib/network/server/gql/category";
-import { getProduct } from "@/lib/network/server/gql/product";
+import { getCategory } from "@/lib/network/repo/server_repos/gql/category";
+import { getProduct } from "@/lib/network/repo/server_repos/gql/product";
 import { notFound } from "next/navigation";
-import { getCmsPage } from "@/lib/network/server/gql/cmsPage";
-import { getConfiguration } from "@/lib/network/server/gql/configuration";
+import { getCmsPage } from "@/lib/network/repo/server_repos/gql/cmsPage";
+import { getConfiguration } from "@/lib/network/repo/server_repos/gql/configuration";
 import { MetaDataModel } from "@/lib/data/models/MetaDataModel";
-import { getProductChildren } from "@/lib/network/server/gql/productChildren";
+import { getProductChildren } from "@/lib/network/repo/server_repos/gql/productChildren";
 import { getProductStructuredData } from "@/lib/controller/productController";
 import { checkSmallDevice } from "@/lib/helper/devicetype";
 import { headers } from "next/headers";
@@ -18,7 +18,7 @@ import { headers } from "next/headers";
 export async function generateMetadata({ params, searchParams }: PageProps) {
   const resolvedRoute = await getPageType({ params });
   if (!resolvedRoute) {
-    return null;
+    notFound();
   }
 
   if (resolvedRoute.type === pageTypes.cms) {

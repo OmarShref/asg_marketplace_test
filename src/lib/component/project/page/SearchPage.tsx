@@ -7,7 +7,7 @@ import PageType from "../../generic/utility/PageType";
 import { pageTypes } from "@/lib/core/basic/Constants";
 import HeaderOptions from "../../generic/utility/HeaderOptions";
 import NavbarOptions from "../../generic/utility/NavbarOptions";
-import { getSearchCategoryController } from "@/lib/controller/searchController";
+import { getSearchCategoryFromMagento } from "@/lib/controller/searchController";
 import useSearchStore from "@/lib/data/stores/SearchStore";
 import { Texts, getText } from "@/lib/assets/text";
 import { Row, RowSection } from "../../generic/pure/row";
@@ -22,7 +22,11 @@ import Page_Transition from "../part/transition/Page_Transition";
 interface Props extends PageProps {
   recommendationCms: CmsPageModel | undefined;
 }
-export default function SearchPage({ params, recommendationCms }: Props) {
+export default function SearchPage({
+  params,
+  searchParams,
+  recommendationCms,
+}: Props) {
   const direction = getDirection(params.storeCode);
 
   const { searchTerm, lastSearchedTerms } = useSearchStore((state) => state);
@@ -34,19 +38,20 @@ export default function SearchPage({ params, recommendationCms }: Props) {
   }, [lastSearchedTerms]);
 
   const [searchCategory, setSearchCategory] = useState<CategoryModel | null>(
-    null
+    null,
   );
 
-  async function handleSearch() {
-    const searchresults = await getSearchCategoryController({
+  function handleSearch() {
+    getSearchCategoryFromMagento({
       params: {
         storeCode: params.storeCode,
         searchTerm: searchTerm,
       },
-      page: 0,
+      searchParams,
+      page: 1,
+    }).then((searchresults) => {
+      setSearchCategory(searchresults);
     });
-
-    setSearchCategory(searchresults);
   }
 
   useEffect(() => {

@@ -155,7 +155,7 @@ export default function Filter_Section({
   return (
     <section
       className={cn(
-        " sticky top-36 hidden h-fit max-h-[calc(100vh-160px)] overflow-y-auto rounded-xl border border-stone-200 px-2 pb-0 md:block",
+        " sticky top-36 hidden h-fit max-h-[calc(100vh-160px)] overflow-y-auto overscroll-y-contain rounded-xl border border-stone-200 px-2 pb-0 md:block",
         className,
       )}
     >

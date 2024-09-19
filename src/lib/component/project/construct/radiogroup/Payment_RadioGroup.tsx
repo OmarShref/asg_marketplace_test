@@ -7,7 +7,7 @@ import { getDirection } from "@/lib/helper/direction";
 import Payment_Card from "../card/Payment_Card";
 import { CartModel, PaymentMethodItemType } from "@/lib/data/models/CartModel";
 import { CircleSlash2Icon } from "lucide-react";
-import { setCartPayment } from "@/lib/network/client/gql/cart";
+import { setCartPayment } from "@/lib/network/repo/client_repos/gql/cart";
 import useUserStore from "@/lib/data/stores/UserStore";
 import { paymentTypes } from "@/lib/core/basic/Constants";
 import { Fragment, useEffect, useState } from "react";

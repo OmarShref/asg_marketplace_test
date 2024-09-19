@@ -16,7 +16,7 @@ import Spacing from "@/lib/component/generic/pure/spacing";
 import { useState } from "react";
 import { Otp_Drawer } from "../drawer/Otp_Drawer";
 import SignIn_Btn from "../../part/button/SignIn_Btn";
-import { sendOtp } from "@/lib/network/client/gql/login";
+import { sendOtp } from "@/lib/network/repo/client_repos/gql/login";
 import { loginTypes } from "@/lib/core/basic/Constants";
 import { MailIcon } from "@/lib/assets/svg";
 import { useToast } from "@/lib/component/generic/ui/use-toast";

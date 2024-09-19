@@ -5,7 +5,7 @@ import RemoveDiscount_Btn from "../button/RemoveDiscount_Btn";
 import { DiscountInterface } from "@/lib/data/models/CartModel";
 import { Fragment } from "react";
 import { Separator } from "@/lib/component/generic/ui/separator";
-import { removeGiftCardFromCart } from "@/lib/network/client/gql/cart";
+import { removeGiftCardFromCart } from "@/lib/network/repo/client_repos/gql/cart";
 import useUserStore from "@/lib/data/stores/UserStore";
 
 interface Props extends React.HTMLAttributes<HTMLElement> {
@@ -36,7 +36,7 @@ export default function AppliedGiftCard_Row({
         <section
           className={cn(
             " flex h-11 items-center justify-between py-3",
-            className
+            className,
           )}
         >
           <div className=" flex items-center justify-center gap-2">

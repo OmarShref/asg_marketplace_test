@@ -5,7 +5,7 @@ import RemoveDiscount_Btn from "../button/RemoveDiscount_Btn";
 import { DiscountInterface } from "@/lib/data/models/CartModel";
 import { Separator } from "@/lib/component/generic/ui/separator";
 import { Fragment } from "react";
-import { removeCouponFromCart } from "@/lib/network/client/gql/cart";
+import { removeCouponFromCart } from "@/lib/network/repo/client_repos/gql/cart";
 import useUserStore from "@/lib/data/stores/UserStore";
 import { TicketIcon } from "lucide-react";
 
@@ -35,11 +35,11 @@ export default function AppliedCoupon_Row({
         <section
           className={cn(
             " flex h-11 items-center justify-between py-3",
-            className
+            className,
           )}
         >
           <div className=" flex items-center justify-center gap-2">
-            <TicketIcon className=" w-6 h-auto text-green-400" />
+            <TicketIcon className=" h-auto w-6 text-green-400" />
             <p>{`${getText({
               storeCode: storeCode,
               text: Texts.congratulationsYouGotADiscount,

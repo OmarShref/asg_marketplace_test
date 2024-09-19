@@ -47,7 +47,7 @@ import { ReviewCount, ReviewRatingNumber } from "../../generic/pure/review";
 import { RelatedProductsAccordion } from "../construct/accordion/RelatedProducts_Accordion";
 import Addtocart_Btn_2 from "../part/button/AddToCart_Btn_2";
 // import { ScrollDetector } from "../../generic/pure/scroll";
-import { getProduct } from "@/lib/network/server/gql/product";
+import { getProduct } from "@/lib/network/repo/server_repos/gql/product";
 import HeaderOptions from "../../generic/utility/HeaderOptions";
 import NavbarOptions from "../../generic/utility/NavbarOptions";
 import useUserStore from "@/lib/data/stores/UserStore";

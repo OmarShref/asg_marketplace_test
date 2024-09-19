@@ -13,7 +13,7 @@ import { Input } from "@/lib/component/generic/ui/input";
 import { Texts, getText } from "@/lib/assets/text";
 import InlineApply_Btn from "../../part/button/InlineApply_Btn";
 import Spacing from "@/lib/component/generic/pure/spacing";
-import { addGiftCardToCart } from "@/lib/network/client/gql/cart";
+import { addGiftCardToCart } from "@/lib/network/repo/client_repos/gql/cart";
 import useUserStore from "@/lib/data/stores/UserStore";
 import { useToast } from "@/lib/component/generic/ui/use-toast";
 

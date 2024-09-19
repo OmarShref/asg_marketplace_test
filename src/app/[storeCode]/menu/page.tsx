@@ -1,5 +1,5 @@
 import MenuPage from "@/lib/component/project/page/MenuPage";
-import { getMenu } from "@/lib/network/server/gql/menu";
+import { getMenu } from "@/lib/network/repo/server_repos/gql/menu";
 
 type Props = {
   params: {

@@ -21,7 +21,7 @@ import { CartProductInterface } from "@/lib/data/models/CartModel";
 import {
   removeItemFromCart,
   updateCartItem,
-} from "@/lib/network/client/gql/cart";
+} from "@/lib/network/repo/client_repos/gql/cart";
 import { productTypes } from "@/lib/core/basic/Constants";
 import useUserStore from "@/lib/data/stores/UserStore";
 import Anchor from "@/lib/component/generic/pure/anchor";

@@ -1,8 +1,8 @@
 import CartPage from "@/lib/component/project/page/CartPage";
 import { PageProps } from "@/lib/data/types/PageProps";
-import { getCmsPage } from "@/lib/network/server/gql/cmsPage";
-import { getConfiguration } from "@/lib/network/server/gql/configuration";
-import { getPaymentMethodInfo } from "@/lib/network/server/gql/paymentMethodInfo";
+import { getCmsPage } from "@/lib/network/repo/server_repos/gql/cmsPage";
+import { getConfiguration } from "@/lib/network/repo/server_repos/gql/configuration";
+import { getPaymentMethodInfo } from "@/lib/network/repo/server_repos/gql/paymentMethodInfo";
 
 interface Props extends PageProps {}
 

@@ -8,7 +8,7 @@ import { Fragment } from "react";
 import {
   removeCouponFromCart,
   removeRewardPointsFromCart,
-} from "@/lib/network/client/gql/cart";
+} from "@/lib/network/repo/client_repos/gql/cart";
 import useUserStore from "@/lib/data/stores/UserStore";
 import { CrownIcon } from "lucide-react";
 
@@ -40,7 +40,7 @@ export default function AppliedRewardPoints_Row({
         <section
           className={cn(
             " flex h-11 items-center justify-between py-3",
-            className
+            className,
           )}
         >
           <div className=" flex items-center justify-center gap-2">

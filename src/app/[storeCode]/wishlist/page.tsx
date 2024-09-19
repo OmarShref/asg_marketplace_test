@@ -1,6 +1,6 @@
 import WishListPage from "@/lib/component/project/page/WishListPage";
 import { PageProps } from "@/lib/data/types/PageProps";
-import { getCmsPage } from "@/lib/network/server/gql/cmsPage";
+import { getCmsPage } from "@/lib/network/repo/server_repos/gql/cmsPage";
 
 interface Props extends PageProps {}
 

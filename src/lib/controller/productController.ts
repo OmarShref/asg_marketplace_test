@@ -4,7 +4,7 @@ import {
   addToWishList,
   getWishListProducts,
   removeFromWishList,
-} from "../network/client/gql/customer";
+} from "../network/repo/client_repos/gql/customer";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { GtmEvents } from "../core/analytics/Gtm";
 import {
@@ -14,7 +14,7 @@ import {
 } from "../data/models/ProductModel";
 import { baseUrl, productTypes } from "../core/basic/Constants";
 import { ConfigurationModel } from "../data/models/ConfigurationModel";
-import { addItemToCart } from "../network/client/gql/cart";
+import { addItemToCart } from "../network/repo/client_repos/gql/cart";
 import { Texts, getText } from "../assets/text";
 import { scrollToId } from "./scrollController";
 import { algoliaEventsSingleton } from "../core/analytics/Algolia";

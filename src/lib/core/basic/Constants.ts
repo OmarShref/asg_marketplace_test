@@ -52,8 +52,11 @@ export const pageTypes = {
   order: "order",
 };
 
+// dev
 export const baseUrl = "http://localhost:5050";
+// beta
 // export const baseUrl = "https://asg-vested.vercel.app";
+// production
 // export const baseUrl = "https://alsaifgallery.com";
 
 export const apiUrl = {

@@ -1,9 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
 import { ProductCards_Carousel_1 } from "../carousel/ProductCards_Carousel_1";
-import { algoliaRecommendation } from "@/lib/network/client/rest/algolia";
+import { algoliaRecommendation } from "@/lib/network/repo/client_repos/rest/algolia";
 import { CategoryModel } from "@/lib/data/models/CategoryModel";
-import { getCmsPage } from "@/lib/network/server/gql/cmsPage";
+import { getCmsPage } from "@/lib/network/repo/server_repos/gql/cmsPage";
 import { CmsPageModel } from "@/lib/data/models/CmsPageModel";
 import Cms from "../pageBuilder/Cms";
 import { algoliaOptions } from "@/lib/core/basic/Constants";

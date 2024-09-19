@@ -6,7 +6,7 @@ import { AddressModel } from "@/lib/data/models/AddressModel";
 import { CategoryModel } from "@/lib/data/models/CategoryModel";
 import useUtilityStore from "@/lib/data/stores/UtilityStore";
 import { apiUrl } from "@/lib/core/basic/Constants";
-import { gqlCategoryInnerItem } from "../../query/categoryQuery";
+import { gqlCategoryInnerItem } from "../../../queries/categoryQuery";
 import { WishListModel } from "@/lib/data/models/WishListModel";
 import { OrderModel } from "@/lib/data/models/OrderModel";
 

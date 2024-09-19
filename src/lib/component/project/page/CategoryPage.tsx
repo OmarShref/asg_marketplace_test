@@ -8,7 +8,7 @@ import { CategoryModel } from "@/lib/data/models/CategoryModel";
 import LoadMore from "../part/utility/LoadMore";
 import { PageProps } from "@/lib/data/types/PageProps";
 import { useEffect, useRef, useState } from "react";
-import { getCategory } from "@/lib/network/server/gql/category";
+import { getCategory } from "@/lib/network/repo/server_repos/gql/category";
 import {
   getCategoryController,
   getLoadMoreUrl,
@@ -51,6 +51,8 @@ export default function CategoryPage({
       ?.specialToDate,
   );
 
+  // ===============handle sort==========================
+
   function handleSort() {
     if (sort) {
       getCategory({
@@ -70,6 +72,12 @@ export default function CategoryPage({
     }
   }
 
+  useEffect(() => {
+    handleSort();
+  }, [sort]);
+
+  // ================handle filter=========================
+
   function handleFilter() {
     if (sort) {
       getCategory({
@@ -85,12 +93,10 @@ export default function CategoryPage({
   }
 
   useEffect(() => {
-    handleSort();
-  }, [sort]);
-
-  useEffect(() => {
     handleFilter();
   }, [searchParams?.customFilters]);
+
+  // =========================================
 
   useEffect(() => {
     // gtm view item list event
@@ -117,17 +123,19 @@ export default function CategoryPage({
           isSmallDevice={isSmallDevice}
         />
 
-        {/* category products */}
+        {/* ====================================================== */}
+
+        {/* category contents */}
         <section className=" mx-auto flex max-w-project gap-5 ">
           {/* for desktop */}
           <Filter_Section
             params={params}
             searchParams={searchParams}
             filters={category?.filters}
-            className={" basis-3/12"}
+            className={" basis-[20%]"}
           />
 
-          {/* ============================================================================================= */}
+          {/* ====================================================== */}
 
           <div className=" flex-1">
             <CategoryHeader className=" bg-background ">
@@ -148,7 +156,6 @@ export default function CategoryPage({
                 sort={sort ?? sortOptions?.current?.defaultSort}
                 setSort={setSort}
               />
-              <Spacing value={3} />
 
               <Spacing value={3} />
             </CategoryHeader>
@@ -165,7 +172,7 @@ export default function CategoryPage({
               storeCode={params.storeCode}
               products={clientCategory?.products ?? category?.products}
               category={clientCategory ?? category}
-              className=" xl:grid-cols-4"
+              className=" xl:grid-cols-5 "
             />
             <Spacing value={3} />
             {/* TODO: test without url pagination  */}
@@ -189,11 +196,11 @@ export default function CategoryPage({
           </div>
         </section>
 
-        {/* =================================================================================================== */}
+        {/* ========================================================= */}
 
         <ScrollUp_Btn
           id="category-page-scroll-detector"
-          className=" md:hidden"
+          className=" lg:hidden"
         />
 
         {/* pagination  */}

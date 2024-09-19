@@ -31,7 +31,7 @@ import {
   getCustomer,
   updateAddress,
   updateCustomerInfo,
-} from "@/lib/network/client/gql/customer";
+} from "@/lib/network/repo/client_repos/gql/customer";
 import SaveAddress_Btn from "../../part/button/SaveAddress_Btn";
 import { useToast } from "@/lib/component/generic/ui/use-toast";
 import { GtmEvents } from "@/lib/core/analytics/Gtm";
@@ -39,7 +39,7 @@ import { CustomerModel } from "@/lib/data/models/CustomerModel";
 import { City_ComboBox } from "../ComboBox/City_ComboBox";
 import { Region_ComboBox } from "../ComboBox/Region_ComboBox";
 import { Country_ComboBox } from "../ComboBox/Country_ComboBox";
-import { getAddressCountries } from "@/lib/network/client/gql/address";
+import { getAddressCountries } from "@/lib/network/repo/client_repos/gql/address";
 import { PlaceInterface } from "@/lib/data/models/PlaceModel";
 import { supportedShippingCountries } from "@/lib/core/basic/Constants";
 

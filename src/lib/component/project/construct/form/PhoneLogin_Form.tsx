@@ -25,14 +25,14 @@ import {
 import { useEffect, useState } from "react";
 import { Otp_Drawer } from "../drawer/Otp_Drawer";
 import SignIn_Btn from "../../part/button/SignIn_Btn";
-import { sendOtp } from "@/lib/network/client/gql/login";
+import { sendOtp } from "@/lib/network/repo/client_repos/gql/login";
 import {
   loginTypes,
   supportedPhoneLoginCountries,
 } from "@/lib/core/basic/Constants";
 import { useToast } from "@/lib/component/generic/ui/use-toast";
 import { PlaceInterface } from "@/lib/data/models/PlaceModel";
-import { getAddressCountries } from "@/lib/network/client/gql/address";
+import { getAddressCountries } from "@/lib/network/repo/client_repos/gql/address";
 
 type Props = {
   storeCode: string;
@@ -147,7 +147,7 @@ export function PhoneLogin_Form({ storeCode }: Props) {
                       defaultValue="966"
                       onValueChange={(value) => form.setValue("prefix", value)}
                     >
-                      <SelectTrigger className="font-fontEnglish px-2">
+                      <SelectTrigger className="px-2 font-fontEnglish">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent className=" font-fontEnglish">
@@ -172,7 +172,7 @@ export function PhoneLogin_Form({ storeCode }: Props) {
                   <Input
                     type="tel"
                     placeholder={"xxx xxxx ..."}
-                    className=" font-fontEnglish border-none bg-transparent py-1"
+                    className=" border-none bg-transparent py-1 font-fontEnglish"
                     {...field}
                   />
                 </div>

@@ -2,7 +2,7 @@
 import { ServerReqProps } from "@/lib/data/types/ServerReqProps";
 import { ServerGqlGetRequest } from "./base-request/ServerGqlGetRequest";
 import { ProductModel } from "@/lib/data/models/ProductModel";
-import { gqlProductInnerItem } from "../../query/productQuery";
+import { gqlProductInnerItem } from "../../../queries/productQuery";
 
 export async function getProduct({
   params,

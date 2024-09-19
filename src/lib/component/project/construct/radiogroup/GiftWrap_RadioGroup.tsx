@@ -14,8 +14,8 @@ import { useState } from "react";
 import {
   addCartGiftWrap,
   addItemGiftWrap,
-} from "@/lib/network/client/gql/giftwrap";
-import { getCart } from "@/lib/network/client/gql/cart";
+} from "@/lib/network/repo/client_repos/gql/giftwrap";
+import { getCart } from "@/lib/network/repo/client_repos/gql/cart";
 import { useToast } from "@/lib/component/generic/ui/use-toast";
 
 type Props = {

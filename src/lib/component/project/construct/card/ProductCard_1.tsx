@@ -21,7 +21,7 @@ import {
   VariantOptionType,
 } from "@/lib/data/models/ProductModel";
 import { useEffect, useRef, useState } from "react";
-import { getProduct } from "@/lib/network/server/gql/product";
+import { getProduct } from "@/lib/network/repo/server_repos/gql/product";
 import { Button } from "@/lib/component/generic/ui/button";
 import { GtmEvents } from "@/lib/core/analytics/Gtm";
 import DynamicProduct_Label from "../../part/label/DynamicProduct_Label";

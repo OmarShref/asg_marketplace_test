@@ -8,7 +8,10 @@ import { EditIcon } from "@/lib/assets/svg";
 import Spacing from "@/lib/component/generic/pure/spacing";
 import { AddressModel } from "@/lib/data/models/AddressModel";
 import { Button } from "@/lib/component/generic/ui/button";
-import { getCustomer, removeAddress } from "@/lib/network/client/gql/customer";
+import {
+  getCustomer,
+  removeAddress,
+} from "@/lib/network/repo/client_repos/gql/customer";
 import useUserStore from "@/lib/data/stores/UserStore";
 import { TrashIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
@@ -74,7 +77,7 @@ export default function Address_Card({
           <Spacing value={1} />
         </CardSection>
         <CardSection className=" flex-1">
-          <p className=" font-fontEnglish h-auto max-h-[72px] overflow-clip text-base ">
+          <p className=" h-auto max-h-[72px] overflow-clip font-fontEnglish text-base ">
             {address?.street}
           </p>
           <Spacing value={1} />

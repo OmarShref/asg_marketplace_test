@@ -13,7 +13,7 @@ import Spacing from "../../generic/pure/spacing";
 import useUserStore from "@/lib/data/stores/UserStore";
 import NavbarOptions from "../../generic/utility/NavbarOptions";
 import { PageProps } from "@/lib/data/types/PageProps";
-import { getOrders } from "@/lib/network/client/gql/customer";
+import { getOrders } from "@/lib/network/repo/client_repos/gql/customer";
 import { CustomerModel } from "@/lib/data/models/CustomerModel";
 import Order_Card from "../construct/card/Order_Card";
 import { OrderDetails_Drawer } from "../construct/drawer/OrderDetails_Drawer";
@@ -25,7 +25,7 @@ interface Props extends PageProps {}
 export default function OrderPage({ params, searchParams }: Props) {
   const { customer } = useUserStore((state) => state);
   const [customerState, setCustomerState] = useState<CustomerModel | null>(
-    null
+    null,
   );
   useEffect(() => {
     if (customer) {

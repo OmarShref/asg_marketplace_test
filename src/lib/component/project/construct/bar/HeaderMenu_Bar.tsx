@@ -34,7 +34,7 @@ export default function HeaderMenu_Bar({ storeCode, menu }: Props) {
                 >
                   <p className=" text-sm">{item?.name}</p>
                 </NavigationMenuTrigger>
-                <NavigationMenuContent className=" h-[400px] max-h-[400px] overflow-y-auto">
+                <NavigationMenuContent className=" h-[400px] max-h-[400px] overflow-y-auto overscroll-contain">
                   <HeaderMenu_Tabs storeCode={storeCode} menuItem={item} />
                 </NavigationMenuContent>
               </NavigationMenuItem>

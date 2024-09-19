@@ -70,6 +70,7 @@ export default function WishListPage({ params, searchParams, cms }: Props) {
             key={wishListState?.totalCount}
             products={wishListState.products}
             storeCode={params.storeCode}
+            className="2xl:grid-cols-6"
           />
           <Spacing value={3} />
           {/* <LoadMore

@@ -2,11 +2,11 @@ import { Texts, getText } from "@/lib/assets/text";
 import Image from "@/lib/component/generic/pure/image";
 import { Button } from "@/lib/component/generic/ui/button";
 import useUserStore from "@/lib/data/stores/UserStore";
-import { getCart } from "@/lib/network/client/gql/cart";
+import { getCart } from "@/lib/network/repo/client_repos/gql/cart";
 import {
   removeCartGiftWrap,
   removeItemGiftWrap,
-} from "@/lib/network/client/gql/giftwrap";
+} from "@/lib/network/repo/client_repos/gql/giftwrap";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 

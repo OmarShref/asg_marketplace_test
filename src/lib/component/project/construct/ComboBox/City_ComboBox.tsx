@@ -21,7 +21,7 @@ import { Texts, getText } from "@/lib/assets/text";
 import useUtilityStore from "@/lib/data/stores/UtilityStore";
 import { HomeIcon } from "@/lib/assets/svg";
 import { PlaceModel } from "@/lib/data/models/PlaceModel";
-import { getAddressCities } from "@/lib/network/client/gql/address";
+import { getAddressCities } from "@/lib/network/repo/client_repos/gql/address";
 import { getDirection } from "@/lib/helper/direction";
 import { Input } from "@/lib/component/generic/ui/input";
 

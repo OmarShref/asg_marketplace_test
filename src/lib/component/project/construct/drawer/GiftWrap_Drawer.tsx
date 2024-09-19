@@ -15,7 +15,7 @@ import { useEffect, useState } from "react";
 import {
   getGiftWrap,
   getGiftWrapCategories,
-} from "@/lib/network/client/gql/giftwrap";
+} from "@/lib/network/repo/client_repos/gql/giftwrap";
 import { GiftWrapModel, GiftWrapType } from "@/lib/data/models/GiftWrapModel";
 import { Card } from "@/lib/component/generic/ui/card";
 import GiftWrap_RadioGroup from "../radiogroup/GiftWrap_RadioGroup";

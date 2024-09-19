@@ -1,6 +1,6 @@
 "use server";
 import { targetTypes, targetTypesShortHands } from "../core/basic/Constants";
-import { getResolvedRoute } from "../network/server/gql/resolvedRoute";
+import { getResolvedRoute } from "../network/repo/server_repos/gql/resolvedRoute";
 import { RouteModel } from "../data/models/RouteModel";
 import { ServerReqProps } from "../data/types/ServerReqProps";
 import { permanentRedirect } from "next/navigation";

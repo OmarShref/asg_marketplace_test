@@ -39,7 +39,7 @@ import ConfirmAccountInfo_Btn from "../../part/button/ConfirmAccountInfo_Btn";
 import {
   getCustomer,
   updateCustomerInfo,
-} from "@/lib/network/client/gql/customer";
+} from "@/lib/network/repo/client_repos/gql/customer";
 import useUserStore from "@/lib/data/stores/UserStore";
 import { useRouter } from "next/navigation";
 import { GtmEvents } from "@/lib/core/analytics/Gtm";
@@ -267,7 +267,7 @@ export function UpdateAccountInfo_Form({ storeCode }: Props) {
                       onValueChange={(value) => setPrefix(value)}
                       disabled={!!customer?.phone}
                     >
-                      <SelectTrigger className="font-fontEnglish px-2">
+                      <SelectTrigger className="px-2 font-fontEnglish">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent className=" font-fontEnglish">
@@ -284,7 +284,7 @@ export function UpdateAccountInfo_Form({ storeCode }: Props) {
                     <Input
                       type="tel"
                       placeholder={"5x xxx xxxx"}
-                      className=" font-fontEnglish h-auto border-none bg-transparent p-0"
+                      className=" h-auto border-none bg-transparent p-0 font-fontEnglish"
                       disabled={!!Number(customer?.phone)}
                       {...field}
                     />

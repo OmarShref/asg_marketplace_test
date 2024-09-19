@@ -26,7 +26,7 @@ import { CmsPageModel } from "@/lib/data/models/CmsPageModel";
 import Cms from "../construct/pageBuilder/Cms";
 import { GtmEvents } from "@/lib/core/analytics/Gtm";
 import { useToast } from "../../generic/ui/use-toast";
-import { getCart } from "@/lib/network/client/gql/cart";
+import { getCart } from "@/lib/network/repo/client_repos/gql/cart";
 import { useRouter } from "next/navigation";
 import ScrollDetector from "../../generic/pure/scroll";
 import General_Loading from "../construct/loading/General_Loading";

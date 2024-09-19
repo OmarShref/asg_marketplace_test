@@ -13,12 +13,12 @@ import validator from "validator";
 import Spacing from "@/lib/component/generic/pure/spacing";
 import Verify_Btn from "../../part/button/Verify_Btn";
 import { useEffect } from "react";
-import { verifyOtp } from "@/lib/network/client/gql/login";
+import { verifyOtp } from "@/lib/network/repo/client_repos/gql/login";
 import useUserStore from "@/lib/data/stores/UserStore";
 import {
   getCustomer,
   getWishListProducts,
-} from "@/lib/network/client/gql/customer";
+} from "@/lib/network/repo/client_repos/gql/customer";
 import { GtmEvents } from "@/lib/core/analytics/Gtm";
 import { CustomerModel } from "@/lib/data/models/CustomerModel";
 import { useToast } from "@/lib/component/generic/ui/use-toast";
@@ -128,11 +128,11 @@ export function Otp_Form({ storeCode, loginType, loginData }: Props) {
                     maxLength={4}
                     placeholder={"XXXX"}
                     dir="ltr"
-                    className=" font-fontEnglish mx-auto w-full rounded-lg border-none py-4 text-center tracking-[12px] opacity-0 focus-visible:ring-1 focus-visible:ring-accent"
+                    className=" mx-auto w-full rounded-lg border-none py-4 text-center font-fontEnglish tracking-[12px] opacity-0 focus-visible:ring-1 focus-visible:ring-accent"
                     {...field}
                   />
                   <div
-                    className=" font-fontEnglish absolute left-0 top-0 z-10 flex w-full items-center justify-center gap-4 bg-background"
+                    className=" absolute left-0 top-0 z-10 flex w-full items-center justify-center gap-4 bg-background font-fontEnglish"
                     onClick={() => {
                       setFocusOnOtpInput();
                     }}
