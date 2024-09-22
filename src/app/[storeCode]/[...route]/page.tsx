@@ -94,7 +94,7 @@ export default async function page({ params, searchParams }: PageProps) {
       }),
     ]);
 
-    if (!cms?.at(0)?.id) {
+    if (!resolvedRoute?.id) {
       notFound();
     }
 
@@ -118,7 +118,7 @@ export default async function page({ params, searchParams }: PageProps) {
       }),
     ]);
 
-    if (!category?.id) {
+    if (!resolvedRoute?.id) {
       notFound();
     }
 
@@ -145,7 +145,7 @@ export default async function page({ params, searchParams }: PageProps) {
       }),
     ]);
 
-    if (!product?.id) {
+    if (!resolvedRoute?.id) {
       notFound();
     }
 
