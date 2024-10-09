@@ -9,31 +9,46 @@ type Props = {
 };
 
 export default function Buttons_PageBuilder({ storeCode, buttons }: Props) {
+  const appearance = buttons?.properties?.appearance;
   const JSXStyle = getPageBuilderBaseJSXStyle({
     css: buttons?.properties?.css,
   });
 
   return (
-    <div style={JSXStyle} className="flex items-center justify-start gap-2.5">
-      {buttons?.children?.map((button, index) => {
-        const JSXStyle = getPageBuilderBaseJSXStyle({
-          css: button?.properties?.css,
-        });
+    <div
+      style={{
+        flexDirection:
+          appearance === "inline"
+            ? "row"
+            : appearance === "stacked"
+              ? "column"
+              : "row",
+        justifyContent: JSXStyle?.textAlign,
+        ...JSXStyle,
+      }}
+      className="flex items-center gap-2.5"
+    >
+      {buttons?.children
+        ?.map((button, index) => {
+          const JSXStyle = getPageBuilderBaseJSXStyle({
+            css: button?.properties?.css,
+          });
 
-        return (
-          <Anchor key={index} href={button?.url}>
-            <button
-              style={JSXStyle}
-              className={cn(
-                "flex items-center justify-center",
-                button?.properties?.classNames,
-              )}
-            >
-              {button?.label}
-            </button>
-          </Anchor>
-        );
-      })}
+          return (
+            <Anchor key={index} href={button?.url}>
+              <button
+                style={JSXStyle}
+                className={cn(
+                  "flex items-center justify-center",
+                  button?.properties?.classNames,
+                )}
+              >
+                {button?.label}
+              </button>
+            </Anchor>
+          );
+        })
+        ?.reverse()}
     </div>
   );
 }

@@ -12,7 +12,7 @@ export default function Html_PageBuilder({ html }: Props) {
       dangerouslySetInnerHTML={{
         __html: correctedHtml ?? "",
       }}
-      className=" overflow-hidden !leading-normal"
+      className=" pagebuilder_custom_html "
     ></div>
   );
 }

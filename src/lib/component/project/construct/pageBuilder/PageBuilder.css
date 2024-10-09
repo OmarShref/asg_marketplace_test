@@ -1,9 +1,14 @@
+.pagebuilder_custom_html > p,
+.pagebuilder_custom_html > span {
+  line-height: unset !important;
+}
+
 button.pagebuilder-button-primary {
   background-color: #1979c3;
   color: white;
   box-sizing: border-box;
   vertical-align: middle;
-  padding: 14px 0px;
+  padding: 14px 14px;
   border: 1px solid #1979c3;
   border-radius: 3px;
   font-weight: 600;

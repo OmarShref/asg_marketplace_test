@@ -1,6 +1,5 @@
 import * as React from "react";
 import { cn } from "@/lib/utils/utils";
-import Spacing from "./spacing";
 
 const PageBuilder = React.forwardRef<
   HTMLElement,
@@ -23,7 +22,7 @@ const Row = React.forwardRef<HTMLElement, React.HTMLAttributes<HTMLElement>>(
         <section
           ref={ref}
           className={cn(
-            " mb-[10px] flex !flex-row items-stretch justify-between gap-[10px] px-[10px] lg:px-0",
+            " mb-[10px] flex w-full !flex-row items-stretch justify-between gap-[10px] px-[10px] lg:px-0",
             className,
           )}
           {...props}
