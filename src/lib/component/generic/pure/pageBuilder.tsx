@@ -22,7 +22,7 @@ const Row = React.forwardRef<HTMLElement, React.HTMLAttributes<HTMLElement>>(
         <section
           ref={ref}
           className={cn(
-            " mb-[10px] flex w-full !flex-row items-stretch justify-between gap-[10px] px-[10px] lg:px-0",
+            " mb-[10px] w-full items-stretch gap-[10px] px-[10px] lg:px-0",
             className,
           )}
           {...props}
@@ -34,6 +34,38 @@ const Row = React.forwardRef<HTMLElement, React.HTMLAttributes<HTMLElement>>(
   },
 );
 Row.displayName = "Row";
+
+// ====================================================================================
+
+const ColumnGroup = React.forwardRef<
+  HTMLElement,
+  React.HTMLAttributes<HTMLElement>
+>(({ className, children, ...props }, ref) => {
+  return (
+    <>
+      <section ref={ref} className={cn("", className)} {...props}>
+        {children}
+      </section>
+    </>
+  );
+});
+ColumnGroup.displayName = "ColumnGroup";
+
+// ====================================================================================
+
+const ColumnLine = React.forwardRef<
+  HTMLElement,
+  React.HTMLAttributes<HTMLElement>
+>(({ className, children, ...props }, ref) => {
+  return (
+    <>
+      <section ref={ref} className={cn(" gap-[10px] ", className)} {...props}>
+        {children}
+      </section>
+    </>
+  );
+});
+ColumnLine.displayName = "ColumnLine";
 
 // ====================================================================================
 
@@ -54,4 +86,4 @@ Column.displayName = "Column";
 
 // ====================================================================================
 
-export { PageBuilder, Row, Column };
+export { PageBuilder, Row, ColumnGroup, ColumnLine, Column };

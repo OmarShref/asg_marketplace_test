@@ -6,6 +6,8 @@ import {
   Row,
   Column,
   PageBuilder,
+  ColumnGroup,
+  ColumnLine,
 } from "@/lib/component/generic/pure/pageBuilder";
 import { pageBuilderComponentTypes } from "@/lib/core/basic/Constants";
 import {
@@ -74,8 +76,48 @@ export function renderPageBuilderComponent({
               storeCode,
               isSmallDevice,
               child,
-            })?.reverse()}
+            })}
           </Row>
+        );
+
+      case pageBuilderComponentTypes.columnGroup:
+        return (
+          <ColumnGroup
+            key={index}
+            className={cn(child?.properties?.classNames)}
+            style={{
+              ...getPageBuilderBaseJSXStyle({
+                css: child?.properties?.css,
+              }),
+              backgroundImage: `url(${child?.properties?.desktopImage})`,
+            }}
+          >
+            {renderPageBuilderComponent({
+              storeCode,
+              isSmallDevice,
+              child,
+            })?.reverse()}
+          </ColumnGroup>
+        );
+
+      case pageBuilderComponentTypes.columnLine:
+        return (
+          <ColumnLine
+            key={index}
+            className={cn(child?.properties?.classNames)}
+            style={{
+              ...getPageBuilderBaseJSXStyle({
+                css: child?.properties?.css,
+              }),
+              backgroundImage: `url(${child?.properties?.desktopImage})`,
+            }}
+          >
+            {renderPageBuilderComponent({
+              storeCode,
+              isSmallDevice,
+              child,
+            })?.reverse()}
+          </ColumnLine>
         );
 
       case pageBuilderComponentTypes.column:

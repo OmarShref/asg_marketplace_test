@@ -18,7 +18,11 @@ type Props = {
   isSmallDevice: boolean;
 };
 
-export default function Menu_Tabs({ storeCode, tabs, isSmallDevice }: Props) {
+export default function Tabs_PageBuilder({
+  storeCode,
+  tabs,
+  isSmallDevice,
+}: Props) {
   const direction = getDirection(storeCode);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -40,7 +44,7 @@ export default function Menu_Tabs({ storeCode, tabs, isSmallDevice }: Props) {
               <TabsTrigger
                 key={index}
                 value={`${index}`}
-                className={` relative flex w-fit items-center justify-start whitespace-nowrap border-b py-2.5 lg:w-full lg:flex-grow-0 lg:whitespace-normal lg:hover:border-b-accent lg:hover:text-accent  ${index === currentIndex ? "border-b-accent font-medium text-accent" : "font-light text-slate-400"} ${index === 0 && "lg:pt-0"}`}
+                className={` relative flex w-fit items-center justify-start whitespace-nowrap py-2.5 lg:w-full lg:flex-grow-0 lg:whitespace-normal lg:border-b lg:hover:border-b-accent lg:hover:text-accent  ${index === currentIndex ? "border-b-accent font-medium text-accent" : "font-light text-slate-400"} ${index === 0 && "lg:pt-0"}`}
               >
                 <p
                   className={`w-fit text-start text-base lg:line-clamp-1 lg:w-full lg:text-ellipsis`}
