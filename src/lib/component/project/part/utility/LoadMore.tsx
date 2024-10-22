@@ -69,7 +69,7 @@ export default function LoadMore({
   async function handleLoadingMore() {
     const loadingMoreCategory = await loadingMore(page);
 
-    setProducts([...products, ...loadingMoreCategory.products]);
+    setProducts([...products, ...loadingMoreCategory?.products]);
     setPage(page + 1);
     setCategory(loadingMoreCategory);
 

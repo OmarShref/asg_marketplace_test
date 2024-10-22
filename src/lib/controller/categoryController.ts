@@ -38,5 +38,6 @@ export async function getCategoryController({
     page,
     sort: sort ?? sortTypes?.merchandising,
   });
+
   return category;
 }

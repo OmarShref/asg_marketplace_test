@@ -122,6 +122,9 @@ export default async function page({ params, searchParams }: PageProps) {
       notFound();
     }
 
+    // to take the target id whatever returns from the backend
+    category.id = resolvedRoute.id;
+
     return (
       <>
         <CategoryPage
@@ -148,6 +151,9 @@ export default async function page({ params, searchParams }: PageProps) {
     if (!resolvedRoute?.id) {
       notFound();
     }
+
+    // to take the target id whatever returns from the backend
+    product.id = resolvedRoute.id;
 
     return (
       <>

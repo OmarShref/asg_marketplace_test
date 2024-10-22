@@ -56,11 +56,11 @@ export default function CategoryPage({
   function handleSort() {
     if (sort) {
       getCategory({
-        id: category.id,
+        id: category?.id,
         params,
         searchParams,
         page: 1,
-        sort: sort.value,
+        sort: sort?.value,
       }).then((category) => {
         setClientCategory(category);
         window.history.replaceState(
@@ -81,11 +81,11 @@ export default function CategoryPage({
   function handleFilter() {
     if (sort) {
       getCategory({
-        id: category.id,
+        id: category?.id,
         params,
         searchParams,
         page: 1,
-        sort: sort.value,
+        sort: sort?.value,
       }).then((category) => {
         setClientCategory(category);
       });
