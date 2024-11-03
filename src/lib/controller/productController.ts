@@ -17,7 +17,6 @@ import { ConfigurationModel } from "../data/models/ConfigurationModel";
 import { addItemToCart } from "../network/repo/client_repos/gql/cart";
 import { Texts, getText } from "../assets/text";
 import { scrollToId } from "./scrollController";
-import { algoliaEventsSingleton } from "../core/analytics/Algolia";
 
 export async function addOrRemoveWishlistItemController({
   productId,
@@ -334,12 +333,6 @@ export async function handleAddToCart({
       new GtmEvents({
         gtmProduct: gtmProduct,
       }).addToCart();
-
-      // algolia event
-      algoliaEventsSingleton?.addToCart({
-        product: configurableProductCurrentVariant,
-        quantity: productCount,
-      });
     } else {
       toast({
         description: addTocartData?.errorMessage,
@@ -405,12 +398,6 @@ export async function handleAddToCart({
         new GtmEvents({
           gtmProduct: gtmProduct,
         }).addToCart();
-
-        // algolia event
-        algoliaEventsSingleton?.addToCart({
-          product: configurableProductCurrentVariant,
-          quantity: productCount,
-        });
       } else {
         toast({
           description: addTocartData?.errorMessage,

@@ -12,7 +12,6 @@ import { SortItemType } from "@/lib/data/models/SortModel";
 import { sortTypes } from "@/lib/core/basic/Constants";
 import { CategoryModel } from "@/lib/data/models/CategoryModel";
 import { GtmEvents } from "@/lib/core/analytics/Gtm";
-import { algoliaEventsSingleton } from "@/lib/core/analytics/Algolia";
 
 interface Props extends PageProps, React.HTMLAttributes<HTMLDivElement> {
   pageNumber?: number;
@@ -76,11 +75,6 @@ export default function LoadMore({
     new GtmEvents({
       gtmCategory: CategoryModel?.toGtm(loadingMoreCategory),
     }).viewItemList();
-
-    // algolia event
-    algoliaEventsSingleton?.viewedObjectIDs({
-      category: loadingMoreCategory,
-    });
 
     if (withUrlPagination) {
       window.history.replaceState(

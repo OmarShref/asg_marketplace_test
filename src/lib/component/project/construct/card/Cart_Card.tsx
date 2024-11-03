@@ -30,7 +30,6 @@ import { ProductModel } from "@/lib/data/models/ProductModel";
 import { Texts, getText } from "@/lib/assets/text";
 import { usePathname } from "next/navigation";
 import { useToast } from "@/lib/component/generic/ui/use-toast";
-import { algoliaEventsSingleton } from "@/lib/core/analytics/Algolia";
 
 type Props = {
   storeCode: string;
@@ -108,12 +107,6 @@ export default function Cart_Card({ storeCode, cartItem }: Props) {
         new GtmEvents({
           gtmProduct: gtmProduct,
         }).addToCart();
-
-        // algolia event
-        algoliaEventsSingleton.addToCart({
-          product: cartItem?.product,
-          quantity: productChangeQuantity,
-        });
       } else {
         gtmProduct.quantity = productChangeQuantity;
 

@@ -63,7 +63,6 @@ import { useToast } from "../../generic/ui/use-toast";
 // import { scrollToId } from "@/lib/controller/scrollController";
 import { ProductImages_Carousel_2 } from "../construct/carousel/ProductImages_Carousel_2";
 import DynamicProduct_Label from "../part/label/DynamicProduct_Label";
-// import { algoliaEventsSingleton } from "@/lib/core/analytics/Algolia";
 import Page_Transition from "../part/transition/Page_Transition";
 import LeftInStock_Label from "../part/label/LeftInStock_Label";
 import ProductOverview_Section from "../construct/section/ProductOverview_Section";

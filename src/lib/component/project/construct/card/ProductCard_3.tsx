@@ -25,7 +25,6 @@ import { useEffect, useRef, useState } from "react";
 // import { Button } from "@/lib/component/generic/ui/button";
 import { GtmEvents } from "@/lib/core/analytics/Gtm";
 import DynamicProduct_Label from "../../part/label/DynamicProduct_Label";
-import { algoliaEventsSingleton } from "@/lib/core/analytics/Algolia";
 import Addtocart_Btn_3 from "../../part/button/Addtocart_Btn_3";
 import { handleAddToCart } from "@/lib/controller/productController";
 import { useToast } from "@/lib/component/generic/ui/use-toast";
@@ -129,19 +128,6 @@ export default function ProductCard_3({
     new GtmEvents({
       gtmProduct: gtmProduct,
     }).selectItem();
-
-    // algolia event
-    if (queryId) {
-      algoliaEventsSingleton?.clickedObjectIDsAfterSearch({
-        product,
-        queryId,
-        index,
-      });
-    } else {
-      algoliaEventsSingleton?.clickedObjectIDs({
-        product,
-      });
-    }
   }
 
   // ================================================================================

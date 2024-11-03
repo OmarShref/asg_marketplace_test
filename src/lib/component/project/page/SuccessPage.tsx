@@ -13,7 +13,6 @@ import { GtmEvents } from "@/lib/core/analytics/Gtm";
 import { CartModel } from "@/lib/data/models/CartModel";
 import { OrderModel } from "@/lib/data/models/OrderModel";
 import { useRouter } from "next/navigation";
-import { algoliaEventsSingleton } from "@/lib/core/analytics/Algolia";
 import Page_Transition from "../part/transition/Page_Transition";
 
 type Props = {
@@ -39,11 +38,6 @@ export default function SuccessPage({ storeCode }: Props) {
         gtmOrder: OrderModel?.toGtm(lastOrder?.order),
       })?.purchase();
       successSoundRef.current?.play();
-
-      // algolia event
-      algoliaEventsSingleton?.purchase({
-        cart: lastOrder?.cart,
-      });
     }
   }, []);
 
@@ -80,7 +74,7 @@ export default function SuccessPage({ storeCode }: Props) {
               })}`}
             </p>
             <p>{":"}</p>
-            <p className=" font-fontEnglish text-center font-light">
+            <p className=" text-center font-fontEnglish font-light">
               {`${lastOrderState?.order?.items?.at(0)?.number}`}
             </p>
           </div>

@@ -26,7 +26,6 @@ import NavbarOptions from "../../generic/utility/NavbarOptions";
 import { GtmEvents } from "@/lib/core/analytics/Gtm";
 import Image from "../../generic/pure/image";
 import Timer_1 from "../part/timer/Timer_1";
-import { algoliaEventsSingleton } from "@/lib/core/analytics/Algolia";
 import Filter_Section from "../construct/section/Filter_Section";
 import Page_Transition from "../part/transition/Page_Transition";
 import Cms from "../construct/pageBuilder/Cms";
@@ -103,11 +102,6 @@ export default function CategoryPage({
     new GtmEvents({
       gtmCategory: CategoryModel?.toGtm(category),
     }).viewItemList();
-
-    // algolia event
-    algoliaEventsSingleton?.viewedObjectIDs({
-      category,
-    });
   }, []);
 
   return (
