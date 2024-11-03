@@ -108,7 +108,7 @@ export const Texts = {
   skip: ["تخطي", "Skip"],
   welcome: ["مرحباً بك", "Welcome"],
   loginWithYourPhoneNumberOrThroughEmail: [
-    "سجلي دخولك عن طريق رقم هاتفك اوعن طريق الايميل",
+    "سجل دخولك عن طريق رقم هاتفك اوعن طريق الايميل",
     "Login with your phone number or through email.",
   ],
   loginWith: ["دخول عن طريق", "Login with"],
