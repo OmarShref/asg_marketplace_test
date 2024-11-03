@@ -138,9 +138,9 @@ export const mapOptions = {
   supportedCountries: ["SA", "AE", "KW"],
   unknown: "unknown",
   // blooming api key
-  // googleMapsApiKey: "AIzaSyB31O-99fwVZTpBT4NgzN4G3XqpcAfTkBY",
+  googleMapsApiKey: "AIzaSyB31O-99fwVZTpBT4NgzN4G3XqpcAfTkBY",
   // alsaif api key
-  googleMapsApiKey: "AIzaSyAAYsP6c15U1iMoImt79gHyEwrHE5gO964",
+  // googleMapsApiKey: "AIzaSyAAYsP6c15U1iMoImt79gHyEwrHE5gO964",
 };
 
 export const paymentTypes = {
