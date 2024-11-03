@@ -53,7 +53,7 @@ export const pageTypes = {
 };
 
 // dev
-export const baseUrl = "http://localhost:5050";
+export const baseUrl = "http://localhost:6060";
 // beta
 // export const baseUrl = "https://asg-vested.vercel.app";
 // production
@@ -63,8 +63,8 @@ export const apiUrl = {
   // beta
   // ======================================================================================
   // production
-  main: "https://alsaifgallery.api.vestedcommerce.com/graphql",
-  sales: "https://alsaifgallery.api.vestedcommerce.com/graphql",
+  main: "https://ag-mb.api.vestedcommerce.com/graphql",
+  sales: "https://ag-mb.api.vestedcommerce.com/graphql",
 };
 
 export const deviceTypes = {
